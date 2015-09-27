@@ -26,27 +26,37 @@ public class SignUpServlet extends HttpServlet {
         this.userIdGenerator = userIdGenerator;
     }
 
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
+        assert response != null;
+        //noinspection ConstantConditions,resource
         response.getWriter().println(PageGenerator.getPage("registration.html", null));
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
 
+    @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
+        assert request != null;
         String name     = request.getParameter("name");
         String password = request.getParameter("password");
         String email    = request.getParameter("email");
 
-        UserProfile userProfile = new UserProfile(name,password,email);
+        @SuppressWarnings("ConstantConditions") UserProfile userProfile =
+                new UserProfile(name,password,email);
 
         Map<String, Object> pageVariables = new HashMap<>();
+        assert accountService != null;
+        //noinspection ConstantConditions
         if (accountService.addUser(name, userProfile)) {
             HttpSession session = request.getSession();
+            assert session != null;
             Long userId = (Long) session.getAttribute("userId");
 
             if (userId == null) {
+                //noinspection ConstantConditions
                 userId = userIdGenerator.getAndIncrement();
                 session.setAttribute("userId", userId);
             }
@@ -56,6 +66,7 @@ public class SignUpServlet extends HttpServlet {
             pageVariables.put("signUpStatus", "User with name: " + name + " already exists");
         }
 
+        //noinspection ConstantConditions,resource
         response.getWriter().println(PageGenerator.getPage("signupstatus.html", pageVariables));
         response.setStatus(HttpServletResponse.SC_OK);
     }

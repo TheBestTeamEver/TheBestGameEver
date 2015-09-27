@@ -1,8 +1,6 @@
 package frontend;
 
 import main.AccountService;
-import main.UserProfile;
-import templater.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by pavel on 20.09.15.
@@ -23,6 +19,7 @@ public class ExitServlet extends HttpServlet {
         this.accountService = accountService;
     }
 
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,10 +27,14 @@ public class ExitServlet extends HttpServlet {
 //        response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 
+        assert request != null;
+        assert accountService != null;
         HttpSession session = request.getSession();
+        assert session != null;
         Long userId = (Long) session.getAttribute("userId");
 
         if (userId != null) {

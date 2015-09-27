@@ -26,14 +26,21 @@ public class SignInServlet extends HttpServlet {
         this.userIdGenerator = userIdGenerator;
     }
 
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
+        assert response != null;
+        //noinspection ConstantConditions,resource
         response.getWriter().println(PageGenerator.getPage("auth.html", null));
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
+        assert request != null;
+        assert response != null;
+
         String name = request.getParameter("name");
         String password = request.getParameter("password");
 
@@ -41,12 +48,16 @@ public class SignInServlet extends HttpServlet {
 
         Map<String, Object> pageVariables = new HashMap<>();
 
+        assert accountService != null;
         UserProfile profile = accountService.getUser(name);
+        //noinspection ConstantConditions
         if (profile != null && profile.getPassword().equals(password)) {
             HttpSession session = request.getSession();
-            Long userId = (Long) session.getAttribute("userId");
+            @SuppressWarnings("ConstantConditions") Long userId =
+                    (Long) session.getAttribute("userId");
 
             if (userId == null) {
+                //noinspection ConstantConditions
                 userId = userIdGenerator.getAndIncrement();
                 session.setAttribute("userId", userId);
             }
@@ -57,6 +68,7 @@ public class SignInServlet extends HttpServlet {
             pageVariables.put("loginStatus", "Wrong login/password");
         }
 
+        //noinspection ConstantConditions,resource
         response.getWriter().println(PageGenerator.getPage("authstatus.html", pageVariables));
     }
 }

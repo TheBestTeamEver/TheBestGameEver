@@ -15,16 +15,19 @@ import java.util.Map;
  */
 public class PageGenerator {
     private static final String HTML_DIR = "server_tml";
-    private static final Configuration CFG = new Configuration();
+    private static final Configuration CONFIG = new Configuration();
 
     public static String getPage(String filename, Map<String, Object> data) {
         Writer stream = new StringWriter();
         try {
-            Template template = CFG.getTemplate(HTML_DIR + File.separator + filename);
+            assert CONFIG != null;
+            Template template = CONFIG.getTemplate(HTML_DIR + File.separator + filename);
+            assert template != null;
             template.process(data, stream);
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }
+        //noinspection ConstantConditions
         return stream.toString();
     }
 }
