@@ -16,8 +16,6 @@ Blow the ball is a term java + frontend browser game project.
       
       
 ```sh
-$ git clone https://github.com/MaximZemskov/tpjavaplusfront.git
-$ cd tpjavaplusfront
 $ npm install
 ```
       
