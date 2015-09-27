@@ -1,0 +1,53 @@
+html, body {
+	margin: : 0;
+	padding: 0;
+	margin: auto;
+	background-color: #e1e1e1;
+}
+
+.main h1 {
+	text-align: center;
+	padding-top: 70px;
+	color: #fff;
+}
+
+.main {
+	height: 750px;
+	max-width: 800px;
+	background-color: #20b2aa;
+	margin: auto;
+}
+
+.menu {
+	width: 350px;
+	height: 410px;
+	background-color: #ffaaaa;
+	margin: auto;
+	margin-top: 70px; 
+	/*position: fixed;
+  	top: 50%;
+  	left: 50%; */
+  	text-align: center;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+	padding-top: 1px;
+}
+
+li {
+	margin: 80px 20px 80px 20px;
+}
+
+.menu a {
+	text-decoration: none;
+	border: solid 1px;
+	padding: 20px 30px 20px 30px;
+	font-size: 24px;
+	border-radius: 10px;
+}
+
+.menu a:nth-child(1) {
+
+}
