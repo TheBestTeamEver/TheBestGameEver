@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+	<h1>Blow The Ball</h1>
+		<p>Scoreboard</p>
+		<div class="window">
+				<a class="back" href="#">Back</a>
+		</div>
+</fest:template>

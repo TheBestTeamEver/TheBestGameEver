@@ -1,0 +1,25 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+	<h1>Blow The Ball</h1>
+		<p>Login</p>
+		<div class="window">
+			<form action="#">
+			<input id="email" type="email" name="email" value="Enter Mail"/>
+			<input id="password" type="password" name="password" value="111"/>
+			<input id="submit" type="submit" name="submit" valut="Submit"/>
+			<a class="back" href="#">Back</a>
+			</form>
+		</div>
+
+		<script>
+			<!-- listen for clicks -->
+			$('form').on('submit', function(event){
+				console.log($(this).serialize());
+				$.post('/api/v1/auth/signin.html', $(this).serialize(), function(response) {
+					
+				});
+				event.preventDefault();
+			});
+
+			
+		</script>
+</fest:template>
