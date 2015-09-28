@@ -1,7 +1,7 @@
 package frontend;
 
 import main.AccountService;
-
+import templater.PageGenerator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,10 +35,7 @@ public class ExitServlet extends HttpServlet {
         assert accountService != null;
         HttpSession session = request.getSession();
         assert session != null;
-        Long userId = (Long) session.getAttribute("userId");
-
-        if (userId != null) {
-            accountService.removeSession(userId.toString());
-        }
+        accountService.removeSession(session.getId());
+        response.getWriter().println(PageGenerator.getPage("exit.html", null));
     }
 }

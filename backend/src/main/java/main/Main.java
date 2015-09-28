@@ -32,12 +32,12 @@ public class Main {
         System.out.println("Starting at port: " + portString + '\n');
 
         AccountService accountService = new AccountService();
-        UserIdGenerator userIdGenerator = new UserIdGenerator();
 
-        Servlet signin = new SignInServlet(accountService, userIdGenerator);
-        Servlet signUp = new SignUpServlet(accountService, userIdGenerator);
+
+        Servlet signin = new SignInServlet(accountService);
+        Servlet signUp = new SignUpServlet(accountService);
         Servlet exit   = new ExitServlet(accountService);
-        Servlet admin  = new AdminPageServlet();
+        Servlet admin  = new AdminPageServlet(accountService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(signin), "/api/v1/auth/signin");   //Войти

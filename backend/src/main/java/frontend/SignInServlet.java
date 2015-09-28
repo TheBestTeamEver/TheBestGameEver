@@ -1,7 +1,6 @@
 package frontend;
 
 import main.AccountService;
-import main.UserIdGenerator;
 import main.UserProfile;
 import templater.PageGenerator;
 
@@ -19,11 +18,11 @@ import java.util.Map;
  */
 public class SignInServlet extends HttpServlet {
     private AccountService accountService;
-    private UserIdGenerator userIdGenerator;
 
-    public SignInServlet(AccountService accountService, UserIdGenerator userIdGenerator) {
+
+    public SignInServlet(AccountService accountService) {
         this.accountService = accountService;
-        this.userIdGenerator = userIdGenerator;
+
     }
 
     @Override
@@ -31,8 +30,15 @@ public class SignInServlet extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
         assert response != null;
         //noinspection ConstantConditions,resource
-        response.getWriter().println(PageGenerator.getPage("auth.html", null));
-        response.setStatus(HttpServletResponse.SC_OK);
+        HttpSession session = request.getSession();
+        if (accountService.getSessions(session.getId()) != null){
+            response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
+        else {
+            response.getWriter().println(PageGenerator.getPage("auth.html", null));
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
     }
 
     @Override
@@ -53,17 +59,8 @@ public class SignInServlet extends HttpServlet {
         //noinspection ConstantConditions
         if (profile != null && profile.getPassword().equals(password)) {
             HttpSession session = request.getSession();
-            @SuppressWarnings("ConstantConditions") Long userId =
-                    (Long) session.getAttribute("userId");
-
-            if (userId == null) {
-                //noinspection ConstantConditions
-                userId = userIdGenerator.getAndIncrement();
-                session.setAttribute("userId", userId);
-            }
-            accountService.addSessions(userId.toString(), profile);
-
-            pageVariables.put("loginStatus", "Login passed. " + "Session id:" + userId);
+            accountService.addSessions(session.getId(), profile);
+            pageVariables.put("loginStatus", "Login passed. " + "Session id:" + session.getId());
         } else {
             pageVariables.put("loginStatus", "Wrong login/password");
         }

@@ -2,7 +2,7 @@ package admin;
 
 import main.TimeHelper;
 
-
+import main.AccountService;
 import templater.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -14,6 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdminPageServlet extends HttpServlet {
+    private AccountService accountService;
+
+    public AdminPageServlet(AccountService accountService) {
+        this.accountService = accountService;
+    }
     public static final String ADMIN_PAGE_URL = "/admin";
 
     @SuppressWarnings("ConstantConditions")
@@ -34,8 +39,9 @@ public class AdminPageServlet extends HttpServlet {
             System.out.print("\nShutdown");
             System.exit(0);
         }
-        pageVariables.put("status", "run");
+        pageVariables.put("signedIn", accountService.getSignedInNumber());
+        pageVariables.put("registered", accountService.getRegisteredNumber());
         //noinspection resource
-        response.getWriter().println(PageGenerator.getPage("admin.tml", pageVariables));
+        response.getWriter().println(PageGenerator.getPage("admin.html", pageVariables));
     }
 }

@@ -46,4 +46,10 @@ public class AccountService {
             return sessions.get(sessionId);
         return null;
     }
+    public int getSignedInNumber() {
+        return sessions.size();
+    }
+    public int getRegisteredNumber() {
+        return users.size();
+    }
 }

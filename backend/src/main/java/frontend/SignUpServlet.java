@@ -19,20 +19,26 @@ import java.util.Map;
  */
 public class SignUpServlet extends HttpServlet {
     private AccountService accountService;
-    private UserIdGenerator userIdGenerator;
 
-    public SignUpServlet(AccountService accountService, UserIdGenerator userIdGenerator) {
+
+    public SignUpServlet(AccountService accountService) {
         this.accountService = accountService;
-        this.userIdGenerator = userIdGenerator;
     }
 
     @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         assert response != null;
-        //noinspection ConstantConditions,resource
-        response.getWriter().println(PageGenerator.getPage("registration.html", null));
-        response.setStatus(HttpServletResponse.SC_OK);
+        HttpSession session = request.getSession();
+        if(accountService.getSessions(session.getId()) != null){
+            response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
+        else {
+            //noinspection ConstantConditions,resource
+            response.getWriter().println(PageGenerator.getPage("registration.html", null));
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
     }
 
 
@@ -51,17 +57,7 @@ public class SignUpServlet extends HttpServlet {
         assert accountService != null;
         //noinspection ConstantConditions
         if (accountService.addUser(name, userProfile)) {
-            HttpSession session = request.getSession();
-            assert session != null;
-            Long userId = (Long) session.getAttribute("userId");
-
-            if (userId == null) {
-                //noinspection ConstantConditions
-                userId = userIdGenerator.getAndIncrement();
-                session.setAttribute("userId", userId);
-            }
-            accountService.addSessions(userId.toString(), userProfile);
-            pageVariables.put("signUpStatus", "New user created. " + "Session id:" + userId);
+            pageVariables.put("signUpStatus", "New user created.");
         } else {
             pageVariables.put("signUpStatus", "User with name: " + name + " already exists");
         }
