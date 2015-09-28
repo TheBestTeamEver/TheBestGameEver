@@ -1,7 +1,6 @@
 package frontend;
 
 import main.AccountService;
-import main.UserIdGenerator;
 import main.UserProfile;
 import templater.PageGenerator;
 
