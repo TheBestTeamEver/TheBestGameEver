@@ -1,5 +1,4 @@
 package main;
-
 import admin.AdminPageServlet;
 import frontend.ExitServlet;
 import frontend.SignInServlet;
@@ -16,33 +15,42 @@ import javax.servlet.Servlet;
 /**
  * @author v.chibrikov
  */
+
 public class Main {
-    @SuppressWarnings("OverlyBroadThrowsClause")
-    public static void main(String[] args) throws Exception {
-        //noinspection ConstantConditions
+
+    public static final int PORT = 8080;
+
+    public static void main(String[] args) throws   InterruptedException {
+
         if (args.length != 1) {
             System.out.append("Use port as the first argument");
             System.exit(1);
         }
-
         String portString = args[0];
-        //noinspection ConstantConditions
-        int port = Integer.valueOf(portString);
-        //noinspection ConstantConditions
-        System.out.println("Starting at port: " + portString + '\n');
+        int port;
+
+        try {
+            port = Integer.valueOf(portString);
+        }
+        catch (NumberFormatException ex) {
+
+            System.out.println("You have input not a number!!! Port 8080 will be used");
+            port = PORT;
+        }
+        System.out.println("Starting at port: " + port + '\n');
 
         AccountService accountService = new AccountService();
-        UserIdGenerator userIdGenerator = new UserIdGenerator();
 
-        Servlet signin = new SignInServlet(accountService, userIdGenerator);
-        Servlet signUp = new SignUpServlet(accountService, userIdGenerator);
+
+        Servlet signin = new SignInServlet(accountService);
+        Servlet signUp = new SignUpServlet(accountService);
         Servlet exit   = new ExitServlet(accountService);
-        Servlet admin  = new AdminPageServlet();
+        Servlet admin  = new AdminPageServlet(accountService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(signin), "/api/v1/auth/signin");   //Войти
-        context.addServlet(new ServletHolder(signUp), "/api/v1/auth/signup");   //Зарегистрироваться
-        context.addServlet(new ServletHolder(exit),   "/api/v1/auth/logout");   //Выйти
+        context.addServlet(new ServletHolder(signin), "/api/v1/auth/signin");
+        context.addServlet(new ServletHolder(signUp), "/api/v1/auth/signup");
+        context.addServlet(new ServletHolder(exit),   "/api/v1/auth/logout");
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -55,7 +63,15 @@ public class Main {
         Server server = new Server(port);
         server.setHandler(handlers);
 
-        server.start();
+        try{
+            server.start();
+        }
+        catch (Exception ex){
+            //
+        }
+
         server.join();
+
+
     }
 }

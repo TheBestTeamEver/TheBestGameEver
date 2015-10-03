@@ -2,7 +2,7 @@ package admin;
 
 import main.TimeHelper;
 
-
+import main.AccountService;
 import templater.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -14,9 +14,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdminPageServlet extends HttpServlet {
+    private AccountService accountService;
+
+    public AdminPageServlet(AccountService accountServiceParam) {
+        this.accountService = accountServiceParam;
+    }
     public static final String ADMIN_PAGE_URL = "/admin";
 
-    @SuppressWarnings("ConstantConditions")
+
+
     @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
@@ -28,14 +34,14 @@ public class AdminPageServlet extends HttpServlet {
         Map<String, Object> pageVariables = new HashMap<>();
         String timeString = request.getParameter("shutdown");
         if (timeString != null) {
-            @SuppressWarnings("ConstantConditions") int timeMS = Integer.valueOf(timeString);
+            int timeMS = Integer.valueOf(timeString);
             System.out.print("Server will be down after: "+ timeMS + " ms");
             TimeHelper.sleep(timeMS);
             System.out.print("\nShutdown");
             System.exit(0);
         }
-        pageVariables.put("status", "run");
-        //noinspection resource
-        response.getWriter().println(PageGenerator.getPage("admin.tml", pageVariables));
+        pageVariables.put("signedIn", accountService.getSignedInNumber());
+        pageVariables.put("registered", accountService.getRegisteredNumber());
+        response.getWriter().println(PageGenerator.getPage("admin.html", pageVariables));
     }
 }

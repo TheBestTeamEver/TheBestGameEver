@@ -1,5 +1,6 @@
 package main;
 
+
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -31,13 +32,16 @@ public class AccountService {
         sessions.remove(sessionId);
     }
 
-    @Nullable
-    public UserProfile getUser(@Nullable String userName) {
+
+
+   @Nullable
+   public UserProfile getUser( String userName) {
         assert users != null;
         if (users.containsKey(userName))
             return users.get(userName);
         return null;
     }
+
 
     @Nullable
     public UserProfile getSessions(String sessionId) {
@@ -45,5 +49,12 @@ public class AccountService {
         if (sessions.containsKey(sessionId))
             return sessions.get(sessionId);
         return null;
+    }
+
+    public int getSignedInNumber() {
+        return sessions.size();
+    }
+    public int getRegisteredNumber() {
+        return users.size();
     }
 }
