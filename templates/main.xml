@@ -3,9 +3,9 @@
 	<p>Main Menu</p>
 	<div class="window">
 		<ul>
-			<li><a class="scoreboard" href="#">Score Board</a></li>
-			<li><a class="start-game" href="#">Start Game</a></li>
-			<li><a class="login" href="#">LogIn</a></li>
+			<li><a class="scoreboard" href="#">ScoreBoard</a></li>
+			<li><a class="start-game" href="#">Start</a></li>
+			<li><a class="login" href="#">Log In</a></li>
 		</ul>
 	</div>
 </fest:template>

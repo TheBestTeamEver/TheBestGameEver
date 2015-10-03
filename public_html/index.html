@@ -1,4 +1,4 @@
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Blow The Ball</title>
@@ -14,71 +14,73 @@
 <body>
 	<div class="main">
 		<div class="container">
-		<div id="page"></div>
-		<script type="text/javascript">
-			var $page = $('div#page'),
-    		currentScreen = 'main';
+			<div id="page"></div>
+				<script type="text/javascript">
+					var $page = $('div#page'),
+		    		currentScreen = 'main';
 
-			function showScoreboardScreen() {
-			    hideMainScreen();
-			    currentScreen = 'scoreboard';
-			    $page.html(scoreboardTmpl());
-			    $page.find('.back').on('click', showMainScreen);
-			}
+					function showScoreboardScreen() {
+					    hideMainScreen();
+					    currentScreen = 'scoreboard';
+					    $page.html(scoreboardTmpl());
+					    $page.find('.back').on('click', showMainScreen);
+					}
 
-			function hideScoreboardScreen() {
-			    $page.find('.back').off('click', showMainScreen);
-			}
+					function hideScoreboardScreen() {
+					    $page.find('.back').off('click', showMainScreen);
+					}
 
-			function showGameScreen() {
-			    hideMainScreen();
-			    currentScreen = 'game';
-			    $page.html(gameTmpl());
-			    $page.find('.back').on('click', showMainScreen);
-			}
+					function showGameScreen() {
+					    hideMainScreen();
+					    currentScreen = 'game';
+					    $page.html(gameTmpl());
+					    $page.find('.back').on('click', showMainScreen);
+					}
 
-			function hideGameScreen() {
-			    $page.find('.back').off('click', showMainScreen);
-			}
+					function hideGameScreen() {
+					    $page.find('.back').off('click', showMainScreen);
+					}
 
-			function showLoginScreen() {
-			    hideMainScreen();
-			    currentScreen = 'login';
-			    $page.html(loginTmpl());
+					function showLoginScreen() {
+					    hideMainScreen();
+					    currentScreen = 'login';
+					    $page.html(loginTmpl());
 
-			    $page.find('.back').on('click', showMainScreen);
-			}
+					    $page.find('.back').on('click', showMainScreen);
+					}
 
-			function hideLoginScreen() {
-			    $page.find('.back').off('click', showMainScreen);
-			}
+					function hideLoginScreen() {
+					    $page.find('.back').off('click', showMainScreen);
+					}
 
-			function showMainScreen() {
-			    if (currentScreen === 'scoreboard') {
-			        hideScoreboardScreen();
-			    } else if (currentScreen === 'game') {
-			        hideGameScreen();
-			    } else if (currentScreen === 'login') {
-			        hideLoginScreen();
-			    }
-			    currentScreen = 'main';
-			    $page.html(mainTmpl()); 
-			    $page.find('.scoreboard').on('click', showScoreboardScreen);
-			    $page.find('.start-game').on('click', showGameScreen);
-			    $page.find('.login').on('click', showLoginScreen);
-			}
+					function showMainScreen() {
+					    if (currentScreen === 'scoreboard') {
+					        hideScoreboardScreen();
+					    } else if (currentScreen === 'game') {
+					        hideGameScreen();
+					    } else if (currentScreen === 'login') {
+					        hideLoginScreen();
+					    }
+					    currentScreen = 'main';
+					    $page.html(mainTmpl()); 
+					    $page.find('.scoreboard').on('click', showScoreboardScreen);
+					    $page.find('.start-game').on('click', showGameScreen);
+					    $page.find('.login').on('click', showLoginScreen);
+					}
 
-			function hideMainScreen() {
+					function hideMainScreen() {
 
-			    $page.find('.scoreboard').off('click', showScoreboardScreen);
-			    $page.find('.start-game').off('click', showGameScreen);
-			    $page.find('.login').off('click', showLoginScreen);
-			}
+					    $page.find('.scoreboard').off('click', showScoreboardScreen);
+					    $page.find('.start-game').off('click', showGameScreen);
+					    $page.find('.login').off('click', showLoginScreen);
+					}
 
-			showMainScreen();
-		</script>
-		<div class="footer">
-			<p>Shit Developers Inc</p>
+					showMainScreen();
+				</script>
+				<div class="footer">
+					<p>Shit Developers Inc</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- Livereload -->
