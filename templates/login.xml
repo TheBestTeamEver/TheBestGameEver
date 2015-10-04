@@ -1,12 +1,12 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<h1>Blow The Ball</h1>
-		<p>Login</p>
-		<div class="window">
+	<h1 class="main__container__header">Blow The Ball</h1>
+		<p class="main__container__paragraph">Login</p>
+		<div class="main__container__page">
 			<form action="#">
-			<input id="email" type="email" name="email" value="Enter Mail"/>
-			<input id="password" type="password" name="password" value="111"/>
-			<input id="submit" type="submit" name="submit" valut="Submit"/>
-			<a class="back" href="#">Back</a>
+			<input class="main__container__page__input" id="email" type="email" name="email" value="Enter Mail"/>
+			<input class="main__container__page__input" id="password" type="password" name="password" value="111"/>
+			<input class="main__container__page__input main__container__page__item" id="submit" type="submit" name="submit" valut="Submit"/>
+			<a class="back main__container__page__item main_container_page_item_back" href="#">Back</a>
 			</form>
 		</div>
 

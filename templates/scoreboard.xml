@@ -1,7 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<h1>Blow The Ball</h1>
-		<p>Scoreboard</p>
-		<div class="window">
-				<a class="back" href="#">Back</a>
+	<h1 class="main__container__header">Blow The Ball</h1>
+		<p class="main__container__paragraph">Scoreboard</p>
+		<div class="main__container__page">
+				<a class="back main__container__page__item main_container_page_item_back" href="#">Back</a>
 		</div>
 </fest:template>

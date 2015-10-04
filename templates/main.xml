@@ -1,11 +1,11 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<h1>Blow The Ball</h1>
-	<p>Main Menu</p>
-	<div class="window">
-		<ul>
-			<li><a class="scoreboard" href="#">ScoreBoard</a></li>
-			<li><a class="start-game" href="#">Start</a></li>
-			<li><a class="login" href="#">Log In</a></li>
+	<h1 class="main__container__header">Blow The Ball</h1>
+	<p class="main__container__paragraph">Main Menu</p>
+	<div class="main__container__page">
+		<ul class="main__container__page__ul">
+			<li class="main__container__page__li"><a class="scoreboard main__container__page__item" href="#">ScoreBoard</a></li>
+			<li class="main__container__page__li"><a class="start-game main__container__page__item" href="#">Start</a></li>
+			<li class="main__container__page__li"><a class="login main__container__page__item" href="#">Log In</a></li>
 		</ul>
 	</div>
 </fest:template>
