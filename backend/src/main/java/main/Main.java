@@ -50,7 +50,7 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(signin), "/api/v1/auth/signin");
         context.addServlet(new ServletHolder(signUp), "/api/v1/auth/signup");
-        context.addServlet(new ServletHolder(exit),   "/api/v1/auth/logout");
+        context.addServlet(new ServletHolder(exit), "/api/v1/auth/logout");
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
 
         ResourceHandler resource_handler = new ResourceHandler();
@@ -67,7 +67,8 @@ public class Main {
             server.start();
         }
         catch (Exception ex){
-            //
+            System.out.append("Problem with start server.");
+            System.exit(1);
         }
 
         server.join();
