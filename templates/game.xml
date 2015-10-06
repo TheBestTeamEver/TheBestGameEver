@@ -1,6 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<h1 class="main__container__header">Blow The Ball</h1>
-		<div class="main__container__page">
-			<a class="back main__container__page__item main_container_page_item_back" href="#">Back</a>
+	<div class="main">
+		<h1 class="main__header">Blow the ball</h1>
+		<p class="main__paragraph"></p>
+	</div>	
+		<div class="window window_game">	
 		</div>
 </fest:template>

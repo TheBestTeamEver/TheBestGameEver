@@ -11,7 +11,7 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.main__container__page',
+        el: '.page',
         template: tmpl,
         collection: players,
         model: player,

@@ -1,89 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Blow The Ball</title>
+	<title>Blow the ball</title>
 	<meta charset="utf-8">
-	<script src="js/lib/jquery.js" type="text/javascript"></script>
-	<script src="js/tmpl/main.js" type="text/javascript"></script>
-	<script src="js/tmpl/login.js" type="text/javascript"></script>
-	<script src="js/tmpl/scoreboard.js" type="text/javascript"></script>
-	<script src="js/tmpl/game.js" type="text/javascript"></script>
-	<script src="js/screen.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="css/style.css"/> 
+	<link rel="stylesheet" href="css/styles.css"/>
+	<link rel="shortcut icon" href="design/favicon.ico"/> 
 </head>
 <body>
-	<div class="main">
-		<div class="main__container">
-			<div id="main__container__page"></div>
-				<script type="text/javascript">
-					var $page = $('div#main__container__page'),
-		    		currentScreen = 'main';
-
-					function showScoreboardScreen() {
-					    hideMainScreen();
-					    currentScreen = 'scoreboard';
-					    $page.html(scoreboardTmpl());
-					    $page.find('.back').on('click', showMainScreen);
-					}
-
-					function hideScoreboardScreen() {
-					    $page.find('.back').off('click', showMainScreen);
-					}
-
-					function showGameScreen() {
-					    hideMainScreen();
-					    currentScreen = 'game';
-					    $page.html(gameTmpl());
-					    $page.find('.back').on('click', showMainScreen);
-					}
-
-					function hideGameScreen() {
-					    $page.find('.back').off('click', showMainScreen);
-					}
-
-					function showLoginScreen() {
-					    hideMainScreen();
-					    currentScreen = 'login';
-					    $page.html(loginTmpl());
-
-					    $page.find('.back').on('click', showMainScreen);
-					}
-
-					function hideLoginScreen() {
-					    $page.find('.back').off('click', showMainScreen);
-					}
-
-					function showMainScreen() {
-					    if (currentScreen === 'scoreboard') {
-					        hideScoreboardScreen();
-					    } else if (currentScreen === 'game') {
-					        hideGameScreen();
-					    } else if (currentScreen === 'login') {
-					        hideLoginScreen();
-					    }
-					    currentScreen = 'main';
-					    $page.html(mainTmpl()); 
-					    $page.find('.scoreboard').on('click', showScoreboardScreen);
-					    $page.find('.start-game').on('click', showGameScreen);
-					    $page.find('.login').on('click', showLoginScreen);
-					}
-
-					function hideMainScreen() {
-
-					    $page.find('.scoreboard').off('click', showScoreboardScreen);
-					    $page.find('.start-game').off('click', showGameScreen);
-					    $page.find('.login').off('click', showLoginScreen);
-					}
-
-					showMainScreen();
-				</script>
-				<div class="main__container__page__footer">
-					<p class="main__container__page__footer__paragraph">Shit Developers Inc</p>
-				</div>
-			</div>
+	<div class="background-color">
+		<div class="header">
+			<p class="header__paragraph_r"><a class="button" href="#registration">Registration</a></p>
+			<p class="header__paragraph_l"><a class="button button_back" href="#">Back</a></p>
+		</div>
+		
+		<div class="page"></div>
+		<div class="footer">
+			<p class="footer__paragraph">TBTE</p>
 		</div>
 	</div>
-	<!-- Livereload -->
+	<script data-main="js/main" src="js/lib/require.js"></script>
     <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

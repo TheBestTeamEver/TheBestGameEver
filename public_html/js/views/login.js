@@ -1,27 +1,37 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/login',
+    'models/login'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    login
 ){
 
     var View = Backbone.View.extend({
-
+        el: '.page',
         template: tmpl,
+        model: new login(),
+        events: {
+            'click .js-submit': 'validateForm',
+            'load': 'show'            
+        },
         initialize: function () {
-            // TODO
+            console.log("login view is initialized");
+
         },
         render: function () {
-            // TODO
+            this.$el.html(this.template);
+            return this;
         },
         show: function () {
-            // TODO
+            this.$el.siblings(".button_back").show();
         },
         hide: function () {
             // TODO
+        },
+        validateForm: function(event){
         }
-
     });
 
     return new View();

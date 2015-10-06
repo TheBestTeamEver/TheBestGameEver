@@ -1,16 +1,23 @@
 define([
     'backbone',
-    'tmpl/game'
+    'tmpl/registration',
+    'models/registration'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    registration
 ){
 
     var View = Backbone.View.extend({
         el: '.page',
         template: tmpl,
+        model: registration,
+        events: {
+            'click .js-submit': ''            
+        },
         initialize: function () {
-            console.log("game view is initialized");
+            new registration();
+            console.log("registration view is initialized");
         },
         render: function () {
             this.$el.html(this.template);
