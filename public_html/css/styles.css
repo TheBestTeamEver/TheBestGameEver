@@ -104,7 +104,7 @@ body, html {
 .menu__item {
 	margin-top: 0px;
 	display: block;
-	padding-top: 40px;
+	padding-top: 60px;
 }
 
 
@@ -116,11 +116,18 @@ body, html {
 	padding: 20px 30px 20px 30px; 
 	border-radius: 10px;
 	color: white;
+	font-size: 20px;
 }
 
 .button_back {
 	width: 100px;
 	text-align: center;
+}
+
+.button_submit {
+	width: 150px;
+	text-align: center;
+	margin: auto;
 }
 
 .button:hover {
