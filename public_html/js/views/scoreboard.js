@@ -17,16 +17,16 @@ define([
         model: player,
         initialize: function () {
             console.log("scoreboard view is initialized");
-            this.collection.push(new this.model({name: "Kirill", score: 99}));
-            this.collection.push(new this.model({name: 'Natasha', score: 100}));
-            this.collection.push(new this.model({name: 'Peter', score: 11}));
-            this.collection.push(new this.model({name: 'Misha', score: 83}));
-            this.collection.push(new this.model({name: 'Kostya', score: 97}));
-            this.collection.push(new this.model({name: 'John', score: 42}));
-            this.collection.push(new this.model({name: 'Mike', score: 46}));
-            this.collection.push(new this.model({name: 'Miley', score: 79}));
-            this.collection.push(new this.model({name: 'Champion', score: 17}));
-            this.collection.push(new this.model({name: 'Anonimus', score: 94}));
+            this.collection.push(new this.model({name: "Maxon", score: 99}));
+            this.collection.push(new this.model({name: 'Misha', score: 100}));
+            this.collection.push(new this.model({name: 'Kikimora', score: 11}));
+            this.collection.push(new this.model({name: 'Pvael', score: 83}));
+            this.collection.push(new this.model({name: 'Stas', score: 97}));
+            this.collection.push(new this.model({name: 'Alex', score: 42}));
+            this.collection.push(new this.model({name: 'Burunduk', score: 46}));
+            this.collection.push(new this.model({name: 'Crazytosser', score: 79}));
+            this.collection.push(new this.model({name: 'Lalala', score: 17}));
+            this.collection.push(new this.model({name: 'Lollie', score: 94}));
             this.collection.comparator = function(player) {
                  return -player.get("score");
             };
