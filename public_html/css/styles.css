@@ -92,14 +92,6 @@ body, html {
   	color: #fff;
 }
 
-.window_scoreboard td {
-	color:black;
-}
-
-.window_scoreboard th {
-	color:black;
-}
-
 .menu {
 	list-style: none;
 	padding-left: 0;
@@ -188,9 +180,22 @@ body, html {
 .scoreboard__tr {
 	width: 100%;
 	display: inline-table;
+	color:black;
 }
 
 .scoreboard__table{
 	position: relative;
  	height:480px; 
+}
+
+.scoreboard__tr_num {
+	width:20%;
+}
+
+.scoreboard__tr_userName {
+	width:40%;
+}
+
+.scoreboard__tr_score {
+	width:40%;
 }

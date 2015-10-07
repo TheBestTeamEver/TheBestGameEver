@@ -6,19 +6,19 @@
 	<div class="window window_scoreboard">
     	<table class="scoreboard__table table-hover">
       		<thead>
-        		<tr class="scoreboard__tr">
- 					      <th>Num.</th>       	
-          			<th>Username</th>
-          			<th>Score</th>
-        		</tr>
+        		  <tr class="scoreboard__tr">
+ 					      <th class="scoreboard__tr_num">Num.</th>       	
+          			<th class="scoreboard__tr_userName">Username</th>
+          			<th class="scoreboard__tr_score">Score</th>
+        		  </tr>
       		</thead>
       		<tbody>
       			<fest:each iterate="players" index="i" value="player">
-        			<tr>
-        				<th scope="row"><fest:value>++i</fest:value></th>
-    					<td><fest:value>player.name</fest:value></td>
-    					<td><fest:value>player.score</fest:value></td>
-    				</tr>
+        			<tr  class="scoreboard__tr">
+          			<td class="scoreboard__tr_num"><fest:value>++i</fest:value></td>
+      					<td class="scoreboard__tr_userName"><fest:value>player.name</fest:value></td>
+      					<td class="scoreboard__tr_score"><fest:value>player.score</fest:value></td>
+    				  </tr>
     			</fest:each>
       		</tbody>
     	</table>
