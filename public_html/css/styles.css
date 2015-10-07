@@ -92,6 +92,13 @@ body, html {
   	color: #fff;
 }
 
+.window_scoreboard td {
+	color:black;
+}
+
+.window_scoreboard th {
+	color:black;
+}
 
 .menu {
 	list-style: none;
