@@ -91,6 +91,10 @@ body, html {
   	color: #000000;
 }
 
+.window_reg {
+	height: 600px;
+}
+
 
 .menu {
 	list-style: none;
