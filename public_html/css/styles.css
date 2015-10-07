@@ -78,10 +78,9 @@ body, html {
 }
 
 .window_game {
-	width: 800px;
+	width: 1000px;
 	height: 420px;
-  	padding-top: 60px;
-	margin-bottom: 25px;
+	margin-bottom: 100px;
 }
 
 .window_scoreboard {
@@ -89,7 +88,7 @@ body, html {
 	min-height: 530px;
 	padding: 20px 20px 20px 20px;
   	padding-top: 20px;
-  	color: #fff;
+  	color: #000000;
 }
 
 
