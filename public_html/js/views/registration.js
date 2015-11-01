@@ -11,23 +11,27 @@ define([
     var View = Backbone.View.extend({
         el: '.page',
         template: tmpl,
-        model: registration,
-        events: {
-            'click .js-submit': ''            
-        },
+
         initialize: function () {
-            new registration();
+            this.render()
             console.log("registration view is initialized");
         },
+
         render: function () {
             this.$el.html(this.template);
-            return this;
+            console.log("registration view rendered");
+            return this;//чтобы иметь возможность делать цепочные вызовы
         },
+
         show: function () {
-            this.$el.siblings(".button_back").show();
+            this.$el.show();
+            this.trigger('show', this);
+            console.log("registration view showed");
         },
+
         hide: function () {
-            // TODO
+            this.$el.hide();
+            console.log("registration view hided");
         }
 
     });
