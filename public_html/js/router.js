@@ -27,6 +27,7 @@ define([
             var mainView = main;
             mainView.render();
             mainView.hide();
+            //mainView.show();
         },
         scoreboardAction: function () {
             console.log("from scoreboard");

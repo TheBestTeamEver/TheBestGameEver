@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+	<ul class="menu">
+		<li class="menu__item">
+            <a class="menu__main" href="#">START</a>
+		</li>
+	</ul>
+</fest:template>

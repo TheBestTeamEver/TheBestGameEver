@@ -1,13 +1,13 @@
 define([
     'backbone',
-    'tmpl/main'
+    'tmpl/menu__main'
 ], function(
     Backbone,
     tmpl
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
+        el: '.menu__main',
         template: tmpl,
         initialize: function () {
 
@@ -18,12 +18,8 @@ define([
             return this;
         },
         show: function () {
-            $(".menu__item_hide").on('click', function() {
-                //this.$el.find("menu__item_hide").show();
-            });
         },
         hide: function () {
-            this.$el.find(".menu__item_hide").hide();
         }
 
     });
