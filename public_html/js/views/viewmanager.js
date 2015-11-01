@@ -1,7 +1,7 @@
 define([
-    'backbone',
+    'backbone'
 ], function(
-    Backbone,
+    Backbone
 ){
 
     var viewsArray = [];
@@ -15,7 +15,7 @@ define([
         },
 
         hideView: function() {
-            views.forEach(function(entryView) {
+            viewsArray.forEach(function(entryView) {
                 entryView.hide();
                 console.log(entryView + "was hide");
             });

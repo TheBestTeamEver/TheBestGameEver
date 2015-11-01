@@ -22,8 +22,8 @@ define([
         },
 
         show: function () {
-            this.$el.show();
             this.trigger('show', this);
+            this.$el.show();
             console.log("main view showed");
         },
 
