@@ -9,26 +9,33 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
         collection: players,
+
         initialize: function () {
-            console.log("scoreboard view is initialized");
-            console.log(this.collection.toJSON());
+            $('.page').append(this.el); 
+            this.render()
+            console.log("collection view is initialized");
         },
+
         render: function () {
             this.$el.html(this.template(this.collection.toJSON()));
+            console.log("collection view rendered");
             return this;
         },
+
         show: function () {
-            this.$el.siblings(".button_back").show();   
+            this.trigger('show', this);
+            this.$el.show();
+            console.log("collection view showed");
         },
+
         hide: function () {
-            // TODO
+            this.$el.hide();
+            console.log("collection view hided");
         }
 
     });
 
     return new View();
 });
-

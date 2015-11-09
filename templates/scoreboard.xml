@@ -1,2 +1,16 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="players">
+	<div class = "window window__menu">
+    	<table class="window__table">
+        	<tr class="window__table_header">
+				<th class="window__table_tr window__table_tr_left">Player</th>
+				<th class="window__table_tr window__table_tr_right">Score</th>
+			</tr>
+			<fest:each iterate="players" index="i" value="player">
+			<tr class="window__table_tr">
+				<th class="window__table_tr window__table_tr_left"><fest:value>player.name</fest:value></th>
+				<th class="window__table_tr window__table_tr_right"><fest:value>player.score</fest:value></th>
+			</tr>
+			</fest:each>
+		</table>
+	</div>
 </fest:template>

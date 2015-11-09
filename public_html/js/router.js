@@ -29,6 +29,8 @@ define([
     console.log("addView registration");
     viewmanager.addView(menu__main);
     console.log("addView menu__main");
+    viewmanager.addView(scoreboard);
+    console.log("addView scoreboard");
 
 
     var Router = Backbone.Router.extend({
@@ -53,6 +55,9 @@ define([
         },
         registrationAction: function () {
             registration.show();
+        },
+        scoreboardAction: function () {
+            scoreboard.show();
         }
     });
 
