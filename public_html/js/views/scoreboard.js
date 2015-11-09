@@ -11,7 +11,6 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
         collection: players,
         model: player,
@@ -28,6 +27,7 @@ define([
             this.collection.push(new this.model({name: 'Champion', score: 17}));
             this.collection.push(new this.model({name: 'Anonimus', score: 94}));
             this.collection.comparator = function(player) {
+                $('.page').append(this.el); 
                  return -player.get("score");
             };
             this.collection.sort('score');

@@ -9,10 +9,10 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
 
         initialize: function () {
+            $('.page').append(this.el); 
             this.render()
             console.log("registration view is initialized");
         },
