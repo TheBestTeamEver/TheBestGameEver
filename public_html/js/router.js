@@ -42,7 +42,7 @@ define([
         defaultActions: function () {
             main.show();
             $(".menu__item_start").on("click", function() {
-                alert("menu__item_start clicked!!!!!!!!");
+                menu__main.show();
             });
         },
         gameAction: function () {

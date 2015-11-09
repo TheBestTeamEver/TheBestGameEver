@@ -112,16 +112,27 @@ ul{
 /* FINAL */
 
 .window {
+	margin-top:100px;
 	text-align: center;
 }
 
-.window_menu {
+.window__menu {
 	width: 400px;
 	height: 500px;
 	border-radius: 20px;
-	box-shadow: 0 50px 100px rgba(100,0,0,1.0);
-	background-color: rgba(0,100,0,0.5);
+	box-shadow: 0 10px 100px rgba(100,0,0,1.0);
+	background-color: rgba(240,240,255,0.5);
 	margin: auto; 
+	padding-top: 20px;
 }
 
-
+.menu__button{
+	width: 300px;
+	height: 50px;
+	margin: auto;
+	margin-top:20px;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,1.0);
+	box-shadow: 0 0 10px rgba(100,0,0,1.0);
+	padding-top:15px;
+}

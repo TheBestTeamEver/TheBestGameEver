@@ -11,7 +11,7 @@ define([
     	url:'/scoreboard',
 
     	comparator: function(model) {
-      		return [model.get('score'), model.get('name')]
+      		return -model.get('score');
     	}
 
     });
@@ -37,7 +37,6 @@ define([
 		console.log(model.get("name"));
 
 	});
-
 
     return playersCollection;
 });
