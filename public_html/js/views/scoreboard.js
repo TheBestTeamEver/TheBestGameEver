@@ -31,3 +31,4 @@ define([
 
     return new View();
 });
+
