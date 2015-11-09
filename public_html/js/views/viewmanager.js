@@ -11,7 +11,7 @@ define([
         addView: function(view) {
             viewsArray.push(view);
             console.log(view + "Added");
-            this.listenTo(view, 'show', this.hideView);
+            this.listenTo(view, 'show', this.hide);
         },
 
         hideView: function() {
