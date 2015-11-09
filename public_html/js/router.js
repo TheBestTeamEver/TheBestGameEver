@@ -21,8 +21,6 @@ define([
 
     viewmanager.addView(main);
     console.log("addView main");
-    viewmanager.addView(scoreboard);
-    console.log("addView scoreboard");
     viewmanager.addView(game);
     console.log("addView game");
     viewmanager.addView(login);
@@ -46,9 +44,6 @@ define([
             $(".menu__item_start").on("click", function() {
                 alert("menu__item_start clicked!!!!!!!!");
             });
-        },
-        scoreboardAction: function () {
-            scoreboard.show();
         },
         gameAction: function () {
             game.show();
