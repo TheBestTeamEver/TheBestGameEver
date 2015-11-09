@@ -2,7 +2,9 @@ body, html {
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: #111111;
 	background-image: url('/design/bg-stars.png');
-	color: white;
+}
+ul{
+	padding:0px;
 }
 
 .header {
@@ -51,75 +53,33 @@ body, html {
 }
 
 .page {
-	margin: 0 auto;
-}
-
-.window {
-	margin: auto;
-	text-align: center;
-}
-
-.window_game {
-	width: 800px;
-	height: 420px;
-  	padding-top: 60px;
-	margin-bottom: 25px;
-}
-
-.window_scoreboard {
-	width: 500px;
-	min-height: 530px;
-	padding: 20px 20px 20px 20px;
-  	padding-top: 20px;
-  	color: #fff;
-}
-
-
-.menu {
-	list-style: none;
-	margin: auto;
-}
-
-.menu__main {
-	background: rgb(235, 235, 235);
-	width: 400px;
-	border-radius: 8px;
-}
-
-.menu__item {
-	display: block;
-	margin-top: 100px;
-}
-
-.menu__item_hide {
-
-}
-.menu__item:hover {
-  color: blue;
-}
-.menu__item_start {
-	margin: auto;
 }
 
 /*menu*/
 
 .menu {
-	margin: auto;
 	list-style: none;
 }
 
+.menu__item {
+	width: 100%;
+}
+
 .menu_start {
-	margin: auto;
+	margin: auto 0;
 	width: 100px;
 	height: 100px;
+}
+
+.menu__item_start{
+	width:100%;
 }
 
 .button {
 	display: block;
 	background-image: url('/design/play-button.png');
 	border: solid 1px blue;
-	height: 100px;
-	width: 100px;
+	margin: auto 0;
 }
 
 
@@ -127,7 +87,7 @@ body, html {
 
 .footer {
 	position: absolute;
-	bottom: 0;
+	padding-bottom: 0px;
 	height: 46px;
 	background-color: #000000;
 	width: 100%;
@@ -141,3 +101,20 @@ body, html {
 	margin-right: 50px;
 	font-size: 15px;
 }
+
+/* FINAL */
+
+.window {
+	text-align: center;
+}
+
+.window_menu {
+	width: 400px;
+	height: 800px;
+	border-radius: 20px;
+	box-shadow: 0 50px 100px rgba(100,0,0,1.0);
+	background-color: rgba(0,100,0,0.5);
+	margin: auto; 
+}
+
+

@@ -1,8 +1,2 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<div class="main">
-		<h1 class="main__header">Blow the ball</h1>
-		<p class="main__paragraph"></p>
-	</div>	
-		<div class="window window_game">	
-		</div>
 </fest:template>

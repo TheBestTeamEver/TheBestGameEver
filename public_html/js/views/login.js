@@ -9,29 +9,31 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
-        model: new login(),
-        events: {
-            'click .js-submit': 'validateForm',
-            'load': 'show'            
-        },
-        initialize: function () {
-            console.log("login view is initialized");
 
+        initialize: function () {
+            $('.page').append(this.el); 
+            this.render()
+            console.log("login view is initialized");
         },
+
         render: function () {
             this.$el.html(this.template);
-            return this;
+            console.log("login view rendered");
+            return this;//чтобы иметь возможность делать цепочные вызовы
         },
+
         show: function () {
-            this.$el.siblings(".button_back").show();
+            this.$el.show();
+            this.trigger('show', this);
+            console.log("login view showed");
         },
+
         hide: function () {
-            // TODO
-        },
-        validateForm: function(event){
+            this.$el.hide();
+            console.log("login view hided");
         }
+
     });
 
     return new View();

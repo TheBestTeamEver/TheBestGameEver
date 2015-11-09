@@ -12,7 +12,6 @@ define([
         el: '.page',
         template: tmpl,
         collection: players,
-        model: player,
         initialize: function () {
             console.log("scoreboard view is initialized");
             console.log(this.collection.toJSON());

@@ -3,34 +3,42 @@ define([
     'models/score'
 ], function(
     Backbone,
-    player
+    Player
 ){
 
     var Players = Backbone.Collection.extend({
-    	model: player,
-    	url:'/scores'
+    	model: Player,
+    	url:'/scoreboard',
+
+    	comparator: function(model) {
+      		return [model.get('score'), model.get('name')]
+    	}
+
     });
 
-	var sortedByScore = Players.add([
-		new player({name:'Ostin', score: 543}),
-		new player({name:'Kianu', score: 3654}),
-		new player({name:'JJ', score: 375}),
-		new player({name:'CJ', score: 22}),
-		new player({name:'Artas', score: 1}),
-		new player({name:'Neo', score: 765}),
-		new player({name:'Lebovski', score: 978}),
-		new player({name:'Muhammed', score: 234}),
-		new player({name:'Tison', score: 897}),
-		new player({name:'Mandy', score: 6757})
-	]);
 
-	sortedByScore.sortBy(function (player) {
+	var players = [
+		new Player({name:'Ostin', score: 543}),
+		new Player({name:'Kianu', score: 3654}),
+		new Player({name:'JJ', score: 375}),
+		new Player({name:'CJ', score: 22}),
+		new Player({name:'Artas', score: 1}),
+		new Player({name:'Neo', score: 765}),
+		new Player({name:'Lebovski', score: 978}),
+		new Player({name:'Muhammed', score: 234}),
+		new Player({name:'Tison', score: 897}),
+		new Player({name:'Mandy', score: 6757})
+	];
 
-		return player.get("score");
+	var playersCollection = new Players(players);
+
+	playersCollection.forEach(function (model) {
+
+		console.log(model.get("name"));
 
 	});
 
 
-
-    return new sortedByScore;
+    return playersCollection;
 });
+
