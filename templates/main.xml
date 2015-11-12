@@ -1,7 +1,10 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<ul class="menu">
-		<li class="menu__item">
-			<a class="menu__item menu__item_start" href="#"><img class="menu_start" src="/design/play-button.png" alt="DSSDSD" /></a>
-		</li>
-	</ul>
+	<p class="title">JOHN CENA BATTLE CLICKER</p>
+	<div class="menu menu__main">
+		<div class="menu__btn"><a href="#game">START</a></div>
+		<div class="menu__btn"><a href="#login">LOGIN</a></div>
+		<div class="menu__btn"><a href="#registration">REGISTRATION</a></div>
+		<div class="menu__btn"><a href="#scoreboard">SCOREBOARD</a></div>
+	</div>
+
 </fest:template>

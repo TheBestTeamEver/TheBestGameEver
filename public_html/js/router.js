@@ -5,8 +5,7 @@ define([
     'views/game',
     'views/login',
     'views/registration',
-    'views/viewmanager',
-    'views/menu__main'
+    'views/viewmanager'
 ], function(
     Backbone,
     main,
@@ -14,8 +13,7 @@ define([
     game,
     login,
     registration,
-    viewmanager,
-    menu__main
+    viewmanager
 ){
 
 
@@ -27,8 +25,6 @@ define([
     console.log("addView login");
     viewmanager.addView(registration);
     console.log("addView registration");
-    viewmanager.addView(menu__main);
-    console.log("addView menu__main");
 
 
     var Router = Backbone.Router.extend({
@@ -41,9 +37,6 @@ define([
         },
         defaultActions: function () {
             main.show();
-            $(".menu__item_start").on("click", function() {
-                menu__main.show();
-            });
         },
         gameAction: function () {
             game.show();

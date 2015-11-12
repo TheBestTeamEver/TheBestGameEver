@@ -1,2 +1,13 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
+	<ul class="menu">
+		<li class="menu__item">
+			<a class="menu__item menu__item_start" href="#"><img class="menu_next" src="/design/assets/john-cena_main.jpg" alt="JOHN CENA" /></a>
+		</li>
+	</ul>
+	<div class="window window__menu">
+		<div class="menu__button"><a href="#game">START</a></div>
+		<div class="menu__button"><a href="#login">LOGIN</a></div>
+		<div class="menu__button"><a href="#registration">REGISTRATION</a></div>
+		<div class="menu__button"><a href="#scoreboard">SCOREBOARD</a></div>
+	</div>
 </fest:template>
