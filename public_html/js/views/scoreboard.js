@@ -13,7 +13,6 @@ define([
         template: tmpl,
         collection: players,
         initialize: function () {
-            console.log("scoreboard view is initialized");
             console.log(this.collection.toJSON());
         },
         render: function () {

@@ -1,10 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 	<p class="title">JOHN CENA BATTLE CLICKER</p>
-	<div class="menu menu__main">
-		<div class="menu__btn"><a href="#game">START</a></div>
-		<div class="menu__btn"><a href="#login">LOGIN</a></div>
-		<div class="menu__btn"><a href="#registration">REGISTRATION</a></div>
-		<div class="menu__btn"><a href="#scoreboard">SCOREBOARD</a></div>
-	</div>
 
+	<ul class="menu">
+	  <li class="menu__item"><a href="#game" class="round green">START<span class="round">Начать игру без регистрации.</span></a></li>
+	  <li class="menu__item"><a href="#login" class="round red">SIGN IN<span class="round">Нажмите если у вас уже есть аккаунт. </span></a></li>
+		<li class="menu__item"><a href="#registration" class="round yellow">SIGN UP<span class="round">Зарегистрируйтесь если ещё не сделали этого.</span></a></li>
+	</ul> 
 </fest:template>
