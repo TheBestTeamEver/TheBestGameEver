@@ -2,12 +2,13 @@
 	<p class="title">JOHN CENA BATTLE CLICKER</p>
 	<p class="title title_caption">LOGIN</p>
 	<div class="login-form">
-		<form name="login-form">
-			<input class="login-form__input" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
-			<input class="login-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
+		<form name="login-form" method="POST">
+			<input name="name" class="login-form__input" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="true" /><br></br>
+			<input name="password" class="login-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
 			<input id="login-form-submit-real" type="submit" value="" style="display: none"/>
 			<ul class="login-form__input-submit">
 				<li class="login-form__input-submit__item"><a onClick="document.getElementById('login-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы войти!</span></a></li>
+				<li class="login-form__input-submit__item"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
 			</ul>
 		</form>
 	</div>
