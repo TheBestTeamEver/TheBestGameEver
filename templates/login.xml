@@ -1,13 +1,15 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<div class="main">
-		<h1 class="main__header">Blow the ball</h1>
-		<p class="main__paragraph">Login</p>
-	</div>	
-		<div class="window">
-			<form  class="login-form" method='post' action="/signin">
-				<input class="login-form__input" type="text" name="login" placeholder="Login" maxlength="30"  pattern="[A-Za-z-0-9]+" required="required" title="A-Z, a-z, 0-9"/>
-				<input class="login-form__input" name="password" placeholder="Password" maxlength="30" aria-required="true" required="required" pattern="[A-Za-z-0-9]+" title="A-Z, a-z, 0-9, 4 char min"/>
-				<input class="button button_submit" type="submit" name="submit" value="Submit"/>
-			</form>
-		</div>
+	<p class="title">JOHN CENA BATTLE CLICKER</p>
+	<p class="title title_caption">LOGIN</p>
+	<div class="login-form">
+		<form name="login-form" method="POST">
+			<input name="name" class="login-form__input" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="true" /><br></br>
+			<input name="password" class="login-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
+			<input id="login-form-submit-real" type="submit" value="" style="display: none"/>
+			<ul class="login-form__input-submit">
+				<li class="login-form__input-submit__item"><a onClick="document.getElementById('login-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы войти!</span></a></li>
+				<li class="login-form__input-submit__item"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
+			</ul>
+		</form>
+	</div>
 </fest:template>

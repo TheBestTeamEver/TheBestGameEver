@@ -7,21 +7,25 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
-        initialize: function () {
 
-            console.log("main view is initialized");
+        initialize: function () {
+            $('.page').append(this.el); 
+            this.render()
         },
+
         render: function () {
             this.$el.html(this.template);
-            return this;
+            return this;//чтобы иметь возможность делать цепочные вызовы
         },
+
         show: function () {
-            
+            this.trigger('show', this);
+            this.$el.show();
         },
+
         hide: function () {
-            this.$el.siblings(".button_back").hide();
+            this.$el.hide();
         }
 
     });

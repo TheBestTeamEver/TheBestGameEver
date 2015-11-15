@@ -7,20 +7,25 @@ define([
 ){
 
     var View = Backbone.View.extend({
-        el: '.page',
         template: tmpl,
+
         initialize: function () {
-            console.log("game view is initialized");
+            $('.page').append(this.el); 
+            this.render()
         },
+
         render: function () {
             this.$el.html(this.template);
-            return this;
+            return this;//чтобы иметь возможность делать цепочные вызовы
         },
+
         show: function () {
-            this.$el.siblings(".button_back").show();
+            this.$el.show();
+            this.trigger('show', this);
         },
+
         hide: function () {
-            // TODO
+            this.$el.hide();
         }
 
     });
