@@ -3,20 +3,45 @@ define([
 ], function(
     Backbone
 ){
-    var Model = Backbone.Model.extend({
-        name: "",
-        password: "",
-        score: 0,
-        logged: false,
+
+    var url = {
+        'login': '/api/v1/auth/signin/',
+        'register': '/api/v1/auth/signup/'
+    };
+
+    var User = Backbone.Model.extend({
+
         initialize: function() {
-
+            var that = this;
+            this.set({'isLogged': false});
         },
-        uninitialize: function() {
 
+        sync: function(method, model, options) {
+            var userModel = model;
+            var userMethod = method;
+            var userOptions = options;
+            if(method == 'create') {
+                var userData = userModel.toJSON();
+                
+                alert(userModel.url);
+                alert(JSON.stringify(userData));
+                debugger;
+                var xhr = $.ajax({
+                    type: 'POST',
+                    url: userModel.url,
+                    data: JSON.stringify(userData),
+                    dataType: 'json',
+                    contentType: 'applicaton/json',
+                    success: function() {
+                        debugger;
+                        that.set({'isLogged': true});
+                        alert("SUCCESS");
+                    }
+                });
+            }
         },
-        isLogged: function() {
-            return this.logged;
-        }
+
+
     });
-    return Model;
+    return new User();
 });
