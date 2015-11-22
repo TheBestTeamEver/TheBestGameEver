@@ -2,7 +2,7 @@ package admin;
 
 import main.TimeHelper;
 
-import main.AccountService;
+import base.AccountService;
 import templater.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -13,14 +13,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class AdminPageServlet extends HttpServlet {
     private AccountService accountService;
 
     public AdminPageServlet(AccountService accountServiceParam) {
         this.accountService = accountServiceParam;
     }
-    public static final String ADMIN_PAGE_URL = "/admin";
 
+    public static final String ADMIN_PAGE_URL = "/admin";
 
 
     @Override
@@ -35,7 +36,7 @@ public class AdminPageServlet extends HttpServlet {
         String timeString = request.getParameter("shutdown");
         if (timeString != null) {
             int timeMS = Integer.valueOf(timeString);
-            System.out.print("Server will be down after: "+ timeMS + " ms");
+            System.out.print("Server will be down after: " + timeMS + " ms");
             TimeHelper.sleep(timeMS);
             System.out.print("\nShutdown");
             System.exit(0);

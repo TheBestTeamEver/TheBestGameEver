@@ -1,6 +1,6 @@
 package frontend;
 
-import main.AccountService;
+import base.AccountService;
 import main.UserProfile;
 import templater.PageGenerator;
 
@@ -30,11 +30,10 @@ public class SignUpServlet extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
         assert response != null;
         HttpSession session = request.getSession();
-        if(accountService.getSessions(session.getId()) != null){
+        if (accountService.getSessions(session.getId()) != null) {
             response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
             response.setStatus(HttpServletResponse.SC_OK);
-        }
-        else {
+        } else {
 
             response.getWriter().println(PageGenerator.getPage("registration.html", null));
             response.setStatus(HttpServletResponse.SC_OK);
@@ -46,12 +45,12 @@ public class SignUpServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         assert request != null;
-        String name     = request.getParameter("name");
+        String name = request.getParameter("name");
         String password = request.getParameter("password");
-        String email    = request.getParameter("email");
+        String email = request.getParameter("email");
 
-         UserProfile userProfile =
-                new UserProfile(name,password,email);
+        UserProfile userProfile =
+                new UserProfile(name, password, email);
 
         Map<String, Object> pageVariables = new HashMap<>();
         assert accountService != null;

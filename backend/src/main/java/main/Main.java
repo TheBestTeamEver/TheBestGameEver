@@ -1,5 +1,7 @@
 package main;
+
 import admin.AdminPageServlet;
+import base.AccountService;
 import frontend.ExitServlet;
 import frontend.SignInServlet;
 import frontend.SignUpServlet;
@@ -20,7 +22,7 @@ public class Main {
 
     public static final int PORT = 8080;
 
-    public static void main(String[] args) throws   InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         if (args.length != 1) {
             System.out.append("Use port as the first argument");
@@ -31,24 +33,23 @@ public class Main {
 
         try {
             port = Integer.valueOf(portString);
-        }
-        catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
 
             System.out.println("You have input not a number!!! Port 8080 will be used");
             port = PORT;
         }
         System.out.println("Starting at port: " + port + '\n');
 
-        AccountService accountService = new AccountService();
+        AccountService accountService = new AccountServiceImpl();
 
 
-        Servlet signin = new SignInServlet(accountService);
+        Servlet signIn = new SignInServlet(accountService);
         Servlet signUp = new SignUpServlet(accountService);
-        Servlet exit   = new ExitServlet(accountService);
-        Servlet admin  = new AdminPageServlet(accountService);
+        Servlet exit = new ExitServlet(accountService);
+        Servlet admin = new AdminPageServlet(accountService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(signin), "/api/v1/auth/signin");
+        context.addServlet(new ServletHolder(signIn), SignInServlet.PAGE_URL);
         context.addServlet(new ServletHolder(signUp), "/api/v1/auth/signup");
         context.addServlet(new ServletHolder(exit), "/api/v1/auth/logout");
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
@@ -63,10 +64,9 @@ public class Main {
         Server server = new Server(port);
         server.setHandler(handlers);
 
-        try{
+        try {
             server.start();
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             System.out.append("Problem with start server.");
             System.exit(1);
         }

@@ -1,7 +1,8 @@
 package frontend;
 
-import main.AccountService;
+import base.AccountService;
 import templater.PageGenerator;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
