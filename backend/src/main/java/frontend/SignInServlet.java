@@ -1,6 +1,6 @@
 package frontend;
 
-import main.AccountService;
+import base.AccountService;
 import main.UserProfile;
 import templater.PageGenerator;
 
@@ -17,6 +17,7 @@ import java.util.Map;
  * @author v.chibrikov
  */
 public class SignInServlet extends HttpServlet {
+    public static final String PAGE_URL = "/api/v1/auth/signin";
     private AccountService accountService;
 
 
@@ -31,11 +32,10 @@ public class SignInServlet extends HttpServlet {
         assert response != null;
         //noinspection ConstantConditions,resource
         HttpSession session = request.getSession();
-        if (accountService.getSessions(session.getId()) != null){
+        if (accountService.getSessions(session.getId()) != null) {
             response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
             response.setStatus(HttpServletResponse.SC_OK);
-        }
-        else {
+        } else {
             response.getWriter().println(PageGenerator.getPage("auth.html", null));
             response.setStatus(HttpServletResponse.SC_OK);
         }

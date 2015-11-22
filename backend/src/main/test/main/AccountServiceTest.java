@@ -1,5 +1,6 @@
 package main;
 
+import base.AccountService;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class AccountServiceTest {
     @NotNull
-    private final AccountService accountService = new AccountService();
+    private final AccountService accountService = new AccountServiceImpl();
     @NotNull
     private final UserProfile testUser = new UserProfile("testLogin", "testPassword", "test@email");
     private Map<String, UserProfile> testUsers = new HashMap<>();
