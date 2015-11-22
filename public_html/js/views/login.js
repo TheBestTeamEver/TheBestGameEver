@@ -11,6 +11,9 @@ define([
     var View = Backbone.View.extend({
         template: tmpl,
         user: user,
+
+
+//        СДЕЛАЙ КАСТОМНЫЙ ЕВЕНТ И ПОТОМ ТРИГГЕР, ЧТОБЫ ОН НЕ СРАБАТЫВАЛ НА ЛЮБОЙ КЛИК И ДОБАВЬ ДРУГОЙ КЛАСС, ВОТ
         events: {
             'click .login-form__input-submit__item' : 'login'
         },

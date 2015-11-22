@@ -20,11 +20,12 @@ define([
             var userModel = model;
             var userMethod = method;
             var userOptions = options;
-            if(method == 'create') {
+            if(userMethod == 'create') {
                 var userData = userModel.toJSON();
                 
                 alert(userModel.url);
                 alert(JSON.stringify(userData));
+
                 debugger;
                 var xhr = $.ajax({
                     type: 'POST',
