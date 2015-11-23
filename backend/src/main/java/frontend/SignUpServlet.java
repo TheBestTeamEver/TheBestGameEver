@@ -2,6 +2,7 @@ package frontend;
 
 import base.AccountService;
 import main.UserProfile;
+import org.json.JSONObject;
 import templater.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class SignUpServlet extends HttpServlet {
 
         this.accountService = accountServiceParam;
     }
-
+/*
     @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
@@ -39,29 +41,42 @@ public class SignUpServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
         }
     }
-
+*/
 
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         assert request != null;
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
+
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) { /*report an error*/ }
+        JSONObject jsonRequest = new JSONObject(jb.toString()); //Запрос в JSON
+        JSONObject jsonResponse = new JSONObject();
+        Map<String, Object> responseMap = new HashMap<>();
+
+
+        String name = jsonRequest.get("name").toString();
+        String password = jsonRequest.get("password").toString();
+        String email = jsonRequest.get("email").toString();
 
         UserProfile userProfile =
                 new UserProfile(name, password, email);
 
-        Map<String, Object> pageVariables = new HashMap<>();
+
         assert accountService != null;
         //noinspection ConstantConditions
         if (accountService.addUser(name, userProfile)) {
-            pageVariables.put("signUpStatus", "New user created.");
+            jsonResponse.put("status", "OK");
         } else {
-            pageVariables.put("signUpStatus", "User with name: " + name + " already exists");
+            jsonResponse.put("status", "User already exist");
         }
 
-        response.getWriter().println(PageGenerator.getPage("signupstatus.html", pageVariables));
+        response.getWriter().println(jsonResponse);
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
