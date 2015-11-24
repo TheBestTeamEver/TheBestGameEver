@@ -1,46 +1,33 @@
 define([
-    'backbone'
+    'backbone',
+    'api/sync'
 ], function(
-    Backbone
+    Backbone,
+    sync
 ){
 
-    var url = {
-        'login': '/api/v1/auth/signin/',
-        'register': '/api/v1/auth/signup/'
-    };
+    var SIGNIN_URL = '/signin';
+    var SIGNUP_URL = '/signup';
 
     var User = Backbone.Model.extend({
+
+        events: {
+            'signupCompleteEvent' : 'signupCompleted',
+            'signupFailEvent': 'signupFailed'
+        },
+
+        signupCompleted: function() {
+        debugger;
+            this.set({isLogged: true});
+            alert(this.get('isLogged'));
+        },
 
         initialize: function() {
             var that = this;
             this.set({'isLogged': false});
         },
 
-        sync: function(method, model, options) {
-            var userModel = model;
-            var userMethod = method;
-            var userOptions = options;
-            if(userMethod == 'create') {
-                var userData = userModel.toJSON();
-                
-                alert(userModel.url);
-                alert(JSON.stringify(userData));
-
-                debugger;
-                var xhr = $.ajax({
-                    type: 'POST',
-                    url: userModel.url,
-                    data: JSON.stringify(userData),
-                    dataType: 'json',
-                    contentType: 'applicaton/json',
-                    success: function() {
-                        debugger;
-                        that.set({'isLogged': true});
-                        alert("SUCCESS");
-                    }
-                });
-            }
-        },
+        sync: sync
 
 
     });

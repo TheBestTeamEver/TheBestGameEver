@@ -35,20 +35,20 @@ define([
             this.$el.hide();
         },
 
-        registration: function() {
+        registration: function(event) {
+            event.preventDefault();
             alert("REGISTRATION SEND");
 
-            this.user.url = '/signup';
+            var login = $('input[name="login"]').val();
+            var email = $('input[name="email"]').val();
+            var password = $('input[name="pass"]').val();
 
-            var login = $('input[name=name]').val();
-            var email = $('input[name=email]').val();
-            var password = $('input[name=password]').val();
 
-            this.user.set({'name': login});
-            this.user.set({'email': email});
-            this.user.set({'password': password});
-
-            this.user.save();
+            this.user.save({
+                name: login,
+                email: email,
+                password: password}, {url: '/signup'}
+            );
         }
 
     });
