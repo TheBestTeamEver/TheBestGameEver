@@ -10,6 +10,17 @@ module.exports = function (grunt) {
                 command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
+        sass: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: 'public_html/css',
+                    src: ['*.scss'],
+                    dest: 'public_html/css',
+                    ext: '.css'
+                }]
+            }
+        },
         fest: {
             templates: {
                 files: [{
@@ -59,6 +70,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerTask('default', ['concurrent']);
 
