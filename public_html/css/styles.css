@@ -127,6 +127,22 @@ ul{
   width: 100px;
   height: 100px;
 }
+
+.reg-form__item_back {
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
+
+.login-form__item_back {
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}
 /*menu*/
 
 * {

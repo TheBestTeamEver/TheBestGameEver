@@ -9,7 +9,7 @@
 			<input id="reg-form-submit-real" type="submit" value="" style="display: none"/>
 			<ul class="reg-form__input-submit">
 				<li class="reg-form__input-submit__item"><a onClick="document.getElementById('reg-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы зарегистрироваться!</span></a></li>
-				<li class="reg-form__input-submit__item"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
+				<li class="reg-form__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
 			</ul>
 		</form>
 	</div>

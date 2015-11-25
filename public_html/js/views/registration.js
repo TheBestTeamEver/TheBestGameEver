@@ -13,7 +13,7 @@ define([
         user: user,
 
         events: {
-            'click .reg-form__input-submit__item' : 'registration'
+            'submit' : 'submitClick'
         },
 
         initialize: function () {
@@ -35,8 +35,13 @@ define([
             this.$el.hide();
         },
 
-        registration: function(event) {
+        submitClick: function(event) {
             event.preventDefault();
+            this.registration();
+        },
+
+        registration: function(event) {
+            //event.preventDefault();
             alert("REGISTRATION SEND");
 
             var login = $('input[name="login"]').val();

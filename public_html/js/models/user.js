@@ -24,7 +24,7 @@ define([
 
         initialize: function() {
             var that = this;
-            this.set({'isLogged': false});
+            this.set('isLogged', false);
         },
 
         sync: sync
