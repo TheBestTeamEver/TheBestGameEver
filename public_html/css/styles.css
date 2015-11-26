@@ -1,9 +1,9 @@
 body, html {
-  overflow: hidden;
+  overflow: visible;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #111111;
   background-image: url("/design/bg-stars.png");
-  height: 100%;
+  height: 93%;
   padding: 0px;
   margin: 0px;
   text-align: center; }
@@ -92,6 +92,32 @@ ul {
   color: white; }
   .title_caption {
     font-size: 30px; }
+
+.window__table {
+  margin: auto;
+  position: relative;
+  width: 90%; }
+  .window__table_tr {
+    margin-top: 20px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.4); }
+    .window__table_tr_left {
+      position: relative;
+      width: 50%; }
+  .window__table_header {
+    margin-top: 30px;
+    height: 40px;
+    background-color: rgba(255, 0, 0, 0.4); }
+
+.score_board {
+  padding-top: 30px;
+  margin: auto 0; }
+  .score_board__item_back {
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px; }
 
 @font-face {
   font-family: Hunger;
@@ -199,6 +225,12 @@ a.yellow {
   border-color: rgba(153, 38, 0, 0.2); }
   a.yellow:hover {
     color: #fce301; }
+a.purple {
+  background-color: #dd7be6;
+  color: #760680;
+  border-color: rgba(153, 38, 0, 0.2); }
+  a.purple:hover {
+    color: #dd7be6; }
 
 .round span.round {
   display: block;
@@ -228,5 +260,8 @@ a.yellow {
 
 .yellow span {
   background: rgba(161, 145, 0, 0.7); }
+
+.purple span {
+  background: #760680; }
 
 /*# sourceMappingURL=styles.css.map */

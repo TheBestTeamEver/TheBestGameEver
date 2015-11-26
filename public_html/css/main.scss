@@ -1,4 +1,4 @@
-@import "reset", "login", "registration", "footer";
+@import "reset", "login", "registration", "footer", "scoreboard";
 
 @font-face {
   font-family: Hunger;
@@ -138,6 +138,14 @@ a {
       color: rgba(252, 227, 1, 1);
     }
   }
+  &.purple{
+    background-color: rgba(221,123,230, 1);
+    color: rgba(118,6,128, 1);
+    border-color: rgba(153, 38, 0, .2);
+    &:hover {
+      color: rgba(221,123,230, 1);
+    }
+  }
 }
 
 .round span.round {
@@ -172,4 +180,8 @@ a {
 
 .yellow span {
   background: rgba(161, 145, 0, .7);
+}
+
+.purple span {
+  background: rgba(118,6,128, 1);
 }

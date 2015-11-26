@@ -1,0 +1,35 @@
+.window__table {
+	margin:auto;
+	position:relative;
+	width:90%;
+	&_tr {
+		margin-top: 20px;
+		height: 40px;
+		background-color: rgba(255,255,255,0.4); 
+		&_left{
+			position: relative;
+			width: 50%;
+		}
+		&_right{
+
+		}
+	}
+
+	&_header{
+		margin-top: 30px;
+		height: 40px;
+		background-color: rgba(255,0,0,0.4); 
+	}
+}
+
+.score_board {
+  padding-top: 30px;
+  margin: auto 0;
+  &__item_back {
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+  }
+}
