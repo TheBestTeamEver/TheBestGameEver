@@ -51,11 +51,11 @@ define([
             console.log("LOGIN SEND");
 
             var login = $('input[name="login"]').val();
-            var email = $('input[name="email"]').val();
+            var password = $('input[name="pass"]').val();
 
             this.user.save({
               name: login,
-              email: email}, {url: '/signin'}
+              password: password}, {url: '/signin'}
             );
         }
 

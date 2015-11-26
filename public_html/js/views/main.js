@@ -22,6 +22,7 @@ define([
             if(this.user.get('isLogged')) {
                 $('.login').hide();
                 $('.logout').show();
+                $('.signup').hide();
             } else {
                 $('.logout').hide();
             }
@@ -38,6 +39,7 @@ define([
             if(this.user.get('isLogged')) {
                 $('.login').hide();
                 $('.logout').show();
+                $('.signup').hide();
             }
         },
 
