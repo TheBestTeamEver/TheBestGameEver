@@ -2,9 +2,12 @@ package main;
 
 import admin.AdminPageServlet;
 import base.AccountService;
+import frontend.CheckServlet;
 import frontend.ExitServlet;
 import frontend.SignInServlet;
 import frontend.SignUpServlet;
+import frontend.CheckServlet;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -47,12 +50,15 @@ public class Main {
         Servlet signUp = new SignUpServlet(accountService);
         Servlet exit = new ExitServlet(accountService);
         Servlet admin = new AdminPageServlet(accountService);
+        Servlet check = new CheckServlet(accountService);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(signIn), SignInServlet.PAGE_URL);
         context.addServlet(new ServletHolder(signUp), "/signup");
-        context.addServlet(new ServletHolder(exit), "/api/v1/auth/logout");
+        context.addServlet(new ServletHolder(exit), "/logout");
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
+        context.addServlet(new ServletHolder(check), "/check");
+
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);

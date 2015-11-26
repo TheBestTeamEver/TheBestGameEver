@@ -1,6 +1,7 @@
 package frontend;
 
 import base.AccountService;
+import org.json.JSONObject;
 import templater.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -36,6 +37,7 @@ public class ExitServlet extends HttpServlet {
         HttpSession session = request.getSession();
         assert session != null;
         accountService.removeSession(session.getId());
-        response.getWriter().println(PageGenerator.getPage("exit.html", null));
+        JSONObject jsonResponse = new JSONObject();
+        jsonResponse.put("status", "OK");
     }
 }
