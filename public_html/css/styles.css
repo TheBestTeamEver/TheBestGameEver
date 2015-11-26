@@ -122,6 +122,7 @@ ul {
 @font-face {
   font-family: Hunger;
   src: url(../design/fonts/Hunger.ttf); }
+
 .window {
   margin-top: 100px;
   text-align: center; }
@@ -151,21 +152,25 @@ ul {
     transform: rotate(0deg); }
   100% {
     transform: rotate(-360deg); } }
+
 @-webkit-keyframes rotate {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(-360deg); } }
+
 @-o-keyframes rotate {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(-360deg); } }
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg); }
   100% {
     transform: rotate(-360deg); } }
+
 .round {
   display: block;
   position: absolute;
@@ -213,18 +218,21 @@ a.red {
   border-color: rgba(133, 32, 28, 0.2); }
   a.red:hover {
     color: #ef3932; }
+
 a.green {
   background-color: #0197ab;
   color: #003f47;
   border-color: rgba(0, 63, 71, 0.2); }
   a.green:hover {
     color: #0197ab; }
+
 a.yellow {
   background-color: #fce301;
   color: #992600;
   border-color: rgba(153, 38, 0, 0.2); }
   a.yellow:hover {
     color: #fce301; }
+
 a.purple {
   background-color: #dd7be6;
   color: #760680;
@@ -263,5 +271,3 @@ a.purple {
 
 .purple span {
   background: #760680; }
-
-/*# sourceMappingURL=styles.css.map */
