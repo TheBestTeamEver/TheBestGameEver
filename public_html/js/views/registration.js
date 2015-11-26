@@ -49,11 +49,11 @@ define([
 
         registration: function(event) {
             //event.preventDefault();
-            alert("REGISTRATION SEND");
-
-            var login = $('input[name="login"]').val();
+            console.log("REGISTRATION SEND");
+            debugger;
+            var login = $('input[name="login_name"]').val();
             var email = $('input[name="email"]').val();
-            var password = $('input[name="pass"]').val();
+            var password = $('input[name="passw"]').val();
 
 
             this.user.save({

@@ -9,6 +9,7 @@ define([
     var SIGNIN_URL = '/signin';
     var SIGNUP_URL = '/signup';
     var LOGOUT_URL = '/logout';
+    var CHECK_URL = '/check';
 
     return function(method, model, options) {
         var data = model.toJSON();
@@ -24,6 +25,8 @@ define([
         } else if(options.url === LOGOUT_URL) {
             requestType = 'POST';
             //data = {};
+        } else if(options.url === CHECK_URL) {
+            requestType = 'POST';
         }
 
         var jqxhr = $.ajax({
@@ -38,6 +41,8 @@ define([
                 console.log("REGISTRATION DONE");
                 console.log("registration response " + JSON.stringify(response));
                 console.log(response.status);
+                console.log(data.name);
+                console.log(data.password);
                 if(response.status === 'OK') {
                     model.signupCompleted(data.name);
                     //console.log(data);
@@ -57,6 +62,8 @@ define([
                 console.log("LOGOUT DONE");
                 console.log("registration response " + JSON.stringify(response));
                 model.logout();
+            } else if(options.url === CHECK_URL) {
+                console.log("CHECK DONE");
             }
         });
 
