@@ -12,13 +12,9 @@ module.exports = function (grunt) {
         },
         sass: {
             dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'public_html/css',
-                    src: ['*.scss'],
-                    dest: 'public_html/css',
-                    ext: '.css'
-                }]
+                files: {
+                    'public_html/css/styles.css': 'public_html/css/main.scss'
+                }
             }
         },
         fest: {
@@ -56,6 +52,16 @@ module.exports = function (grunt) {
                 options: {
                     livereload: true
                 }
+            },
+            sass: {
+                    files: [
+                        'public_html/css/*.scss'
+                    ],
+                    tasks: ['sass'],
+                    options: {
+                        atBegin: true,
+                        livereload: true
+                }
             }
         },
         concurrent: {
@@ -70,7 +76,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
-    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.registerTask('default', ['concurrent']);
 
