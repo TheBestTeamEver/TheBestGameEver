@@ -49,7 +49,7 @@ define([
 
         logout: function() {
             this.user.set('isLogged', false);
-            this.save({}, {url: '/logout'});
+            this.user.save({}, {url: '/logout'});
         }
 
 //        signinCompleted: function() {
