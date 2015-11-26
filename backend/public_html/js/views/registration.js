@@ -18,7 +18,11 @@ define([
 
         initialize: function () {
             $('.page').append(this.el); 
-            this.render()
+            this.render();
+            if(this.user.get('isLogged')) {
+                $('.login').hide();
+                $('.logout').show();
+            }
         },
 
         render: function () {
@@ -29,6 +33,9 @@ define([
         show: function () {
             this.$el.show();
             this.trigger('show', this);
+            if(this.user.get('isLogged')) {
+                $(location).attr("href", "#");
+            }
         },
 
         hide: function () {
@@ -42,11 +49,11 @@ define([
 
         registration: function(event) {
             //event.preventDefault();
-            alert("REGISTRATION SEND");
-
-            var login = $('input[name="login"]').val();
+            console.log("REGISTRATION SEND");
+            debugger;
+            var login = $('input[name="login_name"]').val();
             var email = $('input[name="email"]').val();
-            var password = $('input[name="pass"]').val();
+            var password = $('input[name="passw"]').val();
 
 
             this.user.save({
@@ -54,7 +61,20 @@ define([
                 email: email,
                 password: password}, {url: '/signup'}
             );
+
         }
+
+//        signupFailed: function() {
+//            this.listenTo(this.user, this.user.signupFailedEvent, function() {
+//                if(this.user.get('isLogged')) {
+//                    $('.login').hide();
+//                    $('.logout').show();
+//                    $(location).attr("href", "#");
+//                } else {
+//                    $(location).attr("href", "#registration");
+//                }
+//            });
+//        }
 
     });
 

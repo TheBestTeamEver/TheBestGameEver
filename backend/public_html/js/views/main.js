@@ -1,17 +1,31 @@
 define([
     'backbone',
-    'tmpl/main'
+    'tmpl/main',
+    'models/user'
 ], function(
     Backbone,
-    tmpl
+    tmpl,
+    user
 ){
 
     var View = Backbone.View.extend({
         template: tmpl,
+        user: user,
+
+        events: {
+            'click .logout': 'logout'
+        },
 
         initialize: function () {
             $('.page').append(this.el); 
-            this.render()
+            this.render();
+            if(this.user.get('isLogged')) {
+                $('.login').hide();
+                $('.logout').show();
+                $('.signup').hide();
+            } else {
+                $('.logout').hide();
+            }
         },
 
         render: function () {
@@ -20,13 +34,44 @@ define([
         },
 
         show: function () {
-            this.trigger('show', this);
             this.$el.show();
+            this.trigger('show', this);
+            if(this.user.get('isLogged')) {
+                $('.login').hide();
+                $('.logout').show();
+                $('.signup').hide();
+            }
         },
 
         hide: function () {
             this.$el.hide();
+        },
+
+        logout: function() {
+            this.user.set('isLogged', false);
+            this.user.save({}, {url: '/logout'});
         }
+
+//        signinCompleted: function() {
+//            this.listenTo(this.user, this.user.signinCompletedEvent, function() {
+//                if(this.user.get('isLogged')) {
+//                    $('.login').hide();
+//                    $('.logout').show();
+//                    $(location).attr("href", "#");
+//                }
+//            });
+//        },
+
+//        signupCompleted: function() {
+//            this.listenTo(this.user, this.user.signupCompletedEvent, function() {
+//                alert("BAAFASDASDASDASD");
+//                if(this.user.get('isLogged')) {
+//                    $('.login').hide();
+//                    $('.logout').show();
+//                    $(location).attr("href", "#");
+//                }
+//            });
+//        }
 
     });
 
