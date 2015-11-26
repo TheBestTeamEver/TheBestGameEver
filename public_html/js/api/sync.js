@@ -8,11 +8,12 @@ define([
 
     var SIGNIN_URL = '/signin';
     var SIGNUP_URL = '/signup';
+    var LOGOUT_URL = '/logout';
 
     return function(method, model, options) {
         var data = model.toJSON();
 
-        alert("url: " + options.url);
+        console.log("url: " + options.url);
 
         var requestType;
 
@@ -20,6 +21,9 @@ define([
             requestType = 'POST';
         } else if(options.url === SIGNIN_URL) {
             requestType = 'POST';
+        } else if(options.url === LOGOUT_URL) {
+            requestType = 'POST';
+            //data = {};
         }
 
         var jqxhr = $.ajax({
@@ -30,12 +34,29 @@ define([
             contentType: 'application/json'
         });
         jqxhr.done(function(response) {
-
-            console.log(response);
             if(options.url === SIGNUP_URL) {
-                alert("REGISTRATION DONE");
-                //alert(response);
-                model.trigger('signupCompleteEvent');
+                console.log("REGISTRATION DONE");
+                console.log("registration response " + JSON.stringify(response));
+                console.log(response.status);
+                if(response.status === 'OK') {
+                    model.signupCompleted(data.name);
+                    //console.log(data);
+                } else {
+                    //console.log(data.name);
+                    model.signupFailed();
+                }
+            } else if(options.url === SIGNIN_URL) {
+                console.log("LOGIN DONE");
+                console.log("login response " + JSON.stringify(response));
+                if(response.status === 'OK') {
+                    model.signinCompleted(data.name);
+                } else {
+                    model.signinFailed();
+                }
+            } else if(options.url === LOGOUT_URL) {
+                console.log("LOGOUT DONE");
+                console.log("registration response " + JSON.stringify(response));
+                model.logout();
             }
         });
 

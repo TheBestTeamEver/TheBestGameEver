@@ -6,25 +6,49 @@ define([
     sync
 ){
 
-    var SIGNIN_URL = '/signin';
-    var SIGNUP_URL = '/signup';
 
     var User = Backbone.Model.extend({
 
-        events: {
-            'signupCompleteEvent' : 'signupCompleted',
-            'signupFailEvent': 'signupFailed'
+//        signupCompletedEvent: 'signupCompletedEvent',
+//        signupFailedEvent: 'signupFailedEvent',
+//        signinCompletedEvent: 'signinCompletedEvent',
+//        signinFailedEvent: 'signinFailedEvent',
+
+        signupCompleted: function(name) {
+            debugger;
+            this.set('isLogged', true);
+            this.set('login', name);
+            console.log("Player >>" + this.get('login') + "<< successfully complete registration. Login status " + this.get('isLogged'));
+            $(location).attr("href", "#");
+//            this.trigger(this.signupCompletedEvent);
         },
 
-        signupCompleted: function() {
-        debugger;
-            this.set({isLogged: true});
-            alert(this.get('isLogged'));
+        signupFailed: function() {
+            this.set('isLogged', false);
+            console.log(this.get('isLogged'));
+//            this.trigger(this.signupFailedEvent);
+        },
+
+        signinCompleted: function(name) {
+            this.set('isLogged', true);
+            console.log("Player >>" + this.get('login') + "<< successfully log in. Login status " + this.get('isLogged'));
+            $(location).attr("href", "#");
+//            this.trigger(this.signinCompletedEvent);
+        },
+
+        signinFailed: function() {
+            this.set('isLogged', false);
+            console.log("Signin Failed. Log status " + this.get('isLogged'));
+//            this.trigger(this.signinFailedEvent);
+        },
+
+        logout: function() {
+
         },
 
         initialize: function() {
-            var that = this;
             this.set('isLogged', false);
+            console.log(this.get('isLogged'));
         },
 
         sync: sync

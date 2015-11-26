@@ -12,15 +12,16 @@ define([
         template: tmpl,
         user: user,
 
-
-//        СДЕЛАЙ КАСТОМНЫЙ ЕВЕНТ И ПОТОМ ТРИГГЕР, ЧТОБЫ ОН НЕ СРАБАТЫВАЛ НА ЛЮБОЙ КЛИК И ДОБАВЬ ДРУГОЙ КЛАСС, ВОТ
         events: {
-            'click .login-form__input-submit__item' : 'login'
+            'submit' : 'submitClick'
         },
 
         initialize: function () {
             $('.page').append(this.el); 
             this.render()
+            if(this.user.get('isLogged')) {
+                $(location).attr("href", "#");
+            }
         },
 
         render: function () {
@@ -31,24 +32,45 @@ define([
         show: function () {
             this.$el.show();
             this.trigger('show', this);
+            if(this.user.get('isLogged')) {
+                $(location).attr("href", "#");
+            }
         },
 
         hide: function () {
             this.$el.hide();
         },
 
+        submitClick: function(event) {
+            event.preventDefault();
+            this.login();
+        },
+
         login: function() {
-            alert('LOGIN');
+            //event.preventDefault();
+            console.log("LOGIN SEND");
 
-            this.user.url = 'http://127.0.0.1:8080/api/v1/auth/signin/';
-            var login = $('input[name=name]').val();
-            var password = $('input[name=password]').val();
+            var login = $('input[name="login"]').val();
+            var email = $('input[name="email"]').val();
 
-            this.user.set({'name': login});
-            this.user.set({'password': password});
-
-            this.user.save();
+            this.user.save({
+              name: login,
+              email: email}, {url: '/signin'}
+            );
         }
+
+//        signinFailed: function() {
+//            this.listenTo(this.user, this.user.signinFailedEvent, function() {
+//                if(this.user.get('isLogged')) {
+//                    $('.login').hide();
+//                    $('.logout').show();
+//                    $(location).attr("href", "#");
+//                } else {
+//                    $(location).attr("href", "#login");
+//                }
+//            });
+//        }
+
 
     });
 
