@@ -6,5 +6,6 @@
 		<li class="menu__item login"><a href="#login" class="round red">LOG IN<span class="round">Нажмите если у вас уже есть аккаунт. </span></a></li>
         <li class="menu__item logout"><a class="round red">LOGOUT<span class="round">Выход</span></a></li>
 		<li class="menu__item signup"><a href="#registration" class="round yellow">SIGN UP<span class="round">Нажимай!</span></a></li>
+		<li class="menu__item"><a href="#scoreboard" class="round purple">SCORES<span class="round">Доска почета!</span></a></li>
 	</ul> 
 </fest:template>
