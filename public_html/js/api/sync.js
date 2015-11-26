@@ -13,7 +13,7 @@ define([
 
     return function(method, model, options) {
         var data = model.toJSON();
-
+        debugger;
         console.log("url: " + options.url);
 
         var requestType;
@@ -64,7 +64,6 @@ define([
                 model.logout();
             } else if(options.url === CHECK_URL) {
                 console.log("CHECK DONE");
-                model.logout();
             }
         });
 

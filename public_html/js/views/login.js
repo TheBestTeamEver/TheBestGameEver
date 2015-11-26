@@ -50,8 +50,8 @@ define([
             //event.preventDefault();
             console.log("LOGIN SEND");
             debugger;
-            var login = $('input[name="login_name"]').val();
-            var password = $('input[name="passw"]').val();
+            var login = $('input[name="login1"]').val();
+            var password = $('input[name="pass1"]').val();
 
             this.user.save({
               name: login,

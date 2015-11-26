@@ -3,9 +3,9 @@
 	<p class="title title_caption">REGISTRATION</p>
 	<div class="reg-form">
 		<form name="reg-form" method="POST">
-            <input name="login_name" class="reg-form__input" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="autofocus" /><br></br>
+            <input name="login1" class="reg-form__input" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="autofocus" /><br></br>
 			<input name="email" class="reg-form__input" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
-			<input name="passw" class="reg-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
+			<input name="pass1" class="reg-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
 			<input id="reg-form-submit-real" type="submit" value="" style="display: none"/>
 			<ul class="reg-form__input-submit">
 				<li class="reg-form__input-submit__item"><a onClick="document.getElementById('reg-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы зарегистрироваться!</span></a></li>

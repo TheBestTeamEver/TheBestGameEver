@@ -51,9 +51,9 @@ define([
             //event.preventDefault();
             console.log("REGISTRATION SEND");
             debugger;
-            var login = $('input[name="login_name"]').val();
+            var login = $('input[name="login1"]').val();
             var email = $('input[name="email"]').val();
-            var password = $('input[name="passw"]').val();
+            var password = $('input[name="pass1"]').val();
 
 
             this.user.save({
