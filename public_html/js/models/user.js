@@ -31,6 +31,7 @@ define([
 
         signinCompleted: function(name) {
             this.set('isLogged', true);
+            this.set('login', name);
             console.log("Player >>" + this.get('login') + "<< successfully log in. Login status " + this.get('isLogged'));
             $(location).attr("href", "#");
 //            this.trigger(this.signinCompletedEvent);
@@ -43,7 +44,8 @@ define([
         },
 
         logout: function() {
-
+            this.set('isLogged', false);
+            $(location).attr("href", "/");
         },
 
         initialize: function() {

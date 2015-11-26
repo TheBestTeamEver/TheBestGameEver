@@ -49,7 +49,7 @@ define([
         login: function() {
             //event.preventDefault();
             console.log("LOGIN SEND");
-
+            debugger;
             var login = $('input[name="login_name"]').val();
             var password = $('input[name="passw"]').val();
 

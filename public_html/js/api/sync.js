@@ -64,6 +64,7 @@ define([
                 model.logout();
             } else if(options.url === CHECK_URL) {
                 console.log("CHECK DONE");
+                model.logout();
             }
         });
 
