@@ -10,6 +10,13 @@ module.exports = function (grunt) {
                 command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
+        sass: {
+            dist: {
+                files: {
+                    'public_html/css/styles.css': 'public_html/css/main.scss'
+                }
+            }
+        },
         fest: {
             templates: {
                 files: [{
@@ -45,6 +52,16 @@ module.exports = function (grunt) {
                 options: {
                     livereload: true
                 }
+            },
+            sass: {
+                    files: [
+                        'public_html/css/*.scss'
+                    ],
+                    tasks: ['sass'],
+                    options: {
+                        atBegin: true,
+                        livereload: true
+                }
             }
         },
         concurrent: {
@@ -59,6 +76,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerTask('default', ['concurrent']);
 
