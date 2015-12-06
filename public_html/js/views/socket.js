@@ -27,6 +27,25 @@ define([
 
             this.ws.onmessage = function (event) {
                 var data = JSON.parse(event.data);
+                if(data.status == "start"){
+                    document.getElementById("wait").style.display = "none";
+                    document.getElementById("gameplay").style.display = "block";
+                    document.getElementById("enemyName").innerHTML = data.enemyName;
+                }
+                if(data.status == "finish"){
+                    document.getElementById("gameOver").style.display = "block";
+                    document.getElementById("gameplay").style.display = "none";
+                    if(data.win)
+                        document.getElementById("win").innerHTML = "winner!";
+                    else
+                        document.getElementById("win").innerHTML = "loser!";
+                }
+                if(data.status == "increment" && data.name == "${myName}"){
+                    document.getElementById("myScore").innerHTML = data.score;
+                }
+                if(data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML){
+                    document.getElementById("enemyScore").innerHTML = data.score;
+                }
             }
 
             this.ws.onclose = function (event) {
@@ -51,12 +70,14 @@ define([
                 pic = new Image();
             pic.src = 'http://www.muscleandfitness.com/sites/muscleandfitness.com/files/media/John_Cena.jpg';
             pic.onload = function() {
-                ctx.drawImage(pic, 0, 0, 300, 150);
+                ctx.drawImage(pic, 0, 0, 100, 100);
             }
 
         },
 
         knockCena: function() {
+            var message = "{}";
+            ws.send(message);
             canvas = document.getElementById('example');
             context = canvas.getContext('2d');
             this.clearCanvas();
