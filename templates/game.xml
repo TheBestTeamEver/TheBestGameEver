@@ -1,2 +1,4 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
+    <p style="text-align: center"><button class="startgame">Кнопка</button></p>
+    <canvas class="game-field" id="example"></canvas>
 </fest:template>

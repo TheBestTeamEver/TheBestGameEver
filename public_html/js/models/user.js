@@ -15,9 +15,9 @@ define([
 //        signinFailedEvent: 'signinFailedEvent',
 
         signupCompleted: function(name) {
-            debugger;
             this.set('isLogged', true);
             this.set('login', name);
+            console.log("Player >>" + this.get('login') + "<< successfully sign up. Login status " + this.get('isLogged'));
             $(location).attr("href", "#");
         },
 
@@ -46,9 +46,12 @@ define([
             $(location).attr("href", "/");
         },
 
+        check: function() {
+            this.set('isLogged', true);
+        },
+
         initialize: function() {
-            this.set('isLogged', false);
-            console.log(this.get('isLogged'));
+            this.save({}, {url: '/check'});
         },
 
         sync: sync
