@@ -18,9 +18,7 @@ define([
             debugger;
             this.set('isLogged', true);
             this.set('login', name);
-            console.log("Player >>" + this.get('login') + "<< successfully complete registration. Login status " + this.get('isLogged'));
             $(location).attr("href", "#");
-//            this.trigger(this.signupCompletedEvent);
         },
 
         signupFailed: function() {

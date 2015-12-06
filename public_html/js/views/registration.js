@@ -17,7 +17,7 @@ define([
         },
 
         initialize: function () {
-            $('.page').append(this.el); 
+            $('.page').append(this.el);
             this.render();
             if(this.user.get('isLogged')) {
                 $('.login').hide();
@@ -47,34 +47,38 @@ define([
             this.registration();
         },
 
+        signUpSuccess: function(response, status, xhr) {
+            if(response.status === 'OK') {
+                this.user.set('isLogged', true);
+                this.set('login', name);
+                $(location).attr("href", "#");
+            } else {
+                alert("User already exist");
+            }
+        },
+
+        signUpError: function() {
+            alert("Произошла какая-то стремная и непонятная ошибка");
+        },
+
         registration: function(event) {
-            //event.preventDefault();
-            console.log("REGISTRATION SEND");
-            debugger;
-            var login = $('input[name="login_name"]').val();
-            var email = $('input[name="email"]').val();
-            var password = $('input[name="passw"]').val();
+            var login = this.$('input[name="login"]').val();
+            var email = this.$('input[name="email"]').val();
+            var password = this.$('input[name="password"]').val();
 
 
             this.user.save({
                 name: login,
                 email: email,
-                password: password}, {url: '/signup'}
+                password: password}, {
+                    url: '/signup',
+                    success: function() {
+                        console.log("success");
+                    }
+                }
             );
-
         }
 
-//        signupFailed: function() {
-//            this.listenTo(this.user, this.user.signupFailedEvent, function() {
-//                if(this.user.get('isLogged')) {
-//                    $('.login').hide();
-//                    $('.logout').show();
-//                    $(location).attr("href", "#");
-//                } else {
-//                    $(location).attr("href", "#registration");
-//                }
-//            });
-//        }
 
     });
 

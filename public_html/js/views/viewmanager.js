@@ -9,10 +9,17 @@ define([
     var VM = Backbone.View.extend({
 
 
-        addView: function(view) {
-            viewsArray.push({data: view, isHidden: false});
-            console.log(view + "Added");
-            this.listenTo(view, 'show', this.hideView);
+//        addView: function(view) {
+//            viewsArray.push({data: view, isHidden: false});
+//            console.log(view + "Added");
+//            this.listenTo(view, 'show', this.hideView);
+//        },
+
+        addView: function() {
+            for(var i = 0; i < arguments.length; i++) {
+                viewsArray.push({data: arguments[i], isHidden: false});
+                this.listenTo(arguments[i], 'show', this.hideView);
+            }
         },
 
         hideView: function(view) {
