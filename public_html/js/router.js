@@ -39,6 +39,9 @@ define([
         },
         registrationAction: function () {
             registration.show();
+        },
+        scoreboard: function() {
+            scoreboard.show();
         }
     });
 
