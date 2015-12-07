@@ -1,19 +1,15 @@
 define([
-    'backbone'
+    'backbone',
+    'views/socket'
 ], function(
-    Backbone
+    Backbone,
+    socket
 ){
 
     var viewsArray = [];
 
     var VM = Backbone.View.extend({
 
-
-//        addView: function(view) {
-//            viewsArray.push({data: view, isHidden: false});
-//            console.log(view + "Added");
-//            this.listenTo(view, 'show', this.hideView);
-//        },
 
         addView: function() {
             for(var i = 0; i < arguments.length; i++) {
@@ -23,6 +19,9 @@ define([
         },
 
         hideView: function(view) {
+            if(view.name === 'game') {
+                view.start();
+            }
             viewsArray.forEach(function(item, i, viewsArray) {
                 if(view.cid == (item.data).cid) item.isHidden = false;
                 if(view.cid != (item.data).cid && (item.isHidden === false)) {

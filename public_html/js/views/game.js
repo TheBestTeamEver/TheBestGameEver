@@ -11,6 +11,8 @@ define([
     var View = Backbone.View.extend({
         template: tmpl,
 
+        name: 'game',
+
         socket: new socket({model: this.model}),
 
         events: {
@@ -19,8 +21,9 @@ define([
         },
 
         initialize: function () {
-            $('.page').append(this.el); 
-            this.render()
+            $('.page').append(this.el);
+            //alert(this.name);
+            this.render();
         },
 
         render: function () {

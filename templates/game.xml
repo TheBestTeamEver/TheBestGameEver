@@ -1,5 +1,4 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-    <p style="text-align: center"><button class="startgame">Кнопка</button></p>
     <div id="wait">
         <p>Prepare yourself. Wait for enemy!</p>
     </div>

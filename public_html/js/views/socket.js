@@ -65,13 +65,13 @@ define([
         },
 
         table: function() {
-            var canvas = document.getElementById('example'),
-                ctx = canvas.getContext('2d'),
-                pic = new Image();
-            pic.src = 'http://www.muscleandfitness.com/sites/muscleandfitness.com/files/media/John_Cena.jpg';
-            pic.onload = function() {
-                ctx.drawImage(pic, 0, 0, 100, 100);
-            }
+            //var canvas = document.getElementById('example'),
+            //    ctx = canvas.getContext('2d'),
+            //    pic = new Image();
+            //pic.src = 'http://www.muscleandfitness.com/sites/muscleandfitness.com/files/media/John_Cena.jpg';
+            //pic.onload = function() {
+            //    ctx.drawImage(pic, 0, 0, 100, 100);
+            //}
 
         },
 
