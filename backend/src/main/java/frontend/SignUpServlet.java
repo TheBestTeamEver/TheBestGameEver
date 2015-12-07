@@ -71,6 +71,8 @@ public class SignUpServlet extends HttpServlet {
         assert accountService != null;
         //noinspection ConstantConditions
         if (accountService.addUser(name, userProfile)) {
+            HttpSession session = request.getSession();
+            accountService.addSessions(session.getId(), userProfile);
             jsonResponse.put("status", "OK");
         } else {
             jsonResponse.put("status", "User already exist");
