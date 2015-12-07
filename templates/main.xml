@@ -8,4 +8,7 @@
 		<li class="menu__item signup"><a href="#registration" class="round yellow">SIGN UP<span class="round">Нажимай!</span></a></li>
 		<li class="menu__item"><a href="#scoreboard" class="round purple">SCORES<span class="round">Доска почета!</span></a></li>
 	</ul> 
+	<div class="ftr">
+		<p class="ftr__pgh">TBTE</p>
+	</div>
 </fest:template>

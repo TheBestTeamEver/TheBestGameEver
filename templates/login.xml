@@ -12,5 +12,8 @@
 			</ul>
 		</form>
 	</div>
+	<div class="ftr">
+		<p class="ftr__pgh">TBTE</p>
+	</div>
 </fest:template>
 

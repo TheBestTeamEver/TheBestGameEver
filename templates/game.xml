@@ -20,4 +20,7 @@
         <p>Game over! You are <span id="win"></span></p>
     </div>
     <canvas class="game-field" id="example" onclick="sendMessage();"></canvas>
+    <div class="ftr">
+        <p class="ftr__pgh">TBTE</p>
+    </div>
 </fest:template>

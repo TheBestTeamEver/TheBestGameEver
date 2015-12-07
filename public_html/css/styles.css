@@ -11,6 +11,10 @@ body, html {
 ul {
   padding: 0px; }
 
+@font-face {
+  font-family: Hunger;
+  src: url(../design/fonts/Hunger.ttf); }
+
 .login-form {
   padding-top: 30px;
   margin: auto 0; }
@@ -93,18 +97,18 @@ ul {
   .title_caption {
     font-size: 30px; }
 
-.window__table {
+.page__table {
   margin: auto;
   position: relative;
   width: 90%; }
-  .window__table_tr {
+  .page__table_tr {
     margin-top: 20px;
     height: 40px;
     background-color: rgba(255, 255, 255, 0.4); }
-    .window__table_tr_left {
+    .page__table_tr_left {
       position: relative;
       width: 50%; }
-  .window__table_header {
+  .page__table_header {
     margin-top: 30px;
     height: 40px;
     background-color: rgba(255, 0, 0, 0.4); }
@@ -118,23 +122,6 @@ ul {
     display: inline-block;
     width: 100px;
     height: 100px; }
-
-@font-face {
-  font-family: Hunger;
-  src: url(../design/fonts/Hunger.ttf); }
-
-.window {
-  margin-top: 100px;
-  text-align: center; }
-
-/*menu*/
-* {
-  margin: 0;
-  padding: 0;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
 
 .menu {
   padding-top: 100px;
@@ -172,6 +159,11 @@ ul {
     transform: rotate(-360deg); } }
 
 .round {
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: block;
   position: absolute;
   left: 0;
@@ -271,9 +263,3 @@ a.purple {
 
 .purple span {
   background: #760680; }
-
-
-.game-field {
-  width: 600px;
-  height: 600px;
-}
