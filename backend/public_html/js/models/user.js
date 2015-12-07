@@ -15,12 +15,10 @@ define([
 //        signinFailedEvent: 'signinFailedEvent',
 
         signupCompleted: function(name) {
-            debugger;
             this.set('isLogged', true);
             this.set('login', name);
-            console.log("Player >>" + this.get('login') + "<< successfully complete registration. Login status " + this.get('isLogged'));
+            console.log("Player >>" + this.get('login') + "<< successfully sign up. Login status " + this.get('isLogged'));
             $(location).attr("href", "#");
-//            this.trigger(this.signupCompletedEvent);
         },
 
         signupFailed: function() {
@@ -31,6 +29,7 @@ define([
 
         signinCompleted: function(name) {
             this.set('isLogged', true);
+            this.set('login', name);
             console.log("Player >>" + this.get('login') + "<< successfully log in. Login status " + this.get('isLogged'));
             $(location).attr("href", "#");
 //            this.trigger(this.signinCompletedEvent);
@@ -43,12 +42,16 @@ define([
         },
 
         logout: function() {
+            this.set('isLogged', false);
+            $(location).attr("href", "/");
+        },
 
+        check: function() {
+            this.set('isLogged', true);
         },
 
         initialize: function() {
-            this.set('isLogged', false);
-            console.log(this.get('isLogged'));
+            this.save({}, {url: '/check'});
         },
 
         sync: sync

@@ -13,18 +13,11 @@ define([
     game,
     login,
     registration,
-    viewmanager
+    VM
 ){
 
 
-    viewmanager.addView(main);
-    console.log("addView main");
-    viewmanager.addView(game);
-    console.log("addView game");
-    viewmanager.addView(login);
-    console.log("addView login");
-    viewmanager.addView(registration);
-    console.log("addView registration");
+    VM.addView(main, game, login, registration, scoreboard);
 
 
     var Router = Backbone.Router.extend({
@@ -46,6 +39,9 @@ define([
         },
         registrationAction: function () {
             registration.show();
+        },
+        scoreboardAction: function() {
+            scoreboard.show();
         }
     });
 

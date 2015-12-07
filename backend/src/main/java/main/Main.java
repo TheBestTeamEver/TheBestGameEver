@@ -2,12 +2,12 @@ package main;
 
 import admin.AdminPageServlet;
 import base.AccountService;
-import frontend.CheckServlet;
-import frontend.ExitServlet;
-import frontend.SignInServlet;
-import frontend.SignUpServlet;
+import base.GameMechanics;
+import base.WebSocketService;
+import frontend.*;
 import frontend.CheckServlet;
 
+import mechanics.GameMechanicsImpl;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -25,7 +25,7 @@ public class Main {
 
     public static final int PORT = 8080;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
 
         if (args.length != 1) {
             System.out.append("Use port as the first argument");
@@ -59,6 +59,12 @@ public class Main {
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
         context.addServlet(new ServletHolder(check), "/check");
 
+        WebSocketService webSocketService = new WebSocketServiceImpl();
+        GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService);
+//        AuthService authService = new AuthServiceImpl();
+        context.addServlet(new ServletHolder(new WebSocketGameServlet(accountService, gameMechanics, webSocketService)), "/gameplay");
+
+        context.addServlet(new ServletHolder(new GameServlet(gameMechanics, accountService)), "/game");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);
@@ -77,8 +83,11 @@ public class Main {
             System.exit(1);
         }
 
-        server.join();
+//        server.join();
+        server.start();
 
+        //run GM in main thread
+        gameMechanics.run();
 
     }
 }

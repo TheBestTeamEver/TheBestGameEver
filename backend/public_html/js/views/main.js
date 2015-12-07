@@ -48,8 +48,8 @@ define([
         },
 
         logout: function() {
-            this.user.set('isLogged', false);
             this.user.save({}, {url: '/logout'});
+            //$(location).attr("href", "/");
         }
 
 //        signinCompleted: function() {

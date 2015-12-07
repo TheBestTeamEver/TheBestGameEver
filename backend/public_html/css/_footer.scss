@@ -1,0 +1,27 @@
+.ftr {
+  position: fixed;
+  bottom:0;
+  height: 46px;
+  background-color: #000000;
+  width: 100%;
+  left: 0;
+    &__pgh {
+      color: #ffffff;
+      padding-top: 2px;
+      float: right;
+      margin-right: 50px;
+      font-size: 15px;
+      margin-bottom:0px;
+    }
+}
+
+
+
+.title {
+  font-size: 60px;
+  font-family: Hunger;
+  color: white;
+  &_caption {
+    font-size: 30px;
+  }
+}

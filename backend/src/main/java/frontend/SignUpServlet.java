@@ -48,7 +48,7 @@ public class SignUpServlet extends HttpServlet {
                        HttpServletResponse response) throws ServletException, IOException {
         assert request != null;
 
-        StringBuffer jb = new StringBuffer();
+        StringBuilder jb = new StringBuilder();
         String line = null;
         try {
             BufferedReader reader = request.getReader();

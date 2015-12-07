@@ -49,7 +49,7 @@ public class SignInServlet extends HttpServlet {
         assert request != null;
         assert response != null;
 
-        StringBuffer jb = new StringBuffer();
+        StringBuilder jb = new StringBuilder();
         String line = null;
         try {
             BufferedReader reader = request.getReader();
