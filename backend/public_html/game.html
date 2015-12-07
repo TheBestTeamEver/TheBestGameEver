@@ -37,10 +37,16 @@
 
                 if (data.status == "increment" && data.name == "${myName}") {
                     document.getElementById("myScore").innerHTML = data.score;
+                    document.getElementById("sena").setAttribute("style",
+                            "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
+
                 }
 
                 if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
                     document.getElementById("enemyScore").innerHTML = data.score;
+                    document.getElementById("sena").setAttribute("style",
+                            "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
+
                 }
             };
 
@@ -75,7 +81,7 @@
         </div>
 
         <form name="gamePlay" action="">
-            <input type="button" name="submit" value="Press to win!" onclick="sendMessage();"/>
+            <input id='sena' type="button" name="submit" value="Press to win!" onclick="sendMessage();"/>
         </form>
     </div>
 

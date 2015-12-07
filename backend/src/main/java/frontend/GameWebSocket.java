@@ -67,6 +67,9 @@ public class GameWebSocket {
         jsonStart.put("status", "increment");
         jsonStart.put("name", myName);
         jsonStart.put("score", user.getMyScore());
+        jsonStart.put("x", (int) (Math.random() * 500));
+        jsonStart.put("y", (int) (Math.random() * 500));
+
         try {
             session.getRemote().sendString(jsonStart.toJSONString());
         } catch (Exception e) {
@@ -79,6 +82,8 @@ public class GameWebSocket {
         jsonStart.put("status", "increment");
         jsonStart.put("name", user.getEnemyName());
         jsonStart.put("score", user.getEnemyScore());
+        jsonStart.put("x", (int) (Math.random() * 500));
+        jsonStart.put("y", (int) (Math.random() * 500));
         try {
             session.getRemote().sendString(jsonStart.toJSONString());
         } catch (Exception e) {
