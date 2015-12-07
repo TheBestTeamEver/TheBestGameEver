@@ -64,7 +64,7 @@ public class Main {
 //        AuthService authService = new AuthServiceImpl();
         context.addServlet(new ServletHolder(new WebSocketGameServlet(accountService, gameMechanics, webSocketService)), "/gameplay");
 
-        context.addServlet(new ServletHolder(new GameServlet(gameMechanics, accountService)), "/game");
+        context.addServlet(new ServletHolder(new GameServlet(gameMechanics, accountService)), "/draka");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);
@@ -84,7 +84,7 @@ public class Main {
         }
 
 //        server.join();
-        server.start();
+//        server.start();
 
         //run GM in main thread
         gameMechanics.run();

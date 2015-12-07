@@ -15,7 +15,7 @@ public class GameWebSocketCreator implements WebSocketCreator {
     private GameMechanics gameMechanics;
     private WebSocketService webSocketService;
 
-    public GameWebSocketCreator(AccountService authService,
+    public GameWebSocketCreator(AccountService accountService,
                                 GameMechanics gameMechanics,
                                 WebSocketService webSocketService) {
         this.accountService = accountService;
