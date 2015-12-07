@@ -23,7 +23,7 @@ define([
 
             this.ws.onopen = function (event) {
                 console.log("Web Socket opened");
-            }
+            };
 
             this.ws.onmessage = function (event) {
                 var data = JSON.parse(event.data);
@@ -46,7 +46,7 @@ define([
                 if(data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML){
                     document.getElementById("enemyScore").innerHTML = data.score;
                 }
-            }
+            };
 
             this.ws.onclose = function (event) {
                 console.log("WebSocket closed");
