@@ -11,6 +11,8 @@ define([
     var View = Backbone.View.extend({
         template: tmpl,
 
+        model: null,
+
         socket: new socket({model: this.model}),
 
         events: {
