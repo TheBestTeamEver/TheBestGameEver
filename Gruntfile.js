@@ -1,19 +1,31 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
-        shell: {
-            options: {
-                stdout: true,
-                stderr: true
+        watch: {
+            fest: {
+                files: ['templates/*.xml'],
+                tasks: ['fest'],
+                options: {
+                    atBegin: true
+                }
             },
             server: {
-                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
+                files: [
+                    'public_html/js/**/*.js',
+                    'public_html/css/**/*.css'
+                ],
+                options: {
+                    interrupt: true,
+                    livereload: true
+                }
             }
         },
-        sass: {
-            dist: {
-                files: {
-                    'public_html/css/styles.css': 'public_html/css/main.scss'
+        connect: {
+            server: {
+                options: {
+                    livereload: true,
+                    port: 8000,
+                    base: 'public_html'
                 }
             }
         },
@@ -28,56 +40,19 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'define(function () { return <%= contents %> ; });',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
                 }
             }
-        },
-        watch: {
-            fest: {
-                files: ['templates/*.xml'],
-                tasks: ['fest'],
-                options: {
-                    interrupt: true,
-                    atBegin: true
-                }
-            },
-            server: {
-                files: [
-                    'public_html/js/**/*.js',
-                    'public_html/css/**/*.css'
-                ],
-                options: {
-                    livereload: true
-                }
-            },
-            sass: {
-                    files: [
-                        'public_html/css/*.scss'
-                    ],
-                    tasks: ['sass'],
-                    options: {
-                        atBegin: true,
-                        livereload: true
-                }
-            }
-        },
-        concurrent: {
-            target: ['watch', 'shell'],
-            options: {
-                logConcurrentOutput: true
-            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-fest');
-    grunt.loadNpmTasks('grunt-sass');
 
-    grunt.registerTask('default', ['concurrent']);
+    grunt.registerTask('default', ['connect', 'watch']);
 
 };
