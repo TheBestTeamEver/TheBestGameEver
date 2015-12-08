@@ -13,21 +13,10 @@ define([
 
     return function(method, model, options) {
         if(method === 'create') {
-            var data = model.toJSON();
+            debugger;
+            var data = options.data;
             console.log("url: " + options.url);
-            var requestType;
-
-            if (options.url === SIGNUP_URL) {
-                requestType = 'POST';
-            } else if (options.url === SIGNIN_URL) {
-                requestType = 'POST';
-            } else if (options.url === LOGOUT_URL) {
-                alert("URL CORRECT");
-                requestType = 'POST';
-                data = {};
-            } else if (options.url === CHECK_URL) {
-                requestType = 'POST';
-            }
+            var requestType = options.requestType;
 
             var xhr = $.ajax({
                 type: requestType,
@@ -39,28 +28,43 @@ define([
             xhr.done(function(response) {
                 if (options.url === SIGNUP_URL) {
                     if (response.status === 'OK') {
-                        model.signupCompleted(data.name);
+                        options.success({
+                            isLogged : true
+                        });
+                        $(location).attr("href", "#");
                     } else {
-                        model.signupFailed();
+                        options.error({
+                            isLogged : false
+                        });
+                        alert("BAD");
                     }
                 } else if (options.url === SIGNIN_URL) {
                     if (response.status === 'OK') {
-                        model.signinCompleted(data.name);
+                        console.log("success");
+                        options.success({
+                            isLogged : true
+                        });
+                        $(location).attr("href", "#");
                     } else {
-                        model.signinFailed();
+                        options.error({
+                            isLogged : false
+                        });
+                        alert("BAD");
                     }
                 } else if (options.url === LOGOUT_URL) {
                     if(response.status === 'OK') {
-                        alert("logout");
-                        model.logout();
+                        //alert("logout");
+                        //model.logout();
                     }
                 } else if (options.url === CHECK_URL) {
                     if(response.status === 'OK') {
-                        console.log("CHECK DONE");
-                        model.check();
+                        //console.log("CHECK DONE");
+                        //model.check();
                     }
                 }
             });
+        } else if(method === "read") {
+            alert(model.get('isLogged'));
         }
 
     }

@@ -30,7 +30,7 @@ define([
 
         render: function () {
             this.$el.html(this.template);
-            return this;//чтобы иметь возможность делать цепочные вызовы
+            return this;
         },
 
         show: function () {
@@ -49,29 +49,7 @@ define([
 
         logout: function() {
             this.user.save({}, {url: '/logout'});
-            //$(location).attr("href", "/");
         }
-
-//        signinCompleted: function() {
-//            this.listenTo(this.user, this.user.signinCompletedEvent, function() {
-//                if(this.user.get('isLogged')) {
-//                    $('.login').hide();
-//                    $('.logout').show();
-//                    $(location).attr("href", "#");
-//                }
-//            });
-//        },
-
-//        signupCompleted: function() {
-//            this.listenTo(this.user, this.user.signupCompletedEvent, function() {
-//                alert("BAAFASDASDASDASD");
-//                if(this.user.get('isLogged')) {
-//                    $('.login').hide();
-//                    $('.logout').show();
-//                    $(location).attr("href", "#");
-//                }
-//            });
-//        }
 
     });
 

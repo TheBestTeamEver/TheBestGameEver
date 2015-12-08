@@ -66,17 +66,25 @@ define([
             var email = this.$('input[name="email"]').val();
             var password = this.$('input[name="password"]').val();
 
+            var data = {name: login, email: email, password: password};
 
-            this.user.save({
-                name: login,
-                email: email,
-                password: password}, {
+            this.user.save({}, {
                     url: '/signup',
-                    success: function() {
-                        console.log("success");
-                    }
+                    data: data,
+                    requestType: 'POST'
                 }
             );
+
+            //this.user.fetch({
+            //    success: function() {
+            //        if(user.get('isLogged')) {
+            //            (location).attr("href", "#");
+            //        }
+            //    },
+            //    error: function() {
+            //        //
+            //    }
+            //});
         }
 
 

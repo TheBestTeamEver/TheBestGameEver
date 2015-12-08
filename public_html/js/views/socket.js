@@ -16,7 +16,7 @@ define([
         ws: null,
 
         init: function(){
-            this.ws = new WebSocket("ws://localhost:8080/game");
+            this.ws = new WebSocket("ws://localhost:8080/gameplay");
 
             this.table();
             var that = this;
