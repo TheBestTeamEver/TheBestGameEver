@@ -8,7 +8,7 @@ define([
     user
 ){
 
-    var View = Backbone.View.extend({
+    var Registration = Backbone.View.extend({
         template: tmpl,
         user: user,
 
@@ -19,10 +19,6 @@ define([
         initialize: function () {
             $('.page').append(this.el);
             this.render();
-            if(this.user.get('isLogged')) {
-                $('.login').hide();
-                $('.logout').show();
-            }
         },
 
         render: function () {
@@ -47,19 +43,6 @@ define([
             this.registration();
         },
 
-        signUpSuccess: function(response, status, xhr) {
-            if(response.status === 'OK') {
-                this.user.set('isLogged', true);
-                this.set('login', name);
-                $(location).attr("href", "#");
-            } else {
-                alert("User already exist");
-            }
-        },
-
-        signUpError: function() {
-            alert("Произошла какая-то стремная и непонятная ошибка");
-        },
 
         registration: function(event) {
             var login = this.$('input[name="login"]').val();
@@ -74,21 +57,10 @@ define([
                     requestType: 'POST'
                 }
             );
-
-            //this.user.fetch({
-            //    success: function() {
-            //        if(user.get('isLogged')) {
-            //            (location).attr("href", "#");
-            //        }
-            //    },
-            //    error: function() {
-            //        //
-            //    }
-            //});
         }
 
 
     });
 
-    return new View();
+    return new Registration();
 });

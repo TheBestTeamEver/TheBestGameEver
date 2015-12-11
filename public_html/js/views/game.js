@@ -1,17 +1,20 @@
 define([
     'backbone',
     'tmpl/game',
-    'views/socket'
+    'views/socket',
+    'models/user'
 ], function(
     Backbone,
     tmpl,
-    socket
+    socket,
+    user
 ){
 
-    var View = Backbone.View.extend({
+    var Game = Backbone.View.extend({
         template: tmpl,
+        user: user,
 
-        socket: new socket({model: this.model}),
+        socket: new socket({user: this.user}),
 
         events: {
             'click .startgame' : 'start',
@@ -20,7 +23,7 @@ define([
 
         initialize: function () {
             $('.page').append(this.el); 
-            this.render()
+            this.render();
         },
 
         render: function () {
@@ -38,7 +41,7 @@ define([
         },
 
         start: function() {
-            this.socket = new socket({model: this.model});
+            this.socket = new socket({user: this.user});
             this.socket.onGameStart();
         },
 
@@ -48,5 +51,5 @@ define([
 
     });
 
-    return new View();
+    return new Game();
 });

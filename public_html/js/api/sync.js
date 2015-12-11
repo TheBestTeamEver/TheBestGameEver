@@ -13,7 +13,6 @@ define([
 
     return function(method, model, options) {
         if(method === 'create') {
-            debugger;
             var data = options.data;
             console.log("url: " + options.url);
             var requestType = options.requestType;
@@ -31,7 +30,6 @@ define([
                         options.success({
                             isLogged : true
                         });
-                        $(location).attr("href", "#");
                     } else {
                         options.error({
                             isLogged : false
@@ -44,7 +42,6 @@ define([
                         options.success({
                             isLogged : true
                         });
-                        $(location).attr("href", "#");
                     } else {
                         options.error({
                             isLogged : false
@@ -53,19 +50,19 @@ define([
                     }
                 } else if (options.url === LOGOUT_URL) {
                     if(response.status === 'OK') {
-                        //alert("logout");
-                        //model.logout();
-                    }
-                } else if (options.url === CHECK_URL) {
-                    if(response.status === 'OK') {
-                        //console.log("CHECK DONE");
-                        //model.check();
+                        options.success({
+                            isLogged: false
+                        });
+                    } else {
+                        options.error({
+                            isLogged : true
+                        });
+                        alert("BAD");
                     }
                 }
             });
         } else if(method === "read") {
-            alert(model.get('isLogged'));
-        }
 
+        }
     }
 });

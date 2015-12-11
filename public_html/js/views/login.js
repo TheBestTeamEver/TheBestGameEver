@@ -8,7 +8,7 @@ define([
     user
 ){
 
-    var View = Backbone.View.extend({
+    var Login = Backbone.View.extend({
         template: tmpl,
         user: user,
 
@@ -18,10 +18,7 @@ define([
 
         initialize: function () {
             $('.page').append(this.el); 
-            this.render()
-            if(this.user.get('isLogged')) {
-                $(location).attr("href", "#");
-            }
+            this.render();
         },
 
         render: function () {
@@ -65,5 +62,5 @@ define([
 
     });
 
-    return new View();
+    return new Login();
 });

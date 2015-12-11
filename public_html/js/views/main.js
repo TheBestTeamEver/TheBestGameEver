@@ -8,7 +8,7 @@ define([
     user
 ){
 
-    var View = Backbone.View.extend({
+    var Main = Backbone.View.extend({
         template: tmpl,
         user: user,
 
@@ -19,13 +19,7 @@ define([
         initialize: function () {
             $('.page').append(this.el); 
             this.render();
-            if(this.user.get('isLogged')) {
-                $('.login').hide();
-                $('.logout').show();
-                $('.signup').hide();
-            } else {
-                $('.logout').hide();
-            }
+            $('.logout').hide();
         },
 
         render: function () {
@@ -49,9 +43,10 @@ define([
 
         logout: function() {
             this.user.save({}, {url: '/logout'});
+            $(location).attr("href", "/");
         }
 
     });
 
-    return new View();
+    return new Main();
 });

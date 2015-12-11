@@ -14,9 +14,9 @@ define([
             $(location).attr("href", "/");
         },
 
-        check: function() {
-            this.set('isLogged', true);
-        },
+        //check: function() {
+        //    this.set('isLogged', true);
+        //},
 
         initialize: function() {
             //this.save({}, {url: '/check'});

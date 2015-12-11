@@ -12,7 +12,7 @@ define([
         initialize: function(){
             $('.page').append(this.el);
         },
-        model: null,
+        user: null,
         ws: null,
 
         init: function(){
