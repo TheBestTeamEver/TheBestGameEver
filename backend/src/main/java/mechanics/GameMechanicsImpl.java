@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author v.chibrikov
@@ -16,7 +17,7 @@ import java.util.Set;
 public class GameMechanicsImpl implements GameMechanics {
     private static final int STEP_TIME = 100;
 
-    private static final int gameTime = 5 * 60 * 1000;
+    private static final int gameTime = 15  * 1000;
 
     private WebSocketService webSocketService;
 
