@@ -9,7 +9,7 @@ define([
     var SIGNIN_URL = '/signin';
     var SIGNUP_URL = '/signup';
     var LOGOUT_URL = '/logout';
-    var CHECK_URL = '/check';
+    //var CHECK_URL = '/check';
 
     return function(method, model, options) {
         var data = options.data || {};
@@ -31,36 +31,43 @@ define([
                 if (options.url === SIGNUP_URL) {
                     if (response.status === 'OK') {
                         options.success({
+                            error    : false,
                             isLogged : true
                         });
+                        $(".error").hide();
                     } else {
                         options.error({
+                            error    : true,
                             isLogged : false
                         });
-                        alert("BAD");
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === SIGNIN_URL) {
                     if (response.status === 'OK') {
                         console.log("success");
                         options.success({
+                            error    : false,
                             isLogged : true
                         });
+                        $(".error").hide();
                     } else {
                         options.error({
+                            error    : true,
                             isLogged : false
                         });
-                        alert("BAD");
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === LOGOUT_URL) {
                     if(response.status === 'OK') {
                         options.success({
                             isLogged: false
                         });
+                        $(".error").hide();
                     } else {
                         options.error({
                             isLogged : true
                         });
-                        alert("BAD");
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 }
             });

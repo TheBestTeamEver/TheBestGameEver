@@ -9,6 +9,10 @@ define([
 
     var User = Backbone.Model.extend({
 
+        defaults: {
+            error: false
+        },
+
         logout: function() {
             this.set('isLogged', false);
             $(location).attr("href", "/");
@@ -20,6 +24,10 @@ define([
 
         initialize: function() {
             //this.save({}, {url: '/check'});
+        },
+
+        validate: function(attrs, options) {
+            return this.error;
         },
 
         sync: sync
