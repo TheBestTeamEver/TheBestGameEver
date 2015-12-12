@@ -5,10 +5,7 @@ import base.GameUser;
 import base.WebSocketService;
 import utils.TimeHelper;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -32,7 +29,7 @@ public class GameMechanicsImpl implements GameMechanics {
     }
 
     public void addUser(String user) {
-        if (waiter != null) {
+        if (waiter != null && !Objects.equals(waiter, user)) {
             starGame(user);
             waiter = null;
         } else {
@@ -64,6 +61,7 @@ public class GameMechanicsImpl implements GameMechanics {
                 boolean firstWin = session.isFirstWin();
                 webSocketService.notifyGameOver(session.getFirst(), firstWin);
                 webSocketService.notifyGameOver(session.getSecond(), !firstWin);
+                allSessions.remove(session);
             }
         }
     }

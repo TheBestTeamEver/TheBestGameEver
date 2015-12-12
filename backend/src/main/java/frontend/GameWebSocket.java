@@ -16,6 +16,8 @@ public class GameWebSocket {
     private Session session;
     private GameMechanics gameMechanics;
     private WebSocketService webSocketService;
+    private static int x = 0;
+    private static int y = 0;
 
     public GameWebSocket(String myName, GameMechanics gameMechanics, WebSocketService webSocketService) {
         this.myName = myName;
@@ -52,6 +54,8 @@ public class GameWebSocket {
 
     @OnWebSocketMessage
     public void onMessage(String data) {
+        x = (int) (Math.random() * 500);
+        y = (int) (Math.random() * 500);
         gameMechanics.incrementScore(myName);
     }
 
@@ -67,9 +71,8 @@ public class GameWebSocket {
         jsonStart.put("status", "increment");
         jsonStart.put("name", myName);
         jsonStart.put("score", user.getMyScore());
-        jsonStart.put("x", (int) (Math.random() * 500));
-        jsonStart.put("y", (int) (Math.random() * 500));
-
+        jsonStart.put("x", x);
+        jsonStart.put("y", y);
         try {
             session.getRemote().sendString(jsonStart.toJSONString());
         } catch (Exception e) {
@@ -82,8 +85,8 @@ public class GameWebSocket {
         jsonStart.put("status", "increment");
         jsonStart.put("name", user.getEnemyName());
         jsonStart.put("score", user.getEnemyScore());
-        jsonStart.put("x", (int) (Math.random() * 500));
-        jsonStart.put("y", (int) (Math.random() * 500));
+        jsonStart.put("x", x);
+        jsonStart.put("y", y);
         try {
             session.getRemote().sendString(jsonStart.toJSONString());
         } catch (Exception e) {
