@@ -3,7 +3,7 @@
     <div id="wait">
         <p>Prepare yourself. Wait for enemy!</p>
     </div>
-
+    
     <div id="gameplay" style="display: none">
         <div id="score">
             <p>${myName}: <span id="myScore">0</span></p>
@@ -20,4 +20,7 @@
         <p>Game over! You are <span id="win"></span></p>
     </div>
     <canvas class="game-field" id="example" onclick="sendMessage();"></canvas>
+    <div class="ftr">
+        <p class="ftr__pgh">TBTE</p>
+    </div>
 </fest:template>

@@ -3,14 +3,17 @@
 	<p class="title title_caption">REGISTRATION</p>
 	<div class="reg-form">
 		<form name="reg-form" method="POST">
-            <input name="login" class="reg-form__input" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="autofocus" /><br></br>
-			<input name="email" class="reg-form__input" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
-			<input name="password" class="reg-form__input" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
+            <input name="login" class="reg-form__input-submit" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="autofocus" /><br></br>
+			<input name="email" class="reg-form__input-submit" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
+			<input name="password" class="reg-form__input-submit" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
 			<input id="reg-form-submit-real" type="submit" value="" style="display: none"/>
-			<ul class="reg-form__input-submit">
+			<ul class="reg-form">
 				<li class="reg-form__input-submit__item"><a onClick="document.getElementById('reg-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы зарегистрироваться!</span></a></li>
 				<li class="reg-form__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
 			</ul>
 		</form>
+	</div>
+	<div class="ftr">
+		<p class="ftr__pgh">TBTE</p>
 	</div>
 </fest:template>
