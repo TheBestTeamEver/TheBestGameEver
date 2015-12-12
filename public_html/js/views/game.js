@@ -17,8 +17,8 @@ define([
         socket: new socket({user: this.user}),
 
         events: {
-            'click .startgame' : 'start',
-            'click .game-field' : 'knockCena'
+            //'click .startgame' : 'start',
+            'click #cena' : 'knockCena'
         },
 
         initialize: function () {
@@ -40,10 +40,10 @@ define([
             this.$el.hide();
         },
 
-        start: function() {
-            this.socket = new socket({user: this.user});
-            this.socket.onGameStart();
-        },
+        //start: function() {
+        //    this.socket = new socket({user: this.user});
+        //    this.socket.onGameStart();
+        //},
 
         knockCena: function() {
             this.socket.knockCena();

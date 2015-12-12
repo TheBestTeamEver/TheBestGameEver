@@ -1,11 +1,13 @@
 define([
     'backbone',
     'tmpl/main',
-    'models/user'
+    'models/user',
+    'views/socket'
 ], function(
     Backbone,
     tmpl,
-    user
+    user,
+    socket
 ){
 
     var Main = Backbone.View.extend({
@@ -13,7 +15,8 @@ define([
         user: user,
 
         events: {
-            'click .logout': 'logout'
+            'click .logout': 'logout',
+            'click .startgame' : 'start'
         },
 
         initialize: function () {
@@ -44,7 +47,12 @@ define([
         logout: function() {
             this.user.save({}, {url: '/logout'});
             $(location).attr("href", "/");
-        }
+        },
+
+        start: function() {
+            this.socket = new socket({user: this.user});
+            this.socket.onGameStart();
+        },
 
     });
 
