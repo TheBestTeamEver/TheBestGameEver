@@ -12,18 +12,21 @@ define([
     var CHECK_URL = '/check';
 
     return function(method, model, options) {
-        if(method === 'create') {
-            var data = options.data;
-            console.log("url: " + options.url);
-            var requestType = options.requestType;
+        var data = options.data || {};
+        var requestType = options.requestType || 'POST';
+        var dataType = options.dataType || 'json';
+        var contentType = options.contentType || 'application/json';
 
-            var xhr = $.ajax({
-                type: requestType,
-                url: options.url,
-                dataType: 'json',
-                data: JSON.stringify(data),
-                contentType: 'application/json'
-            });
+        var xhr = $.ajax({
+            type: requestType,
+            url: options.url,
+            dataType: dataType,
+            data: JSON.stringify(data),
+            contentType: contentType
+        });
+
+        if(method === 'create') {
+            console.log("url: " + options.url);
             xhr.done(function(response) {
                 if (options.url === SIGNUP_URL) {
                     if (response.status === 'OK') {
