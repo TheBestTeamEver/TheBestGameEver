@@ -1,6 +1,7 @@
 .reg-form {
   padding-top: 30px;
   margin: auto 0;
+  margin-bottom:50px;
   &__item_back {
     list-style: none;
     position: relative;
@@ -24,10 +25,8 @@
         display: inline-block;
         width: 100px;
         height: 100px;
+      }&:focus {
+        border: solid 5px #969696;
       }
-    }
-    &:focus {
-      border: solid 5px #969696;
-    }
   }
 }
