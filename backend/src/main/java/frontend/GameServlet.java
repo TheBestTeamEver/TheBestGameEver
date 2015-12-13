@@ -31,14 +31,9 @@ public class GameServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         Map<String, Object> pageVariables = new HashMap<>();
-//        String name = request.getParameter("name");
-//        String password = request.getParameter("password");
-//        String email = request.getParameter("email");
-//        String safeName = name == null ? "NoName" : name;
 
         UserProfile userProfile = accountService.getSessions(request.getSession().getId());
         String safeName = userProfile.getLogin();
-//        accountService.addSessions(request.getSession().getId(), new UserProfile(name, password, email));
         pageVariables.put("myName", safeName);
 
         response.getWriter().println(PageGenerator.getPage("game.html", pageVariables));
@@ -50,18 +45,5 @@ public class GameServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
-
-        Map<String, Object> pageVariables = new HashMap<>();
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String safeName = name == null ? "NoName" : name;
-        accountService.addSessions(request.getSession().getId(), new UserProfile(name, password, email));
-        pageVariables.put("myName", safeName);
-
-        response.getWriter().println(PageGenerator.getPage("game.html", pageVariables));
-
-        response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
     }
 }
