@@ -1,5 +1,7 @@
 package main;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Created by v.chibrikov on 13.09.2014.
  */
@@ -8,7 +10,7 @@ public class UserProfile {
     private String password;
     private String email;
 
-    public UserProfile(String loginParam, String passwordParam, String emailParam) {
+    public UserProfile(@Nullable String loginParam, String passwordParam, String emailParam) {
         this.login = loginParam;
         this.password = passwordParam;
         this.email = emailParam;

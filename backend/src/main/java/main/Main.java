@@ -44,7 +44,7 @@ public class Main {
         System.out.println("Starting at port: " + port + '\n');
 
         AccountService accountService = new AccountServiceImpl();
-
+        // AccountService accountService = new AccountServiceDBImpl();
 
         Servlet signIn = new SignInServlet(accountService);
         Servlet signUp = new SignUpServlet(accountService);

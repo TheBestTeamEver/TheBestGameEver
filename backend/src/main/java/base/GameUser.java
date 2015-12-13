@@ -9,8 +9,8 @@ public class GameUser {
     private int myScore = 0;
     private int enemyScore = 0;
 
-    public GameUser(String myName) {
-        this.myName = myName;
+    public GameUser(String myNameParam) {
+        this.myName = myNameParam;
     }
 
     public String getMyName() {
@@ -37,7 +37,7 @@ public class GameUser {
         enemyScore++;
     }
 
-    public void setEnemyName(String enemyName) {
-        this.enemyName = enemyName;
+    public void setEnemyName(String enemyNameParam) {
+        this.enemyName = enemyNameParam;
     }
 }

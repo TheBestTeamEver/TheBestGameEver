@@ -15,12 +15,12 @@ public class GameWebSocketCreator implements WebSocketCreator {
     private GameMechanics gameMechanics;
     private WebSocketService webSocketService;
 
-    public GameWebSocketCreator(AccountService accountService,
-                                GameMechanics gameMechanics,
-                                WebSocketService webSocketService) {
-        this.accountService = accountService;
-        this.gameMechanics = gameMechanics;
-        this.webSocketService = webSocketService;
+    public GameWebSocketCreator(AccountService accountServiceParam,
+                                GameMechanics gameMechanicsParam,
+                                WebSocketService webSocketServiceParam) {
+        this.accountService = accountServiceParam;
+        this.gameMechanics = gameMechanicsParam;
+        this.webSocketService = webSocketServiceParam;
     }
 
     @Override

@@ -27,22 +27,7 @@ public class SignInServlet extends HttpServlet {
         this.accountService = accountServiceParam;
 
     }
-/*
-    @Override
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response) throws ServletException, IOException {
-        assert response != null;
-        //noinspection ConstantConditions,resource
-        HttpSession session = request.getSession();
-        if (accountService.getSessions(session.getId()) != null) {
-            response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
-            response.setStatus(HttpServletResponse.SC_OK);
-        } else {
-            response.getWriter().println(PageGenerator.getPage("auth.html", null));
-            response.setStatus(HttpServletResponse.SC_OK);
-        }
-    }
-*/
+
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
@@ -51,11 +36,11 @@ public class SignInServlet extends HttpServlet {
 
         StringBuilder jb = new StringBuilder();
         String line = null;
-        try {
+
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null)
                 jb.append(line);
-        } catch (Exception e) { /*report an error*/ }
+
         JSONObject jsonRequest = new JSONObject(jb.toString()); //Запрос в JSON
         JSONObject jsonResponse = new JSONObject();
 
@@ -71,10 +56,8 @@ public class SignInServlet extends HttpServlet {
         if (profile != null && profile.getPassword().equals(password)) {
             HttpSession session = request.getSession();
             accountService.addSessions(session.getId(), profile);
-           // pageVariables.put("loginStatus", "Login passed. " + "Session id:" + session.getId());
             jsonResponse.put("status", "OK");
         } else {
-            //pageVariables.put("loginStatus", "Wrong login/password");
             jsonResponse.put("status", "wrong login/password");
         }
 

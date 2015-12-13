@@ -10,8 +10,11 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.json.simple.JSONObject;
 
+
+@SuppressWarnings({"StaticVariableNamingConvention", "unchecked", "OverlyBroadCatchBlock", "CallToSimpleSetterFromWithinClass"})
 @WebSocket
 public class GameWebSocket {
+    public static final int INT = 500;
     private String myName;
     private Session session;
     private GameMechanics gameMechanics;
@@ -19,10 +22,10 @@ public class GameWebSocket {
     private static int x = 0;
     private static int y = 0;
 
-    public GameWebSocket(String myName, GameMechanics gameMechanics, WebSocketService webSocketService) {
-        this.myName = myName;
-        this.gameMechanics = gameMechanics;
-        this.webSocketService = webSocketService;
+    public GameWebSocket(String myNameParam, GameMechanics gameMechanicsParam, WebSocketService webSocketServiceParam) {
+        this.myName = myNameParam;
+        this.gameMechanics = gameMechanicsParam;
+        this.webSocketService = webSocketServiceParam;
     }
 
     public String getMyName() {
@@ -54,14 +57,14 @@ public class GameWebSocket {
 
     @OnWebSocketMessage
     public void onMessage(String data) {
-        x = (int) (Math.random() * 500);
-        y = (int) (Math.random() * 500);
+        x = (int) (Math.random() * INT);
+        y = (int) (Math.random() * INT);
         gameMechanics.incrementScore(myName);
     }
 
     @OnWebSocketConnect
-    public void onOpen(Session session) {
-        setSession(session);
+    public void onOpen(Session sessionParam) {
+        setSession(sessionParam);
         webSocketService.addUser(this);
         gameMechanics.addUser(myName);
     }
@@ -98,8 +101,8 @@ public class GameWebSocket {
         return session;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
+    public void setSession(Session sessionParam) {
+        this.session = sessionParam;
     }
 
     @OnWebSocketClose

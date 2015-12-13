@@ -18,14 +18,16 @@ import java.util.Map;
  */
 public class GameServlet extends HttpServlet {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private GameMechanics gameMechanics;
     private AccountService accountService;
 
-    public GameServlet(GameMechanics gameMechanics, AccountService accountService) {
-        this.gameMechanics = gameMechanics;
-        this.accountService = accountService;
+    public GameServlet(GameMechanics gameMechanicsParam, AccountService accountServiceParam) {
+        this.gameMechanics = gameMechanicsParam;
+        this.accountService = accountServiceParam;
     }
 
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
         Map<String, Object> pageVariables = new HashMap<>();
@@ -45,6 +47,7 @@ public class GameServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 

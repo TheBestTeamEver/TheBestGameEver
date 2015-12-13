@@ -26,23 +26,6 @@ public class SignUpServlet extends HttpServlet {
 
         this.accountService = accountServiceParam;
     }
-/*
-    @Override
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response) throws ServletException, IOException {
-        assert response != null;
-        HttpSession session = request.getSession();
-        if (accountService.getSessions(session.getId()) != null) {
-            response.getWriter().println(PageGenerator.getPage("SIGNEDIN.html", null));
-            response.setStatus(HttpServletResponse.SC_OK);
-        } else {
-
-            response.getWriter().println(PageGenerator.getPage("registration.html", null));
-            response.setStatus(HttpServletResponse.SC_OK);
-        }
-    }
-*/
-
     @Override
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
@@ -50,15 +33,13 @@ public class SignUpServlet extends HttpServlet {
 
         StringBuilder jb = new StringBuilder();
         String line = null;
-        try {
+
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null)
                 jb.append(line);
-        } catch (Exception e) { /*report an error*/ }
+
         JSONObject jsonRequest = new JSONObject(jb.toString()); //Запрос в JSON
         JSONObject jsonResponse = new JSONObject();
-        Map<String, Object> responseMap = new HashMap<>();
-
 
         String name = jsonRequest.get("name").toString();
         String password = jsonRequest.get("password").toString();

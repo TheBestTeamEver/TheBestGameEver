@@ -13,17 +13,17 @@ import javax.servlet.annotation.WebServlet;
  */
 @WebServlet(name = "WebSocketGameServlet", urlPatterns = {"/gameplay"})
 public class WebSocketGameServlet extends WebSocketServlet {
-    private final static int IDLE_TIME = 60 * 1000;
+    private static final int IDLE_TIME = 60 * 1000;
     private AccountService accountService;
     private GameMechanics gameMechanics;
     private WebSocketService webSocketService;
 
-    public WebSocketGameServlet(AccountService accountService,
-                                GameMechanics gameMechanics,
-                                WebSocketService webSocketService) {
-        this.accountService = accountService;
-        this.gameMechanics = gameMechanics;
-        this.webSocketService = webSocketService;
+    public WebSocketGameServlet(AccountService accountServiceParam,
+                                GameMechanics gameMechanicsParam,
+                                WebSocketService webSocketServiceParam) {
+        this.accountService = accountServiceParam;
+        this.gameMechanics = gameMechanicsParam;
+        this.webSocketService = webSocketServiceParam;
     }
 
     @Override
