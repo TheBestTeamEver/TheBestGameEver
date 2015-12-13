@@ -8,21 +8,17 @@ define([
     user
 ){
 
-    var View = Backbone.View.extend({
+    var Registration = Backbone.View.extend({
         template: tmpl,
         user: user,
 
         events: {
-            'submit' : 'submitClick'
+            'submit' : 'submitClick',
         },
 
         initialize: function () {
             $('.page').append(this.el);
             this.render();
-            if(this.user.get('isLogged')) {
-                $('.login').hide();
-                $('.logout').show();
-            }
         },
 
         render: function () {
@@ -35,7 +31,7 @@ define([
             this.trigger('show', this);
             if(this.user.get('isLogged')) {
                 $(location).attr("href", "#");
-            }
+            } 
         },
 
         hide: function () {
@@ -47,40 +43,22 @@ define([
             this.registration();
         },
 
-        signUpSuccess: function(response, status, xhr) {
-            if(response.status === 'OK') {
-                this.user.set('isLogged', true);
-                this.set('login', name);
-                $(location).attr("href", "#");
-            } else {
-                alert("User already exist");
-            }
-        },
-
-        signUpError: function() {
-            alert("Произошла какая-то стремная и непонятная ошибка");
-        },
-
         registration: function(event) {
             var login = this.$('input[name="login"]').val();
             var email = this.$('input[name="email"]').val();
             var password = this.$('input[name="password"]').val();
 
+            var data = {name: login, email: email, password: password};
 
-            this.user.save({
-                name: login,
-                email: email,
-                password: password}, {
+            this.user.save({}, {
                     url: '/signup',
-                    success: function() {
-                        console.log("success");
-                    }
+                    data: data,
+                    requestType: 'POST'
                 }
             );
-        }
-
+        },
 
     });
 
-    return new View();
+    return new Registration();
 });

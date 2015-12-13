@@ -1,2 +1,26 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="players">
+	<p class="title">JOHN CENA BATTLE CLICKER</p>
+	<p class="title title_caption">SCOREBOARD</p>
+	<div class = "page__menu">
+    	<table class="page__table">
+        	<tr class="page__table_header">
+				<th class="page__table_tr page__table_tr_left">Player</th>
+				<th class="page__table_tr page__table_tr_right">Score</th>
+			</tr>
+			<fest:each iterate="players" index="i" value="player">
+			<tr class="page__table_tr">
+				<th class="page__table_tr page__table_tr_left"><fest:value>player.name</fest:value></th>
+				<th class="page__table_tr page__table_tr_right"><fest:value>player.score</fest:value></th>
+			</tr>
+			</fest:each>
+		</table>
+		<div class="score_board">
+		<ul class="score_board">
+				<li class="score_board__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
+		</ul>
+		</div>
+	</div>
+	<div class="ftr">
+		<p class="ftr__pgh">TBTE</p>
+	</div>
 </fest:template>

@@ -8,7 +8,7 @@ define([
     user
 ){
 
-    var View = Backbone.View.extend({
+    var Login = Backbone.View.extend({
         template: tmpl,
         user: user,
 
@@ -18,15 +18,12 @@ define([
 
         initialize: function () {
             $('.page').append(this.el); 
-            this.render()
-            if(this.user.get('isLogged')) {
-                $(location).attr("href", "#");
-            }
+            this.render();
         },
 
         render: function () {
             this.$el.html(this.template);
-            return this;//чтобы иметь возможность делать цепочные вызовы
+            return this;
         },
 
         show: function () {
@@ -47,32 +44,23 @@ define([
         },
 
         login: function() {
-            //event.preventDefault();
-            console.log("LOGIN SEND");
 
             var login = this.$('input[name="login"]').val();
             var password = this.$('input[name="password"]').val();
 
-            this.user.save({
-              name: login,
-              password: password}, {url: '/signin'}
+            var data = {name: login, password: password};
+
+            this.user.save({}, {
+                    url: '/signin',
+                    data: data,
+                    requestType: 'POST'
+                }
             );
         }
 
-//        signinFailed: function() {
-//            this.listenTo(this.user, this.user.signinFailedEvent, function() {
-//                if(this.user.get('isLogged')) {
-//                    $('.login').hide();
-//                    $('.logout').show();
-//                    $(location).attr("href", "#");
-//                } else {
-//                    $(location).attr("href", "#login");
-//                }
-//            });
-//        }
 
 
     });
 
-    return new View();
+    return new Login();
 });

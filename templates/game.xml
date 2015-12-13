@@ -1,5 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-    <p style="text-align: center"><button class="startgame">Кнопка</button></p>
+    <div id="hello">
+        <p>Hello, ${myName}!</p>
+    </div>
+
     <div id="wait">
         <p>Prepare yourself. Wait for enemy!</p>
     </div>
@@ -12,12 +15,11 @@
         </div>
 
         <form name="gamePlay" action="">
-            <input type="button" name="submit" value="Press to win!" onclick="sendMessage();"/>
+            <input id='sena' type="button" name="submit" value="Press to win!" onclick="sendMessage();"/>
         </form>
     </div>
 
     <div id="gameOver" style="display: none">
         <p>Game over! You are <span id="win"></span></p>
     </div>
-    <canvas class="game-field" id="example" onclick="sendMessage();"></canvas>
 </fest:template>

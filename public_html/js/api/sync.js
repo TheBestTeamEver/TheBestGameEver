@@ -9,59 +9,70 @@ define([
     var SIGNIN_URL = '/signin';
     var SIGNUP_URL = '/signup';
     var LOGOUT_URL = '/logout';
-    var CHECK_URL = '/check';
+    //var CHECK_URL = '/check';
 
     return function(method, model, options) {
+        var data = options.data || {};
+        var requestType = options.requestType || 'POST';
+        var dataType = options.dataType || 'json';
+        var contentType = options.contentType || 'application/json';
+
+        var xhr = $.ajax({
+            type: requestType,
+            url: options.url,
+            dataType: dataType,
+            data: JSON.stringify(data),
+            contentType: contentType
+        });
+
         if(method === 'create') {
-            var data = model.toJSON();
             console.log("url: " + options.url);
-            var requestType;
-
-            if (options.url === SIGNUP_URL) {
-                requestType = 'POST';
-            } else if (options.url === SIGNIN_URL) {
-                requestType = 'POST';
-            } else if (options.url === LOGOUT_URL) {
-                alert("URL CORRECT");
-                requestType = 'POST';
-                data = {};
-            } else if (options.url === CHECK_URL) {
-                requestType = 'POST';
-            }
-
-            var xhr = $.ajax({
-                type: requestType,
-                url: options.url,
-                dataType: 'json',
-                data: JSON.stringify(data),
-                contentType: 'application/json'
-            });
             xhr.done(function(response) {
                 if (options.url === SIGNUP_URL) {
                     if (response.status === 'OK') {
-                        model.signupCompleted(data.name);
+                        options.success({
+                            error    : false,
+                            isLogged : true
+                        });
+                        $(".error").hide();
                     } else {
-                        model.signupFailed();
+                        options.error({
+                            error    : true,
+                            isLogged : false
+                        });
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === SIGNIN_URL) {
                     if (response.status === 'OK') {
-                        model.signinCompleted(data.name);
+                        console.log("success");
+                        options.success({
+                            error    : false,
+                            isLogged : true
+                        });
+                        $(".error").hide();
                     } else {
-                        model.signinFailed();
+                        options.error({
+                            error    : true,
+                            isLogged : false
+                        });
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === LOGOUT_URL) {
                     if(response.status === 'OK') {
-                        alert("logout");
-                        model.logout();
-                    }
-                } else if (options.url === CHECK_URL) {
-                    if(response.status === 'OK') {
-                        console.log("CHECK DONE");
-                        model.check();
+                        options.success({
+                            isLogged: false
+                        });
+                        $(".error").hide();
+                    } else {
+                        options.error({
+                            isLogged : true
+                        });
+                        $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 }
             });
-        }
+        } else if(method === "read") {
 
+        }
     }
 });
