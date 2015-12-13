@@ -3,6 +3,7 @@
 	<p class="title title_caption">LOGIN</p>
 	<div class="login-form">
 		<form name="login-form" method="POST">
+			<div class="error"></div>
 			<input name="login" class="login-form__input-submit" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="true" /><br></br>
 			<input name="password" class="login-form__input-submit" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
 			<input id="login-form-submit-real" type="submit" value="" style="display: none"/>

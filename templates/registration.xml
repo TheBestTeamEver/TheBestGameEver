@@ -3,6 +3,7 @@
 	<p class="title title_caption">REGISTRATION</p>
 	<div class="reg-form">
 		<form name="reg-form" method="POST">
+			<div class="error"></div>
             <input name="login" class="reg-form__input-submit" type="text" required="true" placeholder="Введите свой логин" value="" autofocus="autofocus" /><br></br>
 			<input name="email" class="reg-form__input-submit" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
 			<input name="password" class="reg-form__input-submit" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>

@@ -13,7 +13,7 @@ define([
         user: user,
 
         events: {
-            'submit' : 'submitClick'
+            'submit' : 'submitClick',
         },
 
         initialize: function () {
@@ -31,7 +31,7 @@ define([
             this.trigger('show', this);
             if(this.user.get('isLogged')) {
                 $(location).attr("href", "#");
-            }
+            } 
         },
 
         hide: function () {
@@ -42,7 +42,6 @@ define([
             event.preventDefault();
             this.registration();
         },
-
 
         registration: function(event) {
             var login = this.$('input[name="login"]').val();
@@ -57,8 +56,7 @@ define([
                     requestType: 'POST'
                 }
             );
-        }
-
+        },
 
     });
 
