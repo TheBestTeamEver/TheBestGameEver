@@ -12,9 +12,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @author v.chibrikov
  */
 public class GameMechanicsImpl implements GameMechanics {
-    private static final int STEP_TIME = 100;
 
-    private static final int gameTime = 15  * 1000;
+    private static int stepTime;
+
+    private static int gameTime;
 
     private WebSocketService webSocketService;
 
@@ -24,7 +25,9 @@ public class GameMechanicsImpl implements GameMechanics {
 
     private String waiter;
 
-    public GameMechanicsImpl(WebSocketService webSocketService) {
+    public GameMechanicsImpl(WebSocketService webSocketService, int initStepTime, int initGameTime) {
+        stepTime = initStepTime;
+        gameTime = initGameTime;
         this.webSocketService = webSocketService;
     }
 
@@ -51,7 +54,7 @@ public class GameMechanicsImpl implements GameMechanics {
     public void run() {
         while (true) {
             gmStep();
-            TimeHelper.sleep(STEP_TIME);
+            TimeHelper.sleep(stepTime);
         }
     }
 

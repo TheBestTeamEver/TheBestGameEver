@@ -1,0 +1,5 @@
+<class type='main.SerializationObject'>
+    <defaultPort>8080</defaultPort>
+    <gameTime>15000</gameTime>
+    <stepTime>100</stepTime>
+</class>

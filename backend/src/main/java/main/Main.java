@@ -14,6 +14,7 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import sax.ReadXMLFileSAX;
 
 import javax.servlet.Servlet;
 
@@ -23,25 +24,32 @@ import javax.servlet.Servlet;
 
 public class Main {
 
-    public static final int PORT = 8080;
-
     public static void main(String[] args) throws Exception {
 
-        if (args.length != 1) {
-            System.out.append("Use port as the first argument");
+        SerializationObject serializationObject = (SerializationObject) ReadXMLFileSAX.readXML("settings.xml");
+        if (serializationObject == null) {
+            System.out.println("Данные из файла настроек не загружены.");
             System.exit(1);
         }
-        String portString = args[0];
+
         int port;
-
-        try {
-            port = Integer.valueOf(portString);
-        } catch (NumberFormatException ex) {
-
-            System.out.println("You have input not a number!!! Port 8080 will be used");
-            port = PORT;
+        if (args.length != 1) {
+            System.out.append("Будет использован порт из файла настроек проекта: ");
+            System.out.append((char) serializationObject.getDefaultPort());
+            port = serializationObject.getDefaultPort();
+        } else {
+            String portString = args[0];
+            try {
+                port = Integer.valueOf(portString);
+            } catch (NumberFormatException ex) {
+                System.out.println("Вы ввели не число. " +
+                        "Будет использован порт из файла настроек проекта: ");
+                System.out.append((char) serializationObject.getDefaultPort());
+                port = serializationObject.getDefaultPort();
+            }
         }
-        System.out.println("Starting at port: " + port + '\n');
+
+        System.out.println("Старт на порту: " + port + '\n');
 
         AccountService accountService = new AccountServiceImpl();
         // AccountService accountService = new AccountServiceDBImpl();
@@ -59,9 +67,11 @@ public class Main {
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
         context.addServlet(new ServletHolder(check), "/check");
 
+        int stepTime = serializationObject.getStepTime();
+        int gameTime = serializationObject.getGameTime();
+
         WebSocketService webSocketService = new WebSocketServiceImpl();
-        GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService);
-//        AuthService authService = new AuthServiceImpl();
+        GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService, stepTime, gameTime);
         context.addServlet(new ServletHolder(new WebSocketGameServlet(accountService, gameMechanics, webSocketService)), "/gameplay");
 
         context.addServlet(new ServletHolder(new GameServlet(gameMechanics, accountService)), "/draka");
