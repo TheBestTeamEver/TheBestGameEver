@@ -53,6 +53,7 @@ public class SignUpServlet extends HttpServlet {
         //noinspection ConstantConditions
         if (accountService.addUser(name, userProfile)) {
             HttpSession session = request.getSession();
+            System.out.println(session.getId());
             accountService.addSessions(session.getId(), userProfile);
             jsonResponse.put("status", "OK");
         } else {
