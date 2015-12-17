@@ -16,7 +16,7 @@
             </div>
 
             <form name="gamePlay" action="">
-                <input id='sena' type="button" name="submit" value="Press to win!" onclick="sendMessage();"/>
+                <input class="bla" id='sena' type="button" name="submit" value="Press to win!"/>
             </form>
         </div>
 

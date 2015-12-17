@@ -16,22 +16,27 @@ define([
         },
         user: user,
 
+        ws: null,
+
         init: function(){
             debugger;
-            var ws;
+            //var ws;
+
+            var user_name = this.user.get('name');
             var host = location.hostname;
             var port = location.port;
-            ws = new WebSocket("ws://" + host + ':' + port +"/gameplay");
+            this.ws = new WebSocket("ws://" + host + ':' + port +"/gameplay");
 
             //this.table();
-            //var that = this;
+            var that = this;
 
-            ws.onopen = function (event) {
+            this.ws.onopen = function (event) {
                 console.log("Web Socket opened");
             };
 
-            ws.onmessage = function (event) {
+            this.ws.onmessage = function (event) {
                 var data = JSON.parse(event.data);
+                console.log(data);
                 if (data.status == "start") {
                     document.getElementById("wait").style.display = "none";
                     document.getElementById("gameplay").style.display = "block";
@@ -48,7 +53,7 @@ define([
                         document.getElementById("win").innerHTML = "loser!";
                 }
 
-                if (data.status == "increment" && data.name == "${myName}") {
+                if (data.status == "increment" && data.name == user_name) {
                     document.getElementById("myScore").innerHTML = data.score;
                     document.getElementById("sena").setAttribute("style",
                         "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
@@ -63,7 +68,7 @@ define([
                 }
             };
 
-            ws.onclose = function (event) {
+            this.ws.onclose = function (event) {
                 console.log("WebSocket closed");
                 that.ws.close();
             }
@@ -90,8 +95,9 @@ define([
         },
 
         knockCena: function() {
+            console.log('knock');
             var message = "{}";
-            ws.send(message);
+            this.ws.send(message);
         }
 
     });
