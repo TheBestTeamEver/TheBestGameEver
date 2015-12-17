@@ -19,10 +19,12 @@ define([
         init: function(){
             debugger;
             var ws;
-            ws = new WebSocket("ws://localhost:8080/gameplay");
+            var host = location.hostname;
+            var port = location.port;
+            ws = new WebSocket("ws://" + host + ':' + port +"/gameplay");
 
             //this.table();
-            var that = this;
+            //var that = this;
 
             ws.onopen = function (event) {
                 console.log("Web Socket opened");

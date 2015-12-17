@@ -31,28 +31,26 @@ define([
                 if (options.url === SIGNUP_URL) {
                     if (response.status === 'OK') {
                         options.success({
-                            error    : false,
-                            isLogged : true
+                            isLogged : true,
+                            name : options.name
                         });
                         $(".error").hide();
                     } else {
                         options.error({
-                            error    : true,
                             isLogged : false
                         });
+                        //TODO: убрать отсюда говнокодинг. Наверно с помощью слушаетля во вьюхе
                         $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === SIGNIN_URL) {
                     if (response.status === 'OK') {
                         console.log("success");
                         options.success({
-                            error    : false,
                             isLogged : true
                         });
                         $(".error").hide();
                     } else {
                         options.error({
-                            error    : true,
                             isLogged : false
                         });
                         $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});

@@ -53,7 +53,8 @@ define([
             this.user.save({}, {
                     url: '/signin',
                     data: data,
-                    requestType: 'POST'
+                    requestType: 'POST',
+                    name: login
                 }
             );
         }

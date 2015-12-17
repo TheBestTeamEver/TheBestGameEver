@@ -13,21 +13,20 @@ define([
     var Game = Backbone.View.extend({
         template: tmpl,
         user: user,
+        name: 'game',
 
         socket: new socket({user: this.user}),
 
         events: {
-            'click .startgame' : 'start',
             'click #cena' : 'knockCena'
         },
 
         initialize: function () {
-            $('.page').append(this.el); 
-            this.render();
+            $('.page').append(this.el);
         },
 
         render: function () {
-            this.$el.html(this.template);
+            this.$el.html(this.template(this.user.toJSON()));
             return this;//чтобы иметь возможность делать цепочные вызовы
         },
 

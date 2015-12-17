@@ -13,18 +13,10 @@ define([
         user: user,
 
         initialize: function() {
-            this.user.on('change:isLogged', function() {
+            this.user.on('change:isLogged', function(user) {
                 $(location).attr("href", "#");
+                alert(user.get('isLogged'));
             });
-        },
-
-        show: function () {
-            this.$el.show();
-            this.trigger('show', this);
-        },
-
-        hide: function () {
-            this.$el.hide();
         }
     });
 

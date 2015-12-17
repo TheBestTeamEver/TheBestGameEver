@@ -19,7 +19,7 @@ define([
 ){
 
 
-    VM.addView(main, game, login, registration, scoreboard, app);
+    VM.addView(main, game, login, registration, scoreboard);
 
 
     var Router = Backbone.Router.extend({
