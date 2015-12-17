@@ -15,7 +15,6 @@ define([
         initialize: function() {
             this.user.on('change:isLogged', function(user) {
                 $(location).attr("href", "#");
-                alert(user.get('isLogged'));
             });
         }
     });

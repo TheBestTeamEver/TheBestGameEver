@@ -19,7 +19,6 @@ define([
         ws: null,
 
         init: function(){
-            debugger;
             //var ws;
 
             var user_name = this.user.get('name');

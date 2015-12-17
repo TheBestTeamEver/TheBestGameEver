@@ -16,8 +16,9 @@
                 <p class="score"><span id="enemyName"></span>: <span id="enemyScore">0</span></p>
             </div>
 
-            <form name="gamePlay" action="">
-                <input class="bla" id='sena' type="button" name="submit" value="Press to win!"/>
+            <form name="gamePlay">
+                <!--<input class="bla" id='sena' type="button" name="submit" value="Press to win!"/>-->
+                <img class="bla" id="sena" src="design/assets/john_cena/john_cena1.png" alt="john_cena" width="250" height="250"></img>
             </form>
         </div>
 
