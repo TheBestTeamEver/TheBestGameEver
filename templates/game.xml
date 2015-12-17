@@ -10,6 +10,7 @@
         </div>
 
         <div id="gameplay" style="display: none">
+            <div class="time"></div>
             <div id="score">
                 <p class="score"><fest:value>user.name</fest:value>: <span id="myScore">0</span></p>
 

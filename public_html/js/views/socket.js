@@ -37,6 +37,7 @@ define([
                 var data = JSON.parse(event.data);
                 console.log(data);
                 if (data.status == "start") {
+
                     $('.pgh').addClass('pgh__gamestart');
                     document.getElementById("wait").style.display = "none";
                     document.getElementById("gameplay").style.display = "block";
