@@ -296,9 +296,9 @@ a.purple {
   0% {
     -webkit-transform: translateX(200px) rotate(0deg);
     -moz-transform: translateX(200px) rotate(0deg);
-    -ms-transform: translateX(200px);
-    -o-transform: translateX(200px);
-    transform: translateX(200px); }
+    -ms-transform: translateX(200px) rotate(0deg);
+    -o-transform: translateX(200px) rotate(0deg);
+    transform: translateX(200px) rotate(0deg); }
   10% {
     -webkit-transform: translateX(-400px);
     -moz-transform: translateX(-400px);

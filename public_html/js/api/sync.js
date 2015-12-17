@@ -39,7 +39,7 @@ define([
                         options.error({
                             isLogged : false
                         });
-                        //TODO: убрать отсюда говнокодинг. Наверно с помощью слушаетля во вьюхе
+                        //TODO: убрать отсюда говнокодинг
                         $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === SIGNIN_URL) {
