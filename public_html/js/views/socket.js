@@ -39,6 +39,7 @@ define([
                 if (data.status == "start") {
                     $('.pgh').addClass('pgh__gamestart');
                     document.getElementById("wait").style.display = "none";
+                    //document.getElementByClass("title").style.display = "none";
                     document.getElementById("gameplay").style.display = "block";
                     document.getElementById("enemyName").innerHTML = data.enemyName;
                 }
@@ -46,6 +47,7 @@ define([
                 if (data.status == "finish") {
                     document.getElementById("gameOver").style.display = "block";
                     document.getElementById("gameplay").style.display = "none";
+                    //document.getElementByClass("title").style.display = "block";
 
                     if (data.win)
                         document.getElementById("win").innerHTML = "winner!";
@@ -55,15 +57,15 @@ define([
 
                 if (data.status == "increment" && data.name == user_name) {
                     document.getElementById("myScore").innerHTML = data.score;
-                    document.getElementById("sena").setAttribute("style",
-                        "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
+                    //document.getElementById("sena").setAttribute("style",
+                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
 
                 }
 
                 if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
                     document.getElementById("enemyScore").innerHTML = data.score;
-                    document.getElementById("sena").setAttribute("style",
-                        "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
+                    //document.getElementById("sena").setAttribute("style",
+                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
 
                 }
             };
