@@ -16,7 +16,7 @@
 		</table>
 		<div class="score_board">
 		<ul class="score_board">
-				<li class="score_board__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
+				<li class="score_board__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Back!</span></a></li>
 		</ul>
 		</div>
 	</div>

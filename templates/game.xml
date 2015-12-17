@@ -1,18 +1,19 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
+    <p class="title">JOHN CENA BATTLE CLICKER</p>
     <div id="body">
         <div id="hello">
-            <p>Hello, <fest:value>user.name</fest:value>!</p>
+            <p class="pgh">Hello, <fest:value>user.name</fest:value>!</p>
         </div>
 
         <div id="wait">
-            <p>Prepare yourself. Wait for enemy!</p>
+            <p class="pgh pgh_wait">Prepare yourself. Wait for enemy!</p>
         </div>
 
         <div id="gameplay" style="display: none">
             <div id="score">
-                <p><fest:value>user.name</fest:value>: <span id="myScore">0</span></p>
+                <p class="score"><fest:value>user.name</fest:value>: <span id="myScore">0</span></p>
 
-                <p><span id="enemyName"></span>: <span id="enemyScore">0</span></p>
+                <p class="score"><span id="enemyName"></span>: <span id="enemyScore">0</span></p>
             </div>
 
             <form name="gamePlay" action="">
@@ -21,7 +22,7 @@
         </div>
 
         <div id="gameOver" style="display: none">
-            <p>Game over! You are <span id="win"></span></p>
+            <p class="pgh pgh_wait">Game over! You are <span id="win"></span></p>
         </div>
 
     </div>

@@ -20,7 +20,11 @@
   font-size: 60px;
   font-family: Hunger;
   color: white;
+  padding-top: 12px;
+  background: #000000;
+  opacity: 0.7;
   &_caption {
     font-size: 30px;
+    padding-top: 10px;
   }
 }

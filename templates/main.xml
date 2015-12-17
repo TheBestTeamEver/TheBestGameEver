@@ -2,11 +2,11 @@
 	<p class="title">JOHN CENA BATTLE CLICKER</p>
 
 	<ul class="menu">
-        <li class="menu__item startgame"><a href="#game" class="round green">START<span class="round">Начать игру без регистрации.</span></a></li>
-		<li class="menu__item login"><a href="#login" class="round red">LOG IN<span class="round">Нажмите если у вас уже есть аккаунт. </span></a></li>
-        <li class="menu__item logout"><a class="round red">LOGOUT<span class="round">Выход</span></a></li>
-		<li class="menu__item signup"><a href="#registration" class="round yellow">SIGN UP<span class="round">Нажимай!</span></a></li>
-		<li class="menu__item"><a href="#scoreboard" class="round purple">SCORES<span class="round">Доска почета!</span></a></li>
+        <li class="menu__item startgame"><a href="#game" class="round green">START<span class="round">Start game</span></a></li>
+		<li class="menu__item login"><a href="#login" class="round red">LOG IN<span class="round">Log in </span></a></li>
+        <li class="menu__item logout"><a class="round red">LOGOUT<span class="round">Logout</span></a></li>
+		<li class="menu__item signup"><a href="#registration" class="round yellow">SIGN UP<span class="round">SIgn up</span></a></li>
+		<li class="menu__item"><a href="#scoreboard" class="round purple">SCORES<span class="round">Score</span></a></li>
 	</ul> 
 	<div class="ftr">
 		<p class="ftr__pgh">TBTE</p>

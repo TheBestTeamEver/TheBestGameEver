@@ -8,9 +8,10 @@
 			<input name="email" class="reg-form__input-submit" type="email" required="true" placeholder="Введите свой email" value="" /><br></br>
 			<input name="password" class="reg-form__input-submit" type="password" required="true" placeholder="Введите свой пароль" value="" /><br></br>
 			<input id="reg-form-submit-real" type="submit" value="" style="display: none"/>
+			<!--TODO: Вместо якоря использовать label. Исправить стили для этого-->
 			<ul class="reg-form">
-				<li class="reg-form__input-submit__item"><a onClick="document.getElementById('reg-form-submit-real').click();" class="round yellow">Enter<span class="round">Нажми, чтобы зарегистрироваться!</span></a></li>
-				<li class="reg-form__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Назад!</span></a></li>
+				<li class="reg-form__input-submit__item"><a onClick="document.getElementById('reg-form-submit-real').click();" class="round yellow">Enter<span class="round">Go!</span></a></li>
+				<li class="reg-form__item_back"><a onClick="history.back()" class="round green">Back<span class="round">Back!</span></a></li>
 			</ul>
 		</form>
 	</div>
