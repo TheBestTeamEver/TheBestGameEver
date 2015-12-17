@@ -46,7 +46,8 @@ define([
                     if (response.status === 'OK') {
                         console.log("success");
                         options.success({
-                            isLogged : true
+                            isLogged : true,
+                            name : options.name
                         });
                         $(".error").hide();
                     } else {
