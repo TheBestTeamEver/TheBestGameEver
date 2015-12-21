@@ -14,7 +14,7 @@ import org.json.simple.JSONObject;
 @SuppressWarnings({"StaticVariableNamingConvention", "unchecked", "OverlyBroadCatchBlock", "CallToSimpleSetterFromWithinClass"})
 @WebSocket
 public class GameWebSocket {
-    public static final int INT = 500;
+    public static final int RANGE = 500;
     private String myName;
     private Session session;
     private GameMechanics gameMechanics;
@@ -57,8 +57,8 @@ public class GameWebSocket {
 
     @OnWebSocketMessage
     public void onMessage(String data) {
-        x = (int) (Math.random() * INT);
-        y = (int) (Math.random() * INT);
+        x = (int) (Math.random() * RANGE);
+        y = (int) (Math.random() * RANGE);
         gameMechanics.incrementScore(myName);
     }
 
