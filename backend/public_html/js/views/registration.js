@@ -53,11 +53,16 @@ define([
             this.user.save({}, {
                     url: '/signup',
                     data: data,
-                    requestType: 'POST'
+                    requestType: 'POST',
+                    name: login
                 }
             );
-        },
 
+            //this.user.on('change:isLogged', function() {
+            //    this.user.set('name', login);
+            //    alert(this.user.get('name'));
+            //});
+        }
     });
 
     return new Registration();

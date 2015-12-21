@@ -16,6 +16,12 @@ define([
         },
 
         hideView: function(view) {
+            if(view.name === 'game') {
+                if(view.user.get('isLogged') === true) {
+                    view.start();
+                    view.render();
+                }
+            }
             viewsArray.forEach(function(item, i, viewsArray) {
                 if(view.cid == (item.data).cid) item.isHidden = false;
                 if(view.cid != (item.data).cid && (item.isHidden === false)) {

@@ -5,12 +5,35 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/styles.css"/>
 	<link rel="shortcut icon" href="design/favicon.ico"/> 
+	<style>
+	 #loader {
+            text-align: center;	
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:url('/minpic/preload.GIF') no-repeat center center;
+            
+       }
+	</style>
 </head>
-<!--<body>	<audio src="design/audio/WWE - John Cena.mp3" autoplay loop></audio>-->
+<body>
+	<!--<audio src="design/audio/WWE - John Cena.mp3" autoplay loop></audio>-->
+
+	<div id="loader">PREPARE TO FIGHT</div>
+	<script>
+		var loader = document.getElementById("loader");
+		window.onload = function() {
+			loader.remove();
+		}
+	</script>
 
 	<div class="page"></div>
 
-	<script data-main="js/main" src="js/lib/require.js"></script>
-    <script src="//localhost:35729/livereload.js"></script>
+    <script type="text/javascript" src="js/build.min.js"></script>
+<script>
+    require(['main'], function(){
+        console.log('preloader');
+    });
+</script>
 </body>
 </html>

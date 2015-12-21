@@ -21,7 +21,7 @@ public class GameMechanicsImpl implements GameMechanics {
 
     private Map<String, GameSession> nameToGame = new HashMap<>();
 
-    private Set<GameSession> allSessions = new HashSet<>();
+    private List<GameSession> allSessions = new ArrayList<>();
 
     private String waiter;
 
