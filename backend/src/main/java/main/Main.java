@@ -74,8 +74,6 @@ public class Main {
         GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService, stepTime, gameTime);
         context.addServlet(new ServletHolder(new WebSocketGameServlet(accountService, gameMechanics, webSocketService)), "/gameplay");
 
-        context.addServlet(new ServletHolder(new GameServlet(gameMechanics, accountService)), "/draka");
-
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);
         resource_handler.setResourceBase("public_html");
