@@ -59,6 +59,7 @@ public class Main {
         Servlet exit = new ExitServlet(accountService);
         Servlet admin = new AdminPageServlet(accountService);
         Servlet check = new CheckServlet(accountService);
+        Servlet scoreboard = new ScoreboardServlet();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(signIn), SignInServlet.PAGE_URL);
@@ -66,6 +67,7 @@ public class Main {
         context.addServlet(new ServletHolder(exit), "/logout");
         context.addServlet(new ServletHolder(admin), AdminPageServlet.ADMIN_PAGE_URL);
         context.addServlet(new ServletHolder(check), "/check");
+        context.addServlet(new ServletHolder(scoreboard), "/scoreboard1");
 
         int stepTime = serializationObject.getStepTime();
         int gameTime = serializationObject.getGameTime();
