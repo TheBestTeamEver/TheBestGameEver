@@ -18,10 +18,10 @@
 
             <!--<input class="bla" id='sena' type="button" name="submit" value="Press to win!"/>-->
             <!--<div class="bla1" style="display: inline">-->
-                <img class="bla1" id="sena" src="design/assets/john_cena/john_cena1.png" alt="john_cena" width="150" height="150"></img>
+                <img class="bla bla1" id="sena" src="design/assets/john_cena/john_cena1.png" alt="john_cena" width="150" height="150"></img>
             <!--</div>-->
             <!--<div class="bla2" style="display: inline">-->
-                <img class="bla2" id="sena" src="design/assets/john_cena/john_cena2.png" alt="john_cena" width="150" height="150"></img>
+                <img class="bla bla2" id="sena" src="design/assets/john_cena/john_cena2.png" alt="john_cena" width="150" height="150"></img>
             <!--</div>-->
         </div>
         <div id="gameOver" style="display: none">

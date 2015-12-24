@@ -10,7 +10,8 @@ body, html {
   height: 93%;
   padding: 0px;
   margin: 0px;
-  text-align: center; }
+  text-align: center;
+  cursor: url("/design/Event_fist_(map_icon).png"), auto; }
 
 ul {
   padding: 0px; }
@@ -18,6 +19,13 @@ ul {
 @font-face {
   font-family: Hunger;
   src: url(../design/fonts/Hunger.ttf); }
+
+#loader {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/minpic/preload.gif") no-repeat center center; }
 
 .login-form {
   padding-top: 30px;
@@ -434,7 +442,7 @@ a.purple {
 .bla2 {
   animation: move2 15s 0s infinite ease; }
 
-.bla1:hover {
+.bla:hover {
   border: 5px #3c510c; }
 
 .bla2:hover {

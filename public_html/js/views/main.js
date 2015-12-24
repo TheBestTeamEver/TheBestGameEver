@@ -16,7 +16,6 @@ define([
 
         events: {
             'click .logout': 'logout',
-            'click .startgame' : 'start'
         },
 
         initialize: function () {
@@ -47,11 +46,6 @@ define([
         logout: function() {
             this.user.save({}, {url: '/logout'});
             $(location).attr("href", "/");
-        },
-
-        start: function() {
-            this.socket = new socket({user: this.user});
-            this.socket.onGameStart();
         },
 
     });

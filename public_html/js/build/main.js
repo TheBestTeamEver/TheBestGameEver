@@ -13273,7 +13273,7 @@ define('api/sync',[
                         options.error({
                             isLogged : false
                         });
-                        //TODO: убрать отсюда говнокодинг. Наверно с помощью слушаетля во вьюхе
+                        //TODO: убрать отсюда говнокодинг
                         $(".error").text("PREPARE YOUR HEAD FOR ERRORS!!!").css({"color":"#ff0000"});
                     }
                 } else if (options.url === SIGNIN_URL) {
@@ -13389,18 +13389,13 @@ define('views/socket',[
 
                 if (data.status == "increment" && data.name == user_name) {
                     document.getElementById("myScore").innerHTML = data.score;
-                    //document.getElementById("sena").setAttribute("style",
-                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
 
                 }
 
                 if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
                     document.getElementById("enemyScore").innerHTML = data.score;
-                    //document.getElementById("sena").setAttribute("style",
-                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
-
                 }
-            };
+            };   
 
             this.ws.onclose = function (event) {
                 console.log("WebSocket closed");
@@ -13410,22 +13405,14 @@ define('views/socket',[
 
         onGameStart: function() {
             $("body").find('.page').load(this.init());
-        },
-
-        clearCanvas: function() {
-            //var canvas = document.getElementById('example'),
-            //    ctx = canvas.getContext('2d');
-            //ctx.clearRect(0,0,canvas.width,canvas.height);
-        },
-
-        table: function() {
-            //var canvas = document.getElementById('example'),
-            //    ctx = canvas.getContext('2d'),
-            //    pic = new Image();
-            //pic.src = 'http://www.muscleandfitness.com/sites/muscleandfitness.com/files/media/John_Cena.jpg';
-            //pic.onload = function() {
-            //    ctx.drawImage(pic, 0, 0, 100, 100);
-            //}
+            $("body").on("click", ".bla", function(){
+               $(this).css({ "background-image": "url('/design/explosion.gif')",
+                             "cursor": "url('/design/Fist.png')" })
+                .delay(200)
+                .hide('slow')
+                .css({ "background-image": "url('/minpic/assets/john_cena/john_cena1.png')" })
+                .show('slow');
+            });
         },
 
         knockCena: function() {
@@ -13457,7 +13444,6 @@ define('views/main',[
 
         events: {
             'click .logout': 'logout',
-            'click .startgame' : 'start'
         },
 
         initialize: function () {
@@ -13488,11 +13474,6 @@ define('views/main',[
         logout: function() {
             this.user.save({}, {url: '/logout'});
             $(location).attr("href", "/");
-        },
-
-        start: function() {
-            this.socket = new socket({user: this.user});
-            this.socket.onGameStart();
         },
 
     });
@@ -13601,7 +13582,7 @@ define('views/scoreboard',[
 
     return new Scoreboard();
 });
-define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var user=__fest_context;__fest_buf+=("<p class=\"title\">JOHN CENA BATTLE CLICKER</p><div id=\"body\"><div id=\"hello\"><p class=\"pgh\">Hello,");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "4");}__fest_buf+=("!</p></div><div id=\"wait\"><p class=\"pgh pgh_wait\">Prepare yourself. Wait for enemy!</p></div><div id=\"gameplay\" style=\"display: none\"><div id=\"score\"><p class=\"score\">");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "13");}__fest_buf+=(":<span id=\"myScore\">0</span></p><p class=\"score\"><span id=\"enemyName\"></span>:<span id=\"enemyScore\">0</span></p></div><img class=\"bla1\" id=\"sena\" src=\"design\/assets\/john_cena\/john_cena1.png\" alt=\"john_cena\" width=\"150\" height=\"150\"/><img class=\"bla2\" id=\"sena\" src=\"design\/assets\/john_cena\/john_cena2.png\" alt=\"john_cena\" width=\"150\" height=\"150\"/></div><div id=\"gameOver\" style=\"display: none\"><p class=\"pgh pgh_wait\">Game over! You are<span id=\"win\"></span></p></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var user=__fest_context;__fest_buf+=("<p class=\"title\">JOHN CENA BATTLE CLICKER</p><div id=\"body\"><div id=\"hello\"><p class=\"pgh\">Hello,");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "4");}__fest_buf+=("!</p></div><div id=\"wait\"><p class=\"pgh pgh_wait\">Prepare yourself. Wait for enemy!</p></div><div id=\"gameplay\" style=\"display: none\"><div id=\"score\"><p class=\"score\">");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "13");}__fest_buf+=(":<span id=\"myScore\">0</span></p><p class=\"score\"><span id=\"enemyName\"></span>:<span id=\"enemyScore\">0</span></p></div><img class=\"bla bla1\" id=\"sena\" src=\"design\/assets\/john_cena\/john_cena1.png\" alt=\"john_cena\" width=\"150\" height=\"150\"/><img class=\"bla bla2\" id=\"sena\" src=\"design\/assets\/john_cena\/john_cena2.png\" alt=\"john_cena\" width=\"150\" height=\"150\"/></div><div id=\"gameOver\" style=\"display: none\"><p class=\"pgh pgh_wait\">Game over! You are<span id=\"win\"></span></p></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 define('views/game',[
     'backbone',
     'tmpl/game',
@@ -13622,8 +13603,7 @@ define('views/game',[
         socket: new socket({user: this.user}),
 
         events: {
-            'click .bla1' : 'knockCena',
-            'click .bla2' : 'knockCena'
+            'click .bla' : 'knockCena',
         },
 
         initialize: function () {

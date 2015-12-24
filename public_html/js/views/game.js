@@ -18,8 +18,7 @@ define([
         socket: new socket({user: this.user}),
 
         events: {
-            'click .bla1' : 'knockCena',
-            'click .bla2' : 'knockCena'
+            'click .bla' : 'knockCena',
         },
 
         initialize: function () {

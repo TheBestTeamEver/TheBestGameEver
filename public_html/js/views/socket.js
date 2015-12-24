@@ -57,18 +57,13 @@ define([
 
                 if (data.status == "increment" && data.name == user_name) {
                     document.getElementById("myScore").innerHTML = data.score;
-                    //document.getElementById("sena").setAttribute("style",
-                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
 
                 }
 
                 if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
                     document.getElementById("enemyScore").innerHTML = data.score;
-                    //document.getElementById("sena").setAttribute("style",
-                    //    "margin-left: " + data.x + "px;"+"margin-top: " + data.y + "px;");
-
                 }
-            };
+            };   
 
             this.ws.onclose = function (event) {
                 console.log("WebSocket closed");
@@ -78,22 +73,13 @@ define([
 
         onGameStart: function() {
             $("body").find('.page').load(this.init());
-        },
-
-        clearCanvas: function() {
-            //var canvas = document.getElementById('example'),
-            //    ctx = canvas.getContext('2d');
-            //ctx.clearRect(0,0,canvas.width,canvas.height);
-        },
-
-        table: function() {
-            //var canvas = document.getElementById('example'),
-            //    ctx = canvas.getContext('2d'),
-            //    pic = new Image();
-            //pic.src = 'http://www.muscleandfitness.com/sites/muscleandfitness.com/files/media/John_Cena.jpg';
-            //pic.onload = function() {
-            //    ctx.drawImage(pic, 0, 0, 100, 100);
-            //}
+            $("body").on("click", ".bla", function(){
+               $(this).css({ "background-image": "url('/design/explosion.gif')" })
+                .delay(200)
+                .hide('slow')
+                .css({ "background-image": "url('/minpic/assets/john_cena/john_cena1.png')" })
+                .show('slow');
+            });
         },
 
         knockCena: function() {
