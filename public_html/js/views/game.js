@@ -41,7 +41,20 @@ define([
 
         start: function() {
             this.socket = new socket({user: this.user});
-            this.socket.onGameStart();
+            this.socket.init();
+            this.onGameStart();
+        },
+
+        onGameStart: function() {
+            $("body").on("click", ".bla", function(){
+                var $bla = $(this);
+                $bla.addClass('bla_kaboom');
+                setTimeout(function () {
+                    $bla.hide(200, function () {
+                        $bla.removeClass('bla_kaboom').show('slow');
+                    });
+                }, 200);
+            });
         },
 
         knockCena: function() {

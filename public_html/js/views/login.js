@@ -58,9 +58,6 @@ define([
                 }
             );
         }
-
-
-
     });
 
     return new Login();

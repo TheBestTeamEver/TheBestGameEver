@@ -13,7 +13,8 @@ define([
         collection: players,
 
         initialize: function () {
-            $('.page').append(this.el); 
+            $('.page').append(this.el);
+            players.fetch();
             this.render();
         },
 

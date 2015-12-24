@@ -136,8 +136,7 @@ module.exports = function (grunt) {
         'build',
         [
             'fest', 'requirejs:build',
-            'concat:build', 'uglify:build',
-            'imagemin'
+            'concat:build', 'uglify:build'
         ]
     );
 

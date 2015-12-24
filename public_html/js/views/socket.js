@@ -71,17 +71,6 @@ define([
             }
         },
 
-        onGameStart: function() {
-            $("body").find('.page').load(this.init());
-            $("body").on("click", ".bla", function(){
-               $(this).css({ "background-image": "url('/design/explosion.gif')" })
-                .delay(200)
-                .hide('slow')
-                .css({ "background-image": "url('/minpic/assets/john_cena/john_cena1.png')" })
-                .show('slow');
-            });
-        },
-
         knockCena: function() {
             console.log('knock');
             var message = "{}";
