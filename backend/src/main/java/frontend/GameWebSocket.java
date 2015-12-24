@@ -11,7 +11,7 @@ import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.json.simple.JSONObject;
 
 
-@SuppressWarnings({"StaticVariableNamingConvention", "unchecked", "OverlyBroadCatchBlock", "CallToSimpleSetterFromWithinClass"})
+@SuppressWarnings("unchecked")
 @WebSocket
 public class GameWebSocket {
     public static final int RANGE = 500;
@@ -44,7 +44,7 @@ public class GameWebSocket {
         }
     }
 
-    public void gameOver(GameUser user, boolean win) {
+    public void gameOver( boolean win) {
         try {
             JSONObject jsonStart = new JSONObject();
             jsonStart.put("status", "finish");
@@ -55,13 +55,16 @@ public class GameWebSocket {
         }
     }
 
+    @SuppressWarnings("unused")
     @OnWebSocketMessage
     public void onMessage(String data) {
+        System.out.println(data);
         x = (int) (Math.random() * RANGE);
         y = (int) (Math.random() * RANGE);
         gameMechanics.incrementScore(myName);
     }
 
+    @SuppressWarnings("unused")
     @OnWebSocketConnect
     public void onOpen(Session sessionParam) {
         setSession(sessionParam);
