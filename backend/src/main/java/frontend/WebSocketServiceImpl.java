@@ -18,13 +18,13 @@ public class WebSocketServiceImpl implements WebSocketService {
     }
 
     @Override
-    public void notifyMyNewScore(GameUser user) {
-        userSockets.get(user.getMyName()).setMyScore(user);
+    public void notifyMyNewScore(GameUser user, String cena) {
+        userSockets.get(user.getMyName()).setMyScore(user, cena);
     }
 
     @Override
-    public void notifyEnemyNewScore(GameUser user) {
-        userSockets.get(user.getMyName()).setEnemyScore(user);
+    public void notifyEnemyNewScore(GameUser user, String cena) {
+        userSockets.get(user.getMyName()).setEnemyScore(user, cena);
     }
 
     @Override

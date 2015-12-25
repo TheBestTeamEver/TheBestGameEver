@@ -184,17 +184,24 @@
   }
 }
 
-.bla1 {
+.bla {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background: url("/minpic/assets/john_cena/john_cena1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: -45px;
+}
+
+.bla_kaboom {
+  background: url('/design/explosion.gif');
+}
+
+.bla_1 {
   animation: move1 15s 0s infinite ease;
 }
 
-.bla2 {
+.bla_2 {
   animation: move2 15s 0s infinite ease;
-}
-
-.bla1:hover {
-  border: 5px #3c510c;
-}
-.bla2:hover {
-  border: 5px #3c510c;
 }

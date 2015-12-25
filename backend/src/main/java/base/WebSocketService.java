@@ -9,9 +9,9 @@ public interface WebSocketService {
 
     void addUser(GameWebSocket user);
 
-    void notifyMyNewScore(GameUser user);
+    void notifyMyNewScore(GameUser user, String cena);
 
-    void notifyEnemyNewScore(GameUser user);
+    void notifyEnemyNewScore(GameUser user, String cena);
 
     void notifyStartGame(GameUser user);
 

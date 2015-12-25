@@ -40,14 +40,14 @@ public class GameMechanicsImpl implements GameMechanics {
         }
     }
 
-    public void incrementScore(String userName) {
+    public void incrementScore(String userName, String cena) {
         GameSession myGameSession = nameToGame.get(userName);
         GameUser myUser = myGameSession.getSelf(userName);
         myUser.incrementMyScore();
         GameUser enemyUser = myGameSession.getEnemy(userName);
         enemyUser.incrementEnemyScore();
-        webSocketService.notifyMyNewScore(myUser);
-        webSocketService.notifyEnemyNewScore(enemyUser);
+        webSocketService.notifyMyNewScore(myUser, cena);
+        webSocketService.notifyEnemyNewScore(enemyUser, cena);
     }
 
     @Override

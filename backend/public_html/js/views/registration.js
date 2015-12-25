@@ -58,10 +58,6 @@ define([
                 }
             );
 
-            //this.user.on('change:isLogged', function() {
-            //    this.user.set('name', login);
-            //    alert(this.user.get('name'));
-            //});
         }
     });
 

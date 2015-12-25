@@ -51,8 +51,8 @@ public class Main {
 
         System.out.println("Старт на порту: " + port + '\n');
 
-        //AccountService accountService = new AccountServiceImpl();
-         AccountService accountService = new AccountServiceDBImpl();
+        AccountService accountService = new AccountServiceImpl();
+//         AccountService accountService = new AccountServiceDBImpl();
 
         Servlet signIn = new SignInServlet(accountService);
         Servlet signUp = new SignUpServlet(accountService);
