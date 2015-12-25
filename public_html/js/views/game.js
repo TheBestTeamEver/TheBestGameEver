@@ -18,7 +18,7 @@ define([
         socket: new socket({user: this.user}),
 
         events: {
-            'click .bla' : 'knockCena',
+            //'click .bla' : 'knockCena',
         },
 
         initialize: function () {
@@ -46,6 +46,7 @@ define([
         },
 
         onGameStart: function() {
+            that = this;
             $("body").on("click", ".bla", function(){
                 var $bla = $(this);
                 $bla.addClass('bla_kaboom');
@@ -54,12 +55,16 @@ define([
                         $bla.removeClass('bla_kaboom').show('slow');
                     });
                 }, 200);
+                console.log($bla.attr('id'));
+                var id_msg = String($bla.attr('id'));
+                var msg = '{"el":"' + id_msg + '"}';
+                that.socket.knockCena(msg);
             });
-        },
-
-        knockCena: function() {
-            this.socket.knockCena();
         }
+
+        //knockCena: function() {
+        //    this.socket.knockCena();
+        //}
 
     });
 

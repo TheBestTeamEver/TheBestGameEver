@@ -54,11 +54,11 @@ define([
 
                 if (data.status == "increment" && data.name == user_name) {
                     $("#myScore").text(data.score);
-
                 }
 
                 if (data.status == "increment" && data.name == $("#enemyName").text()) {
                     $("#enemyScore").text(data.score);
+
                 }
             };   
 
@@ -68,9 +68,10 @@ define([
             }
         },
 
-        knockCena: function() {
+        knockCena: function(msg) {
             console.log('knock');
-            var message = "{}";
+            var message = msg || "{}";
+            console.log("message " + msg);
             this.ws.send(message);
         }
 
