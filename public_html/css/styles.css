@@ -501,29 +501,28 @@ a.purple {
   width: 150px;
   height: 150px;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: -45px; }
+  background-repeat: no-repeat; }
 
 .bla_kaboom {
   background-image: url("/design/explosion.gif") !important;
   cursor: url("/design/punch.png"), auto; }
 
 .bla_1 {
-  background-image: url("/minpic/assets/john_cena/john_cena1.png");
+  background-image: url("/design/assets/john_cena/ceno_1.png");
   animation: move1 15s 0s infinite ease; }
 
 .bla_2 {
-  background-image: url("/minpic/assets/john_cena/john_cena2.png");
+  background-image: url("/design/assets/john_cena/ceno_2.png");
   animation: move2 15s 0s infinite ease; }
 
 .bla_3 {
-  background-image: url("/minpic/assets/john_cena/john_cena1.png");
+  background-image: url("/design/assets/john_cena/ceno_3.png");
   animation: move3 15s 0s infinite ease; }
 
 .bla_4 {
-  background-image: url("/minpic/assets/john_cena/john_cena1.png");
+  background-image: url("/design/assets/john_cena/ceno_5.png");
   animation: move4 15s 0s infinite ease; }
 
 .bla_5 {
-  background-image: url("/minpic/assets/john_cena/john_cena1.png");
+  background-image: url("/design/assets/john_cena/ceno_4.png");
   animation: move5 15s 0s infinite ease; }
