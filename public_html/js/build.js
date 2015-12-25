@@ -13817,11 +13817,20 @@ define('views/socket',[
 
                 if (data.status == "increment" && data.name == user_name) {
                     $("#myScore").text(data.score);
-
                 }
 
                 if (data.status == "increment" && data.name == $("#enemyName").text()) {
                     $("#enemyScore").text(data.score);
+                    var id = "#" + data.el;
+                    console.log(id);
+                    var $sena_img = $(id);
+                    console.log($sena_img);
+                    $sena_img.addClass('bla_kaboom');
+                    setTimeout(function () {
+                        $sena_img.hide(200, function () {
+                            $sena_img.removeClass('bla_kaboom').show('slow');
+                        });
+                    }, 200);
                 }
             };   
 
@@ -14047,8 +14056,9 @@ define('views/game',[
                 }, 200);
                 console.log($bla.attr('id'));
                 var id_msg = String($bla.attr('id'));
-                var msg = '{"el":"' + id_msg + '")}';
+                var msg = '{"el":"' + id_msg + '"}';
                 that.socket.knockCena(msg);
+
             });
         }
 

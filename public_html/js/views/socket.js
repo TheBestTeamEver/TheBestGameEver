@@ -58,7 +58,16 @@ define([
 
                 if (data.status == "increment" && data.name == $("#enemyName").text()) {
                     $("#enemyScore").text(data.score);
-
+                    var id = "#" + data.el;
+                    console.log(id);
+                    var $sena_img = $(id);
+                    console.log($sena_img);
+                    $sena_img.addClass('bla_kaboom');
+                    setTimeout(function () {
+                        $sena_img.hide(200, function () {
+                            $sena_img.removeClass('bla_kaboom').show('slow');
+                        });
+                    }, 200);
                 }
             };   
 
