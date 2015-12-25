@@ -13344,21 +13344,18 @@ define('views/socket',[
     var Socket = Backbone.View.extend({
 
         initialize: function(){
-            //$('.page').append(this.el);
         },
         user: user,
 
         ws: null,
 
         init: function(){
-            //var ws;
 
             var user_name = this.user.get('name');
             var host = location.hostname;
             var port = location.port;
             this.ws = new WebSocket("ws://" + host + ':' + port +"/gameplay");
 
-            //this.table();
             var that = this;
 
             this.ws.onopen = function (event) {
@@ -13370,30 +13367,30 @@ define('views/socket',[
                 console.log(data);
                 if (data.status == "start") {
                     $('.pgh').addClass('pgh__gamestart');
-                    document.getElementById("wait").style.display = "none";
-                    //document.getElementByClass("title").style.display = "none";
-                    document.getElementById("gameplay").style.display = "block";
-                    document.getElementById("enemyName").innerHTML = data.enemyName;
+                    $('.hello').hide();
+                    $('.title').hide();
+                    $("#wait").hide();
+                    $("#gameplay").show();
+                    $("#enemyName").text(data.enemyName);
                 }
 
                 if (data.status == "finish") {
-                    document.getElementById("gameOver").style.display = "block";
-                    document.getElementById("gameplay").style.display = "none";
-                    //document.getElementByClass("title").style.display = "block";
+                    $("#gameOver").show();
+                    $("#gameplay").hide();
 
                     if (data.win)
-                        document.getElementById("win").innerHTML = "winner!";
+                        $("#win").text("winner!");
                     else
-                        document.getElementById("win").innerHTML = "loser!";
+                        $("#win").text("loser!");
                 }
 
                 if (data.status == "increment" && data.name == user_name) {
-                    document.getElementById("myScore").innerHTML = data.score;
+                    $("#myScore").text(data.score);
 
                 }
 
-                if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
-                    document.getElementById("enemyScore").innerHTML = data.score;
+                if (data.status == "increment" && data.name == $("#enemyName").text()) {
+                    $("#enemyScore").text(data.score);
                 }
             };   
 
@@ -13558,7 +13555,7 @@ define('views/scoreboard',[
 
     return new Scoreboard();
 });
-define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var user=__fest_context;__fest_buf+=("<p class=\"title\">JOHN CENA BATTLE CLICKER</p><div id=\"body\"><div id=\"hello\"><p class=\"pgh\">Hello,");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "4");}__fest_buf+=("!</p></div><div id=\"wait\"><p class=\"pgh pgh_wait\">Prepare yourself. Wait for enemy!</p></div><div id=\"gameplay\" style=\"display: none\"><div id=\"score\"><p class=\"score\">");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "13");}__fest_buf+=(":<span id=\"myScore\">0</span></p><p class=\"score\"><span id=\"enemyName\"></span>:<span id=\"enemyScore\">0</span></p></div><div class=\"js-bla1 bla bla_1\"></div><div class=\"js-bla2 bla bla_2\"><img class=\"bla__img\" src=\"design\/assets\/john_cena\/john_cena1.png\" alt=\"john_cena\" width=\"150\" height=\"150\"/><img class=\"bla__boom\" src=\"design\/explosion.gif\" alt=\"john_cena\" width=\"150\" height=\"150\" style=\"display:none\"/></div></div><div id=\"gameOver\" style=\"display: none\"><p class=\"pgh pgh_wait\">Game over! You are<span id=\"win\"></span></p></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
+define('tmpl/game',[],function () { return function (__fest_context){"use strict";var __fest_self=this,__fest_buf="",__fest_chunks=[],__fest_chunk,__fest_attrs=[],__fest_select,__fest_if,__fest_iterator,__fest_to,__fest_fn,__fest_html="",__fest_blocks={},__fest_params,__fest_element,__fest_debug_file="",__fest_debug_line="",__fest_debug_block="",__fest_htmlchars=/[&<>"]/g,__fest_htmlchars_test=/[&<>"]/,__fest_short_tags = {"area":true,"base":true,"br":true,"col":true,"command":true,"embed":true,"hr":true,"img":true,"input":true,"keygen":true,"link":true,"meta":true,"param":true,"source":true,"wbr":true},__fest_element_stack = [],__fest_htmlhash={"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"},__fest_jschars=/[\\'"\/\n\r\t\b\f<>]/g,__fest_jschars_test=/[\\'"\/\n\r\t\b\f<>]/,__fest_jshash={"\"":"\\\"","\\":"\\\\","/":"\\/","\n":"\\n","\r":"\\r","\t":"\\t","\b":"\\b","\f":"\\f","'":"\\'","<":"\\u003C",">":"\\u003E"},___fest_log_error;if(typeof __fest_error === "undefined"){___fest_log_error = (typeof console !== "undefined" && console.error) ? function(){return Function.prototype.apply.call(console.error, console, arguments)} : function(){};}else{___fest_log_error=__fest_error};function __fest_log_error(msg){___fest_log_error(msg+"\nin block \""+__fest_debug_block+"\" at line: "+__fest_debug_line+"\nfile: "+__fest_debug_file)}function __fest_replaceHTML(chr){return __fest_htmlhash[chr]}function __fest_replaceJS(chr){return __fest_jshash[chr]}function __fest_extend(dest, src){for(var i in src)if(src.hasOwnProperty(i))dest[i]=src[i];}function __fest_param(fn){fn.param=true;return fn}function __fest_call(fn, params,cp){if(cp)for(var i in params)if(typeof params[i]=="function"&&params[i].param)params[i]=params[i]();return fn.call(__fest_self,params)}function __fest_escapeJS(s){if (typeof s==="string") {if (__fest_jschars_test.test(s))return s.replace(__fest_jschars,__fest_replaceJS);} else if (typeof s==="undefined")return "";return s;}function __fest_escapeHTML(s){if (typeof s==="string") {if (__fest_htmlchars_test.test(s))return s.replace(__fest_htmlchars,__fest_replaceHTML);} else if (typeof s==="undefined")return "";return s;}var user=__fest_context;__fest_buf+=("<p class=\"title\">JOHN CENA BATTLE CLICKER</p><div id=\"body\"><div id=\"hello\"><p class=\"pgh\">Hello,");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "4");}__fest_buf+=("!</p></div><div id=\"wait\"><p class=\"pgh pgh_wait\">Prepare yourself. Wait for enemy!</p></div><div id=\"gameplay\" style=\"display: none\"><div id=\"score\"><p class=\"score\">");try{__fest_buf+=(__fest_escapeHTML(user.name))}catch(e){__fest_log_error(e.message + "13");}__fest_buf+=(":<span id=\"myScore\">0</span></p><p class=\"score\"><span id=\"enemyName\"></span>:<span id=\"enemyScore\">0</span></p></div><div class=\"js-bla_1 bla bla_1\" id=\"sena1\"></div><div class=\"js-bla_2 bla bla_2\" id=\"sena2\"></div><div class=\"js-bla_3 bla bla_3\" id=\"sena3\"></div><div class=\"js-bla_4 bla bla_4\" id=\"sena4\"></div><div class=\"js-bla_5 bla bla_5\" id=\"sena5\"></div></div><div id=\"gameOver\" style=\"display: none\"><p class=\"pgh pgh_wait\">Game over! You are<span id=\"win\"></span></p></div></div>");__fest_to=__fest_chunks.length;if (__fest_to) {__fest_iterator = 0;for (;__fest_iterator<__fest_to;__fest_iterator++) {__fest_chunk=__fest_chunks[__fest_iterator];if (typeof __fest_chunk==="string") {__fest_html+=__fest_chunk;} else {__fest_fn=__fest_blocks[__fest_chunk.name];if (__fest_fn) __fest_html+=__fest_call(__fest_fn,__fest_chunk.params,__fest_chunk.cp);}}return __fest_html+__fest_buf;} else {return __fest_buf;}} ; });
 define('views/game',[
     'backbone',
     'tmpl/game',

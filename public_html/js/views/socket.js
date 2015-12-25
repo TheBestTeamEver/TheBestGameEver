@@ -12,21 +12,18 @@ define([
     var Socket = Backbone.View.extend({
 
         initialize: function(){
-            //$('.page').append(this.el);
         },
         user: user,
 
         ws: null,
 
         init: function(){
-            //var ws;
 
             var user_name = this.user.get('name');
             var host = location.hostname;
             var port = location.port;
             this.ws = new WebSocket("ws://" + host + ':' + port +"/gameplay");
 
-            //this.table();
             var that = this;
 
             this.ws.onopen = function (event) {
@@ -38,30 +35,30 @@ define([
                 console.log(data);
                 if (data.status == "start") {
                     $('.pgh').addClass('pgh__gamestart');
-                    document.getElementById("wait").style.display = "none";
-                    //document.getElementByClass("title").style.display = "none";
-                    document.getElementById("gameplay").style.display = "block";
-                    document.getElementById("enemyName").innerHTML = data.enemyName;
+                    $('.hello').hide();
+                    $('.title').hide();
+                    $("#wait").hide();
+                    $("#gameplay").show();
+                    $("#enemyName").text(data.enemyName);
                 }
 
                 if (data.status == "finish") {
-                    document.getElementById("gameOver").style.display = "block";
-                    document.getElementById("gameplay").style.display = "none";
-                    //document.getElementByClass("title").style.display = "block";
+                    $("#gameOver").show();
+                    $("#gameplay").hide();
 
                     if (data.win)
-                        document.getElementById("win").innerHTML = "winner!";
+                        $("#win").text("winner!");
                     else
-                        document.getElementById("win").innerHTML = "loser!";
+                        $("#win").text("loser!");
                 }
 
                 if (data.status == "increment" && data.name == user_name) {
-                    document.getElementById("myScore").innerHTML = data.score;
+                    $("#myScore").text(data.score);
 
                 }
 
-                if (data.status == "increment" && data.name == document.getElementById("enemyName").innerHTML) {
-                    document.getElementById("enemyScore").innerHTML = data.score;
+                if (data.status == "increment" && data.name == $("#enemyName").text()) {
+                    $("#enemyScore").text(data.score);
                 }
             };   
 

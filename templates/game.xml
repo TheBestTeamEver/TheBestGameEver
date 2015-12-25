@@ -16,11 +16,11 @@
                 <p class="score"><span id="enemyName"></span>: <span id="enemyScore">0</span></p>
             </div>
 
-            <div class="js-bla1 bla bla_1"></div>
-            <div class="js-bla2 bla bla_2">
-                <img class="bla__img" src="design/assets/john_cena/john_cena1.png" alt="john_cena" width="150" height="150" />
-                <img class="bla__boom" src="design/explosion.gif" alt="john_cena" width="150" height="150" style="display:none"/>
-            </div>
+            <div class="js-bla_1 bla bla_1" id="sena1"></div>
+            <div class="js-bla_2 bla bla_2" id="sena2"></div>
+            <div class="js-bla_3 bla bla_3" id="sena3"></div>
+            <div class="js-bla_4 bla bla_4" id="sena4"></div>
+            <div class="js-bla_5 bla bla_5" id="sena5"></div>      
         </div>
         <div id="gameOver" style="display: none">
             <p class="pgh pgh_wait">Game over! You are <span id="win"></span></p>
