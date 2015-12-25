@@ -48,6 +48,8 @@ define([
         onGameStart: function() {
             $("body").on("click", ".bla", function(){
                 var $bla = $(this);
+                var audio = $("#blow")[0];
+                audio.play();
                 $bla.addClass('bla_kaboom');
                 setTimeout(function () {
                     $bla.hide(200, function () {
