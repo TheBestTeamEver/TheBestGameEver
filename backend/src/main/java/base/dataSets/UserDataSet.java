@@ -13,7 +13,7 @@ public class UserDataSet implements Serializable { // Serializable Important to 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Column(name = "email")
@@ -35,9 +35,9 @@ public class UserDataSet implements Serializable { // Serializable Important to 
     @SuppressWarnings("CallToSimpleSetterFromWithinClass")
     public UserDataSet(String nameParam, String emailParam, String passwordParam) {
         this.setId(-1);
-        this.name = name;
-        this.email = email;
-        this.password = password;
+        this.name = nameParam;
+        this.email = emailParam;
+        this.password = passwordParam;
     }
 
 

@@ -25,9 +25,9 @@ public class DBServiceImpl implements DBService {
 
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/java_base");
-        configuration.setProperty("hibernate.connection.username", "root");
-        configuration.setProperty("hibernate.connection.password", "110794");
+        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/java_2015_09_g11_db");
+        configuration.setProperty("hibernate.connection.username", "java_2015_09_g11");
+        configuration.setProperty("hibernate.connection.password", "java_2015_09_g11");
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.hbm2ddl.auto", "validate");
 
