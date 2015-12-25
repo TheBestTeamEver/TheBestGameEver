@@ -59,6 +59,7 @@ define([
                 var id_msg = String($bla.attr('id'));
                 var msg = '{"el":"' + id_msg + '"}';
                 that.socket.knockCena(msg);
+
             });
         }
 
