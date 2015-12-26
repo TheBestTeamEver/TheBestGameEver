@@ -302,11 +302,11 @@ a.purple {
 
 @keyframes move1 {
   0% {
-    -webkit-transform: translateX(200px) rotate(0deg);
-    -moz-transform: translateX(200px) rotate(0deg);
-    -ms-transform: translateX(200px) rotate(0deg);
-    -o-transform: translateX(200px) rotate(0deg);
-    transform: translateX(200px) rotate(0deg); }
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px); }
   10% {
     -webkit-transform: translateX(-400px);
     -moz-transform: translateX(-400px);
@@ -436,20 +436,93 @@ a.purple {
     -o-transform: translateX(-200px);
     transform: translateX(-200px); } }
 
+@keyframes move3 {
+  0% {
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px); }
+  50% {
+    -webkit-transform: translateY(100px);
+    -moz-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    transform: translateY(100px); }
+  100% {
+    -webkit-transform: translateX(400px);
+    -moz-transform: translateX(400px);
+    -ms-transform: translateX(400px);
+    -o-transform: translateX(400px);
+    transform: translateX(400px); } }
+
+@keyframes move4 {
+  0% {
+    -webkit-transform: translateY(-200px);
+    -moz-transform: translateY(-200px);
+    -ms-transform: translateY(-200px);
+    -o-transform: translateY(-200px);
+    transform: translateY(-200px); }
+  30% {
+    -webkit-transform: translateX(300px);
+    -moz-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    -o-transform: translateX(300px);
+    transform: translateX(300px); }
+  70% {
+    -webkit-transform: translateY(300px);
+    -moz-transform: translateX(300px);
+    -ms-transform: translateX(300px);
+    -o-transform: translateX(300px);
+    transform: translateX(300px); }
+  100% {
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px); } }
+
+@keyframes move5 {
+  0% {
+    -webkit-transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    transform: translateY(200px); }
+  100% {
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px); } }
+
 .bla {
   display: inline-block;
   width: 150px;
   height: 150px;
-  background: url("/minpic/assets/john_cena/john_cena1.png");
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: -45px; }
+  background-repeat: no-repeat; }
 
 .bla_kaboom {
-  background: url("/design/explosion.gif"); }
+  background-image: url("/design/explosion.gif") !important;
+  cursor: url("/design/punch.png"), auto; }
 
 .bla_1 {
+  background-image: url("/design/assets/john_cena/ceno_1.png");
   animation: move1 15s 0s infinite ease; }
 
 .bla_2 {
+  background-image: url("/design/assets/john_cena/ceno_2.png");
   animation: move2 15s 0s infinite ease; }
+
+.bla_3 {
+  background-image: url("/design/assets/john_cena/ceno_3.png");
+  animation: move3 15s 0s infinite ease; }
+
+.bla_4 {
+  background-image: url("/design/assets/john_cena/ceno_5.png");
+  animation: move4 15s 0s infinite ease; }
+
+.bla_5 {
+  background-image: url("/design/assets/john_cena/ceno_4.png");
+  animation: move5 15s 0s infinite ease; }
