@@ -34,22 +34,11 @@ define([
                 var data = JSON.parse(event.data);
                 console.log(data);
                 if (data.status == "start") {
-                    $('.pgh').addClass('pgh__gamestart');
-                    $('.hello').hide();
-                    $('.title').hide();
-                    $("#wait").hide();
-                    $("#gameplay").show();
-                    $("#enemyName").text(data.enemyName);
+                    that.onStart(data);
                 }
 
                 if (data.status == "finish") {
-                    $("#gameOver").show();
-                    $("#gameplay").hide();
-
-                    if (data.win)
-                        $("#win").text("winner!");
-                    else
-                        $("#win").text("loser!");
+                    that.finish(data);
                 }
 
                 if (data.status == "increment" && data.name == user_name) {
@@ -57,17 +46,7 @@ define([
                 }
 
                 if (data.status == "increment" && data.name == $("#enemyName").text()) {
-                    $("#enemyScore").text(data.score);
-                    var id = "#" + data.el;
-                    console.log(id);
-                    var $sena_img = $(id);
-                    console.log($sena_img);
-                    $sena_img.addClass('bla_kaboom');
-                    setTimeout(function () {
-                        $sena_img.hide(200, function () {
-                            $sena_img.removeClass('bla_kaboom').show('slow');
-                        });
-                    }, 200);
+                    that.drawEnemy(data);
                 }
             };   
 
@@ -82,8 +61,42 @@ define([
             var message = msg || "{}";
             console.log("message " + msg);
             this.ws.send(message);
-        }
+        },
 
+        drawEnemy: function(data) {
+            $("#enemyScore").text(data.score);
+            var id = "#" + data.el;
+            console.log(id);
+            var $sena_img = $(id);
+            console.log($sena_img);
+            var $bla = $(this);
+            var audio = $("#blow")[0];
+            $sena_img.addClass('bla_kaboom');
+            setTimeout(function () {
+                $sena_img.hide(200, function () {
+                    $sena_img.removeClass('bla_kaboom').show('slow');
+                });
+            }, 200);
+        },
+
+        finish: function(data) {
+            $("#gameOver").show();
+            $("#gameplay").hide();
+
+            if (data.win)
+                $("#win").text("winner!");
+            else
+                $("#win").text("loser!");
+        },
+
+        onStart: function(data){
+            $('.pgh').addClass('pgh__gamestart');
+            $('.hello').hide();
+            $('.title').hide();
+            $("#wait").hide();
+            $("#gameplay").show();
+            $("#enemyName").text(data.enemyName);
+        }
     });
 
     return Socket;

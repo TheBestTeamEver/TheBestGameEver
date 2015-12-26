@@ -1,6 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
     <p class="title">JOHN CENA BATTLE CLICKER</p>
     <div id="body">
+        <audio src="design/audio/blow.wav" id="blow"></audio>
         <div id="hello">
             <p class="pgh">Hello, <fest:value>user.name</fest:value>!</p>
         </div>
@@ -16,11 +17,11 @@
                 <p class="score"><span id="enemyName"></span>: <span id="enemyScore">0</span></p>
             </div>
 
-            <div class="js-bla_1 bla bla_1" id="sena1"></div>
-            <div class="js-bla_2 bla bla_2" id="sena2"></div>
-            <div class="js-bla_3 bla bla_3" id="sena3"></div>
-            <div class="js-bla_4 bla bla_4" id="sena4"></div>
-            <div class="js-bla_5 bla bla_5" id="sena5"></div>      
+            <div class="bla_1 bla" id="sena1"></div>
+            <div class="bla_2 bla" id="sena2"></div>
+            <div class="bla_3 bla" id="sena3"></div>
+            <div class="bla_4 bla" id="sena4"></div>
+            <div class="bla_5 bla" id="sena5"></div>      
         </div>
         <div id="gameOver" style="display: none">
             <p class="pgh pgh_wait">Game over! You are <span id="win"></span></p>
